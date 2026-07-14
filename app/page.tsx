@@ -1,65 +1,416 @@
-import Image from "next/image";
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import HeroScroll from './components/HeroScroll'
+import ScrollCard from './components/ScrollCard'
+import { useLanguage } from './context/LanguageContext'
+
+const revealContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.11 } },
+}
+
+const revealItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 85,
+      damping: 13,
+      mass: 0.9,
+    },
+  },
+}
+
+const vp = { once: true, margin: '-40px' } as const
+
+const clientLogos = [
+  { name: 'Samsung', file: 'SAMSUNG - BEYOND.webp' },
+  { name: 'Apple', file: 'APPLE - BEYOND.webp' },
+  { name: 'LG', file: 'LG - BEYOND.webp' },
+  { name: 'AMD', file: 'AMD - BEYOND.webp' },
+  { name: 'Microsoft', file: 'microsoft.webp' },
+  { name: 'TCL', file: 'TCL---BEYOND.webp' },
+  { name: 'Adidas', file: 'ADIDAS - BEYOND.webp' },
+  { name: 'Nestlé', file: 'NESTLE- BEYOND.webp' },
+  { name: 'Aldo', file: 'aldo.webp' },
+  { name: 'Olímpica', file: 'OLIMPICA - BEYOND.webp' },
+  { name: 'Falabella', file: 'FALABELLA - BEYOND.webp' },
+  { name: 'Pepsico', file: 'PEPSICO - BEYOND.webp' },
+]
+
+const capabilityImgs = [
+  '/images/service/beyond_carpinteria.webp',
+  '/images/service/beyond_metalmecanica.webp',
+  '/images/service/beyond_impresion.webp',
+  '/images/service/beyond_acrilicos.webp',
+  '/images/service/baners_instalacion_beyond.jpg',
+  '/images/service/beyond_logistica_tegnologia.webp',
+]
+const capabilityHrefs = [
+  '/capacidades/carpinteria',
+  '/capacidades/metalmecanica',
+  '/capacidades/impresion',
+  '/capacidades/acrilicos',
+  '/capacidades/instalacion',
+  '/capacidades/logistica',
+]
+
+const featuredProjectData = [
+  { slug: 'apple-isla', img: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png' },
+  { slug: 'samsung-galaxy-studio', img: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png' },
+  { slug: 'amd-mesa', img: '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.png' },
+  { slug: 'lg-arq-comercial', img: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png' },
+]
+
+function AboutSection() {
+  const { t } = useLanguage()
+  const h = t.home
+  return (
+    <div style={{ height: '100dvh', background: 'var(--bg)', display: 'flex', alignItems: 'center' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }} className="grid-2">
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={vp}
+            variants={revealContainer}
+            style={{ position: 'relative' }}
+          >
+            <motion.div variants={revealItem}>
+              <Image
+                src="/images/about/about-img.jpg"
+                alt="Beyond SAS planta"
+                width={700}
+                height={460}
+                style={{ width: '100%', height: '460px', objectFit: 'cover' }}
+              />
+            </motion.div>
+            <motion.div
+              variants={revealItem}
+              style={{
+                position: 'absolute', bottom: '28px', right: '0',
+                background: 'var(--red)', color: '#fff',
+                padding: '20px 24px',
+                boxShadow: '0 20px 60px rgba(224,41,7,0.3)',
+              }}
+            >
+              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '36px', lineHeight: 1 }}>3.850</div>
+              <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', marginTop: '4px' }}>{h.plantBadge}</div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={vp}
+            variants={revealContainer}
+          >
+            <motion.h2
+              variants={revealItem}
+              style={{
+                fontFamily: 'var(--font-barlow)', fontWeight: 800,
+                fontSize: 'clamp(32px, 3.5vw, 56px)', lineHeight: 1,
+                letterSpacing: '-0.02em', textTransform: 'uppercase',
+                color: 'var(--text)', marginBottom: '20px',
+              }}
+            >
+              {h.aboutTitle1}<br />{h.aboutTitle2}<br />
+              <span style={{ color: 'var(--red)' }}>{h.aboutAccent}</span><br />
+              {h.aboutTitle3}
+            </motion.h2>
+            <motion.p variants={revealItem} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '14px' }}>
+              {h.aboutP1}
+            </motion.p>
+            <motion.p variants={revealItem} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '32px' }}>
+              {h.aboutP2}
+            </motion.p>
+            <motion.div variants={revealItem}>
+              <Link href="/nosotros" className="btn-outline">{h.aboutCta}</Link>
+            </motion.div>
+          </motion.div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function CapabilitiesSection() {
+  const { t } = useLanguage()
+  const h = t.home
+  return (
+    <div style={{ height: '100dvh', background: 'var(--white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px 0' }}>
+      <div className="container">
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={vp}
+          variants={revealContainer}
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}
+        >
+          <motion.h2
+            variants={revealItem}
+            style={{
+              fontFamily: 'var(--font-barlow)', fontWeight: 800,
+              fontSize: 'clamp(28px, 3.2vw, 48px)', lineHeight: 1,
+              letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
+            }}
+          >
+            {h.capTitle1}<br /><span style={{ color: 'var(--red)' }}>{h.capAccent}</span>
+          </motion.h2>
+          <motion.div variants={revealItem}>
+            <Link href="/capacidades" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
+              {h.capCta}
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+          {h.capabilities.map((cap, i) => (
+            <motion.div
+              key={cap.title}
+              initial="hidden"
+              whileInView="show"
+              viewport={vp}
+              variants={revealItem}
+              transition={{ delay: i * 0.06 }}
+            >
+              <Link href={capabilityHrefs[i]} style={{ textDecoration: 'none' }}>
+                <div className="cap-card" style={{ background: 'var(--bg)', overflow: 'hidden' }}>
+                  <div style={{ position: 'relative', height: '150px', overflow: 'hidden' }}>
+                    <Image
+                      src={capabilityImgs[i]}
+                      alt={cap.title}
+                      fill
+                      style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)' }}
+                      className="cap-img"
+                    />
+                  </div>
+                  <div style={{ padding: '14px 18px' }}>
+                    <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text)', marginBottom: '3px' }}>{cap.title}</h3>
+                    <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{cap.subtitle}</p>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+function ProjectsSection() {
+  const { t } = useLanguage()
+  const h = t.home
+  return (
+    <div style={{ height: '100dvh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px 0' }}>
+      <div className="container">
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={vp}
+          variants={revealContainer}
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}
+        >
+          <motion.h2
+            variants={revealItem}
+            style={{
+              fontFamily: 'var(--font-barlow)', fontWeight: 800,
+              fontSize: 'clamp(28px, 3.2vw, 48px)', lineHeight: 1,
+              letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
+            }}
+          >
+            {h.projTitle1}<br /><span style={{ color: 'var(--red)' }}>{h.projAccent}</span>
+          </motion.h2>
+          <motion.div variants={revealItem}>
+            <Link href="/proyectos" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
+              {h.projCta}
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <div className="grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          {h.featuredProjects.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial="hidden"
+              whileInView="show"
+              viewport={vp}
+              variants={revealItem}
+              transition={{ delay: i * 0.08 }}
+            >
+              <Link href={`/proyectos/${featuredProjectData[i].slug}`} style={{ textDecoration: 'none' }}>
+                <div className="proj-card" style={{ background: '#e8e6e2' }}>
+                  <div style={{ position: 'relative', height: i < 2 ? '260px' : '200px', overflow: 'hidden' }}>
+                    <Image
+                      src={featuredProjectData[i].img}
+                      alt={p.title}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="proj-overlay" />
+                    <div className="proj-info" style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px', zIndex: 2 }}>
+                      <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>{p.category}</p>
+                      <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.02em', color: '#fff', lineHeight: 1.2 }}>{p.title}</h3>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+function ClientsSection() {
+  const { t } = useLanguage()
+  const h = t.home
+  return (
+    <div style={{ height: '100dvh', background: 'var(--white)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div className="container">
+
+        <motion.h2
+          initial="hidden"
+          whileInView="show"
+          viewport={vp}
+          variants={revealItem}
+          style={{
+            fontFamily: 'var(--font-barlow)', fontWeight: 800,
+            fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1,
+            letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
+            textAlign: 'center', marginBottom: '52px',
+          }}
+        >
+          {h.clientsTitle1}<br /><span style={{ color: 'var(--red)' }}>{h.clientsAccent}</span>
+        </motion.h2>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={vp}
+          variants={revealContainer}
+          className="grid-clients" style={{ display: 'grid', gap: '1px', background: 'var(--border)' }}
+        >
+          {clientLogos.map((c, i) => (
+            <motion.div
+              key={c.name}
+              variants={revealItem}
+              style={{ background: 'var(--white)', padding: '32px 18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <Image
+                src={`/images/logo/${c.file}`}
+                alt={c.name}
+                width={100}
+                height={36}
+                style={{ objectFit: 'contain', height: '26px', width: 'auto', filter: 'grayscale(1)', opacity: 0.45 }}
+                className="brand-item"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+
+      </div>
+    </div>
+  )
+}
+
+function CTASection() {
+  const { t } = useLanguage()
+  const h = t.home
+  return (
+    <section style={{
+      minHeight: '100dvh', background: 'var(--red)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'linear-gradient(rgba(0,0,0,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.10) 1px, transparent 1px)',
+        backgroundSize: '60px 60px',
+      }} />
+      <div style={{ position: 'relative', textAlign: 'center', padding: '120px 32px' }}>
+        <motion.h2
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 0.9 }}
+          style={{
+            fontFamily: 'var(--font-barlow)', fontWeight: 800,
+            fontSize: 'clamp(40px, 6vw, 88px)', lineHeight: 0.95,
+            letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#fff',
+            marginBottom: '24px', whiteSpace: 'pre-line',
+          }}
+        >
+          {h.ctaTitle}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 0.9, delay: 0.1 }}
+          style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '44px', maxWidth: '420px', margin: '0 auto 44px' }}
+        >
+          {h.ctaBody}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 0.9, delay: 0.2 }}
+          style={{ display: 'inline-block' }}
+          whileHover={{ y: -3, boxShadow: '0 16px 40px rgba(0,0,0,0.25)' }}
+          whileTap={{ scale: 0.97, y: 0 }}
+        >
+          <Link href="/contacto" style={{
+            textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px',
+            background: '#fff', color: 'var(--red)', padding: '18px 48px',
+            fontSize: '14px', fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase',
+            borderRadius: '2px',
+          }}>
+            {h.ctaBtn}
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    <>
+      <HeroScroll />
+
+      <ScrollCard index={2} scrollHeight="240vh">
+        <AboutSection />
+      </ScrollCard>
+
+      <ScrollCard index={3} scrollHeight="280vh">
+        <CapabilitiesSection />
+      </ScrollCard>
+
+      <ScrollCard index={4} scrollHeight="240vh">
+        <ProjectsSection />
+      </ScrollCard>
+
+      <ScrollCard index={5} scrollHeight="220vh" isLast>
+        <ClientsSection />
+      </ScrollCard>
+
+      <CTASection />
+    </>
+  )
 }
