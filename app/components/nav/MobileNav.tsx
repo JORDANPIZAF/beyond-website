@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Tag } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 
 const glass = {
@@ -152,6 +152,35 @@ export default function MobileNav() {
                 </motion.div>
               )
             })}
+
+            <motion.div
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.18 + navLinks.length * 0.07, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              style={{ marginTop: 20 }}
+            >
+              <Link
+                href="/contacto"
+                onClick={close}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: '14px 28px',
+                  borderRadius: 999,
+                  background: 'var(--red)',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  fontFamily: 'var(--font-montserrat), sans-serif',
+                  fontWeight: 700,
+                  fontSize: 15,
+                  letterSpacing: '0.01em',
+                }}
+              >
+                <Tag size={18} strokeWidth={1.6} />
+                {t.nav.quote}
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

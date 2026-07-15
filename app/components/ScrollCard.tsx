@@ -1,10 +1,10 @@
 'use client'
 
 import { useRef, ReactNode } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 
 interface Props {
-  children: ReactNode
+  children: ReactNode | ((progress: MotionValue<number>) => ReactNode)
   scrollHeight?: string
   index: number
   isLast?: boolean
@@ -50,7 +50,7 @@ export default function ScrollCard({
           willChange: 'transform',
         }}
       >
-        {children}
+        {typeof children === 'function' ? children(scrollYProgress) : children}
 
         <motion.div
           aria-hidden="true"

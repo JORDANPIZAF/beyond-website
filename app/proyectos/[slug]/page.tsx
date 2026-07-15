@@ -491,6 +491,7 @@ export default function ProjectDetailPage() {
                     overflow: 'hidden',
                     cursor: 'zoom-in',
                     background: '#e8e6e2',
+                    borderRadius: '10px',
                   }}
                 >
                   <Image
@@ -584,7 +585,7 @@ export default function ProjectDetailPage() {
                 position: 'absolute', top: '24px', right: '24px',
                 background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
                 color: '#fff', width: '44px', height: '44px', cursor: 'pointer',
-                fontSize: '20px', borderRadius: '2px',
+                fontSize: '20px', borderRadius: '999px',
               }}
             >✕</button>
           </motion.div>

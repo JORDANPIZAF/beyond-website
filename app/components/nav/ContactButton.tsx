@@ -1,40 +1,40 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
-import { Mail } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Tag } from 'lucide-react'
+import { useLanguage } from '../../context/LanguageContext'
+
+// width/margin get spring (elastic), opacity gets ease (springs on opacity look jittery)
+const textTransition = {
+  maxWidth:   { type: 'spring' as const, stiffness: 90, damping: 15, mass: 1.6 },
+  marginLeft: { type: 'spring' as const, stiffness: 90, damping: 15, mass: 1.6 },
+  opacity:    { duration: 0.26, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+}
 
 export default function ContactButton() {
-  const { scrollY } = useScroll()
-  const bgOpacity   = useTransform(scrollY, [0, 120], [0.65, 0.90])
-  const blurPx      = useTransform(scrollY, [0, 120], [32, 48])
-  const shadowAlpha = useTransform(scrollY, [0, 120], [0.07, 0.15])
-
-  const background     = useMotionTemplate`rgba(255,255,255,${bgOpacity})`
-  const backdropFilter = useMotionTemplate`blur(${blurPx}px) saturate(200%)`
-  const outerShadow    = useMotionTemplate`0 8px 32px rgba(0,0,0,${shadowAlpha}), 0 2px 8px rgba(0,0,0,0.04)`
+  const { t } = useLanguage()
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <motion.div
       whileHover={{ scale: 1.09 }}
       whileTap={{ scale: 0.92 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      style={{ position: 'relative', width: 52, height: 52, borderRadius: 999, flexShrink: 0 }}
+      style={{ position: 'relative', height: 57, borderRadius: 999, flexShrink: 0 }}
     >
-      {/* Frosted glass base */}
-      <motion.span style={{
+      {/* Solid red base */}
+      <span style={{
         position: 'absolute', inset: 0, borderRadius: 999,
-        background,
-        backdropFilter,
-        WebkitBackdropFilter: backdropFilter,
-        border: '0.5px solid rgba(255,255,255,0.75)',
-        boxShadow: outerShadow,
+        background: 'var(--red)',
+        boxShadow: '0 8px 24px rgba(224,41,7,0.35)',
       }} />
 
       {/* Inner shadow edges */}
       <span style={{
         position: 'absolute', inset: 0, borderRadius: 999,
-        boxShadow: '0 -1px 0 rgba(0,0,0,0.06) inset',
+        boxShadow: '0 -1px 0 rgba(0,0,0,0.12) inset',
         pointerEvents: 'none',
         zIndex: 1,
       }} />
@@ -42,19 +42,34 @@ export default function ContactButton() {
       {/* Link */}
       <Link
         href="/contacto"
-        title="Contacto"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
-          position: 'absolute', inset: 0, zIndex: 2,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: 'var(--text-muted)',
+          position: 'relative', zIndex: 2, height: '100%',
+          display: 'flex', alignItems: 'center',
+          padding: '0 19px',
+          color: '#fff',
           textDecoration: 'none',
           borderRadius: 999,
-          transition: 'color 0.32s ease',
+          whiteSpace: 'nowrap',
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = 'var(--red)')}
-        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
       >
-        <Mail size={18} strokeWidth={1.6} />
+        <Tag size={20} strokeWidth={1.6} />
+        <motion.span
+          animate={{ maxWidth: isHovered ? 160 : 0, opacity: isHovered ? 1 : 0, marginLeft: isHovered ? 8 : 0 }}
+          transition={textTransition}
+          style={{
+            maxWidth: 0,
+            overflow: 'hidden',
+            display: 'inline-block',
+            fontFamily: 'var(--font-montserrat), sans-serif',
+            fontWeight: 700,
+            fontSize: 16,
+            letterSpacing: '0.01em',
+          }}
+        >
+          {t.nav.quote}
+        </motion.span>
       </Link>
     </motion.div>
   )

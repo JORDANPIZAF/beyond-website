@@ -85,28 +85,115 @@ body::before {
 .brand-item { transition: opacity 0.25s, transform 0.25s; }
 .brand-item:hover { opacity: 1 !important; transform: scale(1.06); }
 
-/* Project card */
-.proj-card { position: relative; overflow: hidden; cursor: pointer; }
-.proj-card img { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-.proj-card:hover img { transform: scale(1.05); }
-.proj-card .proj-overlay {
+/* Project gallery — fila de imágenes que se expande al pasar el cursor */
+.project-gallery {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  height: 460px;
+  width: 100%;
+}
+.project-gallery-item {
+  position: relative;
+  display: block;
+  flex: 1 1 260px;
+  min-width: 70px;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.project-gallery-item:hover { flex: 6 1 0%; }
+.project-gallery-item img { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+.project-gallery-item:hover img { transform: scale(1.04); }
+.project-gallery-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
-  transition: background 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 45%, transparent 65%);
 }
-.proj-card:hover .proj-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 65%);
+.project-gallery-icon {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: scale(0.7);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.proj-info { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
-.proj-card:hover .proj-info { transform: translateY(-6px); }
+.project-gallery-item:hover .project-gallery-icon { opacity: 1; transform: scale(1); }
+.project-gallery-info {
+  position: absolute; left: 20px; right: 20px; bottom: 20px; z-index: 2;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.project-gallery-item:hover .project-gallery-info { opacity: 1; transform: translateY(0); }
+.project-gallery-category {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 4px;
+}
+.project-gallery-title {
+  font-family: var(--font-barlow); font-weight: 700; font-size: 15px;
+  text-transform: uppercase; letter-spacing: 0.02em; color: #fff; line-height: 1.2;
+  overflow: hidden; text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .project-gallery { flex-direction: column; height: auto; }
+  .project-gallery-item { flex: 1 1 auto !important; height: 220px; width: 100%; }
+  .project-gallery-info, .project-gallery-icon { opacity: 1 !important; transform: none !important; }
+}
 
 /* Cap card */
-.cap-card { transition: box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); }
-.cap-card:hover { transform: translateY(-5px); box-shadow: 0 24px 64px rgba(0,0,0,0.1); }
+.cap-card { border-radius: 10px; }
 .cap-img { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; }
 .cap-card:hover .cap-img { transform: scale(1.05); }
 .cap-arrow { display: inline-block; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
 .cap-card:hover .cap-arrow { transform: translateX(4px); }
+
+/* Spotlight card system — iluminación roja que sigue el cursor, proyectada como
+   una sombra exterior detrás de la tarjeta (no recortada dentro de ella) */
+.spotlight-card { position: relative; }
+
+/* Halo exterior: vive DETRÁS de la superficie visible y no hereda su overflow,
+   por lo que el blur puede sangrar más allá del borde como una sombra de color */
+.spotlight-halo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 10px;
+  filter: blur(38px);
+  background: radial-gradient(320px circle at var(--spot-x) var(--spot-y), rgba(224,41,7,0.55), transparent 70%);
+}
+.spotlight-halo--touch { animation: spotlight-breathe 5s ease-in-out infinite; }
+@keyframes spotlight-breathe {
+  0%, 100% { opacity: 0.10; }
+  50% { opacity: 0.26; }
+}
+
+/* Superficie visible: la tarjeta real, con su recorte y borde */
+.spotlight-surface {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid rgba(17,17,16,0.06);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.spotlight-content { position: relative; z-index: 3; }
+.spotlight-border-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(280px circle at var(--spot-x) var(--spot-y), rgba(224,41,7,0.95), transparent 70%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
 
 /* Btn primary */
 .btn-primary {
@@ -115,7 +202,7 @@ body::before {
   padding: 14px 32px;
   font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
   text-decoration: none; border: none; cursor: pointer;
-  border-radius: 2px;
+  border-radius: 999px;
   transition: background 0.2s, transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
 }
 .btn-primary:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,41,7,0.3); }
@@ -128,7 +215,7 @@ body::before {
   padding: 14px 32px;
   font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   text-decoration: none; border: 1.5px solid var(--border); cursor: pointer;
-  border-radius: 2px;
+  border-radius: 999px;
   transition: border-color 0.2s, background 0.2s, transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .btn-outline:hover { border-color: var(--text); background: rgba(0,0,0,0.03); transform: translateY(-1px); }

@@ -16,7 +16,7 @@ function LangToggle() {
       display: 'inline-flex',
       alignItems: 'center',
       border: '1px solid var(--border)',
-      borderRadius: '4px',
+      borderRadius: '999px',
       overflow: 'hidden',
       fontSize: '11px',
       fontWeight: 700,

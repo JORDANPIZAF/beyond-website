@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '../context/LanguageContext'
+import Hero3DModel from './Hero3DModel'
 
 const imgSrcs = [
   '/images/portfolio/arq-efimera/img/01/banner_galaxy_beyond.jpg',
@@ -41,7 +42,7 @@ export default function HeroScroll() {
   const stats = t.hero.stats
 
   useEffect(() => {
-    const duration = 5000
+    const duration = 8000
     const step = 50
     let elapsed = 0
     const tick = setInterval(() => {
@@ -114,7 +115,8 @@ export default function HeroScroll() {
         {/* ── Text content ── */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 2,
-          display: 'flex', alignItems: 'center',
+          display: 'flex', alignItems: 'flex-start',
+          paddingTop: 'clamp(160px, 26vh, 260px)',
           paddingLeft: 'max(40px, calc((100vw - 1320px)/2 + 48px))',
           paddingRight: '48px',
         }}>
@@ -178,7 +180,7 @@ export default function HeroScroll() {
                           letterSpacing: '0.06em', textTransform: 'uppercase',
                           textDecoration: 'none',
                           border: '1.5px solid rgba(255,255,255,0.35)',
-                          borderRadius: '2px',
+                          borderRadius: '999px',
                           transition: 'border-color 0.2s',
                         }}
                         className={i === 0 ? 'btn-primary' : ''}
@@ -195,7 +197,7 @@ export default function HeroScroll() {
                     variants={textItem}
                     style={{
                       display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
-                      gap: '24px', marginTop: '56px', paddingTop: '32px',
+                      gap: '24px', marginTop: '40px', paddingTop: '28px',
                       borderTop: '1px solid rgba(255,255,255,0.12)',
                     }}
                   >
@@ -210,6 +212,20 @@ export default function HeroScroll() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+
+        {/* ── 3D interactive model — persists across all slides, right side ── */}
+        <div
+          className="hide-mobile"
+          style={{
+            position: 'absolute',
+            top: 0, right: 0, bottom: 0,
+            width: '42%',
+            zIndex: 2,
+            pointerEvents: 'auto',
+          }}
+        >
+          <Hero3DModel />
         </div>
 
         {/* ── Slide indicators ── */}

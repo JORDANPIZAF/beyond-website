@@ -1,10 +1,13 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useTransform, MotionValue } from 'framer-motion'
 import HeroScroll from './components/HeroScroll'
 import ScrollCard from './components/ScrollCard'
+import SpotlightCard from './components/SpotlightCard'
+import ProjectGallery from './components/ProjectGallery'
 import { useLanguage } from './context/LanguageContext'
 
 const revealContainer = {
@@ -141,11 +144,26 @@ function AboutSection() {
   )
 }
 
-function CapabilitiesSection() {
+function CapabilitiesSection({ progress }: { progress: MotionValue<number> }) {
   const { t } = useLanguage()
   const h = t.home
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  const totalCards = capabilityImgs.length
+  const visibleCards = isMobile ? 1 : 3
+  const trackWidthPercent = (totalCards / visibleCards) * 100
+  const slideFraction = (1 - visibleCards / totalCards) * 100
+  const trackX = useTransform(progress, [0, 0.35], ['0%', `-${slideFraction}%`])
+
   return (
-    <div style={{ height: '100dvh', background: 'var(--white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px 0' }}>
+    <div style={{ minHeight: '100dvh', background: 'var(--white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px 0' }}>
       <div className="container">
 
         <motion.div
@@ -163,7 +181,7 @@ function CapabilitiesSection() {
               letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
             }}
           >
-            {h.capTitle1}<br /><span style={{ color: 'var(--red)' }}>{h.capAccent}</span>
+            {h.capTitle1} <span style={{ color: 'var(--red)' }}>{h.capAccent}</span>
           </motion.h2>
           <motion.div variants={revealItem}>
             <Link href="/capacidades" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
@@ -172,35 +190,38 @@ function CapabilitiesSection() {
           </motion.div>
         </motion.div>
 
-        <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-          {h.capabilities.map((cap, i) => (
-            <motion.div
-              key={cap.title}
-              initial="hidden"
-              whileInView="show"
-              viewport={vp}
-              variants={revealItem}
-              transition={{ delay: i * 0.06 }}
-            >
-              <Link href={capabilityHrefs[i]} style={{ textDecoration: 'none' }}>
-                <div className="cap-card" style={{ background: 'var(--bg)', overflow: 'hidden' }}>
-                  <div style={{ position: 'relative', height: '150px', overflow: 'hidden' }}>
-                    <Image
-                      src={capabilityImgs[i]}
-                      alt={cap.title}
-                      fill
-                      style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)' }}
-                      className="cap-img"
-                    />
-                  </div>
-                  <div style={{ padding: '14px 18px' }}>
-                    <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text)', marginBottom: '3px' }}>{cap.title}</h3>
-                    <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{cap.subtitle}</p>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+        <div style={{ overflow: 'hidden' }}>
+          <motion.div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(${totalCards}, 1fr)`,
+              gap: '10px',
+              width: `${trackWidthPercent}%`,
+              x: trackX,
+            }}
+          >
+            {h.capabilities.map((cap, i) => (
+              <div key={cap.title}>
+                <Link href={capabilityHrefs[i]} style={{ textDecoration: 'none' }}>
+                  <SpotlightCard className="cap-card" style={{ background: 'var(--bg)' }}>
+                    <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden' }}>
+                      <Image
+                        src={capabilityImgs[i]}
+                        alt={cap.title}
+                        fill
+                        style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)' }}
+                        className="cap-img"
+                      />
+                    </div>
+                    <div style={{ padding: '14px 18px' }}>
+                      <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text)', marginBottom: '3px' }}>{cap.title}</h3>
+                      <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{cap.subtitle}</p>
+                    </div>
+                  </SpotlightCard>
+                </Link>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
       </div>
@@ -220,7 +241,7 @@ function ProjectsSection() {
           whileInView="show"
           viewport={vp}
           variants={revealContainer}
-          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '10px', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}
         >
           <motion.h2
             variants={revealItem}
@@ -230,7 +251,7 @@ function ProjectsSection() {
               letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
             }}
           >
-            {h.projTitle1}<br /><span style={{ color: 'var(--red)' }}>{h.projAccent}</span>
+            {h.projTitle1} <span style={{ color: 'var(--red)' }}>{h.projAccent}</span>
           </motion.h2>
           <motion.div variants={revealItem}>
             <Link href="/proyectos" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
@@ -239,37 +260,15 @@ function ProjectsSection() {
           </motion.div>
         </motion.div>
 
-        <div className="grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-          {h.featuredProjects.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial="hidden"
-              whileInView="show"
-              viewport={vp}
-              variants={revealItem}
-              transition={{ delay: i * 0.08 }}
-            >
-              <Link href={`/proyectos/${featuredProjectData[i].slug}`} style={{ textDecoration: 'none' }}>
-                <div className="proj-card" style={{ background: '#e8e6e2' }}>
-                  <div style={{ position: 'relative', height: i < 2 ? '260px' : '200px', overflow: 'hidden' }}>
-                    <Image
-                      src={featuredProjectData[i].img}
-                      alt={p.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="proj-overlay" />
-                    <div className="proj-info" style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px', zIndex: 2 }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>{p.category}</p>
-                      <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.02em', color: '#fff', lineHeight: 1.2 }}>{p.title}</h3>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div initial="hidden" whileInView="show" viewport={vp} variants={revealItem}>
+          <ProjectGallery
+            projects={h.featuredProjects.map((p, i) => ({
+              ...p,
+              slug: featuredProjectData[i].slug,
+              img: featuredProjectData[i].img,
+            }))}
+          />
+        </motion.div>
 
       </div>
     </div>
@@ -295,7 +294,7 @@ function ClientsSection() {
             textAlign: 'center', marginBottom: '52px',
           }}
         >
-          {h.clientsTitle1}<br /><span style={{ color: 'var(--red)' }}>{h.clientsAccent}</span>
+          {h.clientsTitle1} <span style={{ color: 'var(--red)' }}>{h.clientsAccent}</span>
         </motion.h2>
 
         <motion.div
@@ -316,7 +315,7 @@ function ClientsSection() {
                 alt={c.name}
                 width={100}
                 height={36}
-                style={{ objectFit: 'contain', height: '26px', width: 'auto', filter: 'grayscale(1)', opacity: 0.45 }}
+                style={{ objectFit: 'contain', height: '44px', width: 'auto', filter: 'grayscale(1)', opacity: 0.45 }}
                 className="brand-item"
               />
             </motion.div>
@@ -332,7 +331,7 @@ function CTASection() {
   const { t } = useLanguage()
   const h = t.home
   return (
-    <section style={{
+    <section id="cta-red-section" style={{
       minHeight: '100dvh', background: 'var(--red)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       position: 'relative', overflow: 'hidden',
@@ -379,7 +378,7 @@ function CTASection() {
             textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px',
             background: '#fff', color: 'var(--red)', padding: '18px 48px',
             fontSize: '14px', fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase',
-            borderRadius: '2px',
+            borderRadius: '999px',
           }}>
             {h.ctaBtn}
           </Link>
@@ -398,8 +397,8 @@ export default function Home() {
         <AboutSection />
       </ScrollCard>
 
-      <ScrollCard index={3} scrollHeight="280vh">
-        <CapabilitiesSection />
+      <ScrollCard index={3} scrollHeight="900vh">
+        {(progress: MotionValue<number>) => <CapabilitiesSection progress={progress} />}
       </ScrollCard>
 
       <ScrollCard index={4} scrollHeight="240vh">

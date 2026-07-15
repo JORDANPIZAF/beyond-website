@@ -112,7 +112,7 @@ export default function ProyectosPage() {
                   textTransform: 'uppercase',
                   cursor: 'pointer',
                   transition: 'all 0.2s',
-                  borderRadius: '2px',
+                  borderRadius: '999px',
                 }}
               >{cat}</button>
             ))}
@@ -144,6 +144,7 @@ export default function ProyectosPage() {
                       overflow: 'hidden',
                       cursor: 'pointer',
                       background: '#1a1a1a',
+                      borderRadius: '10px',
                     }}
                       className="project-card">
 

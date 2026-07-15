@@ -196,7 +196,7 @@ export default function FooterMap() {
 
   const mapWidth = 900
   const mapHeight = 700
-  const mapScale = 520
+  const mapScale = 624
   const mapCenter: [number, number] = [-82, 6]
 
   return (
