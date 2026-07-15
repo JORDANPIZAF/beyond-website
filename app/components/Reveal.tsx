@@ -1,7 +1,11 @@
 'use client'
 
 import { motion, useInView, useReducedMotion } from 'framer-motion'
-import { useRef, useState, useEffect, ReactNode, CSSProperties } from 'react'
+import { useRef, useSyncExternalStore, ReactNode, CSSProperties } from 'react'
+
+const subscribeNoop = () => () => {}
+const getClientSnapshot = () => true
+const getServerSnapshot = () => false
 
 interface Props {
   children: ReactNode
@@ -15,8 +19,7 @@ export default function Reveal({ children, delay = 0, direction = 'up', classNam
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const prefersReduced = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  const mounted = useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot)
 
   const variants = prefersReduced
     ? { hidden: { opacity: 1 }, show: { opacity: 1 } }

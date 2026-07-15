@@ -304,7 +304,7 @@ function ClientsSection() {
           variants={revealContainer}
           className="grid-clients" style={{ display: 'grid', gap: '1px', background: 'var(--border)' }}
         >
-          {clientLogos.map((c, i) => (
+          {clientLogos.map((c) => (
             <motion.div
               key={c.name}
               variants={revealItem}

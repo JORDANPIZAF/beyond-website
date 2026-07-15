@@ -69,7 +69,7 @@ export default function Hero3DModel() {
         dpr={[1, 2]}
       >
         <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.5} adjustCamera={1.4} {...({ maxDuration: 0 } as any)}>
+          <Stage environment="city" intensity={0.5} adjustCamera={1.4}>
             <Model mouseRef={mouseRef} />
           </Stage>
         </Suspense>

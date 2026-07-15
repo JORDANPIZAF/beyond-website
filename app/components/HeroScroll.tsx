@@ -35,28 +35,18 @@ const textItem = {
 export default function HeroScroll() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [current, setCurrent] = useState(0)
-  const [progress, setProgress] = useState(0)
   const { t } = useLanguage()
 
   const slides = t.hero.slides.map((s, i) => ({ ...s, img: imgSrcs[i] }))
   const stats = t.hero.stats
+  const slideDuration = 8
 
   useEffect(() => {
-    const duration = 8000
-    const step = 50
-    let elapsed = 0
-    const tick = setInterval(() => {
-      elapsed += step
-      setProgress(elapsed / duration)
-      if (elapsed >= duration) {
-        elapsed = 0
-        setCurrent(s => (s + 1) % slides.length)
-      }
-    }, step)
-    return () => clearInterval(tick)
+    const timer = setTimeout(() => {
+      setCurrent(s => (s + 1) % slides.length)
+    }, slideDuration * 1000)
+    return () => clearTimeout(timer)
   }, [current, slides.length])
-
-  useEffect(() => { setProgress(0) }, [current])
 
   const { scrollYProgress: stickProgress } = useScroll({
     target: containerRef,
@@ -251,10 +241,13 @@ export default function HeroScroll() {
               }}>
                 {i === current && (
                   <motion.div
+                    key={current}
+                    initial={{ width: '0%' }}
+                    animate={{ width: '100%' }}
+                    transition={{ duration: slideDuration, ease: 'linear' }}
                     style={{
                       position: 'absolute', top: 0, left: 0, height: '100%',
                       background: 'var(--red)',
-                      width: `${progress * 100}%`,
                     }}
                   />
                 )}

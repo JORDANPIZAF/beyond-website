@@ -17,6 +17,15 @@ const BOGOTA: [number, number] = [-74.07, 4.71]
 
 type City = { coords: [number, number]; label: string; mobileHide?: boolean }
 
+interface MapContextValue {
+  projection?: (coords: [number, number]) => [number, number] | null
+}
+
+interface GeoFeature {
+  id: string
+  rsmKey: string
+}
+
 const INTERNATIONAL: City[] = [
   { coords: [-80.19, 25.77], label: 'Miami' },
   { coords: [-95.37, 29.76], label: 'Houston', mobileHide: true },
@@ -76,7 +85,7 @@ function Route({ from, to, delay, isNational }: RouteProps) {
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: isNational ? 1 : 1.8, delay, ease: [0.16, 1, 0.3, 1] as any }}
+        transition={{ duration: isNational ? 1 : 1.8, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
       />
       <motion.path
         d={d}
@@ -142,7 +151,7 @@ type MapContentProps = {
 }
 
 function MapContent({ isMobile }: MapContentProps) {
-  const ctx = useContext(MapContext) as any
+  const ctx = useContext(MapContext) as MapContextValue | undefined
   const proj = ctx?.projection
   if (!proj) return null
 
@@ -210,10 +219,10 @@ export default function FooterMap() {
           style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
         >
           <Geographies geography={GEO_URL}>
-            {({ geographies }: { geographies: any[] }) =>
+            {({ geographies }: { geographies: GeoFeature[] }) =>
               geographies
-                .filter((geo: any) => AMERICAS.has(parseInt(geo.id)))
-                .map((geo: any) => (
+                .filter((geo) => AMERICAS.has(parseInt(geo.id)))
+                .map((geo) => (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
