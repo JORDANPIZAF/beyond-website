@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -11,13 +11,33 @@ import { useLanguage } from '../../context/LanguageContext'
 
 interface HighlightRect { left: number; top: number; width: number; height: number }
 
-export default function NavPill() {
+interface NavPillProps {
+  expanded: boolean
+}
+
+export default function NavPill({ expanded }: NavPillProps) {
   const pathname = usePathname()
   const { t } = useLanguage()
   const [hoveredHref, setHoveredHref] = useState<string | null>(null)
   const [highlightRect, setHighlightRect] = useState<HighlightRect | null>(null)
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({})
+  const itemsRef = useRef<HTMLDivElement>(null)
+  const [itemsWidth, setItemsWidth] = useState(0)
+  const [settled, setSettled] = useState(false)
+
+  // Mide el ancho natural del contenido de forma continua (no una sola vez):
+  // cualquier etiqueta que se expanda/colapse por hover cambia el scrollWidth,
+  // y el recorte de abajo lo sigue en tiempo real — nunca queda un texto afuera.
+  useEffect(() => {
+    const el = itemsRef.current
+    if (!el) return
+    const measure = () => setItemsWidth(el.scrollWidth)
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
 
   const navLinks = [
     { href: '/',            label: t.nav.home,         Icon: House     },
@@ -47,48 +67,8 @@ export default function NavPill() {
   }
   const handleLeave = () => { leaveTimer.current = setTimeout(() => setHoveredHref(null), 120) }
 
-  return (
-    <motion.div
-      layout="size"
-      style={{
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 2,
-        padding: '10px 11px 10px 22px',
-        borderRadius: 999,
-      }}
-      transition={{ layout: { type: 'spring', stiffness: 100, damping: 18, mass: 1.4 } }}
-    >
-      {/* ── Liquid Glass layers ── */}
-
-      {/* 1. Frosted glass base */}
-      <motion.span
-        style={{
-          position: 'absolute', inset: 0, borderRadius: 999,
-          background,
-          backdropFilter,
-          WebkitBackdropFilter: backdropFilter,
-          border: '0.5px solid rgba(255,255,255,0.75)',
-          boxShadow: outerShadow,
-        }}
-      />
-
-      {/* 3. Bottom inner shadow */}
-      <span style={{
-        position: 'absolute', inset: 0, borderRadius: 999,
-        boxShadow: '0 -1px 0 rgba(0,0,0,0.06) inset',
-        pointerEvents: 'none',
-        zIndex: 1,
-      }} />
-
-      {/* ── Content ── */}
-
-      {/* Logo */}
-      <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 11, flexShrink: 0, position: 'relative', zIndex: 2 }}>
-        <Image src="/images/logo/logo.webp" alt="Beyond" width={97} height={27} style={{ height: 38, width: 'auto', objectFit: 'contain' }} priority />
-      </Link>
-
+  const pillItems = (
+    <>
       {/* Separator */}
       <span style={{ width: 3, height: 30, borderRadius: 999, background: 'var(--border)', flexShrink: 0, marginRight: 5, position: 'relative', zIndex: 2 }} />
 
@@ -125,6 +105,65 @@ export default function NavPill() {
           onLeave={handleLeave}
         />
       ))}
-    </motion.div>
+    </>
+  )
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 2,
+        padding: '10px 11px 10px 22px',
+        borderRadius: 999,
+      }}
+    >
+      {/* ── Liquid Glass layers ── */}
+
+      {/* 1. Frosted glass base */}
+      <motion.span
+        style={{
+          position: 'absolute', inset: 0, borderRadius: 999,
+          background,
+          backdropFilter,
+          WebkitBackdropFilter: backdropFilter,
+          border: '0.5px solid rgba(255,255,255,0.75)',
+          boxShadow: outerShadow,
+        }}
+      />
+
+      {/* 3. Bottom inner shadow */}
+      <span style={{
+        position: 'absolute', inset: 0, borderRadius: 999,
+        boxShadow: '0 -1px 0 rgba(0,0,0,0.06) inset',
+        pointerEvents: 'none',
+        zIndex: 1,
+      }} />
+
+      {/* ── Content ── */}
+
+      {/* Logo */}
+      <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 11, flexShrink: 0, position: 'relative', zIndex: 2 }}>
+        <Image src="/images/logo/logo.webp" alt="Beyond" width={97} height={27} style={{ height: 38, width: 'auto', objectFit: 'contain' }} priority />
+      </Link>
+
+      {/* Recorte que sigue el ancho real del contenido en todo momento — nunca se
+          desmonta ni cambia de modo, solo varía la velocidad del spring: lenta en
+          la entrada, rápida para no quedarse atrás cuando el hover expande un texto */}
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: expanded ? itemsWidth : 0 }}
+        transition={settled
+          ? { type: 'spring', stiffness: 500, damping: 40, mass: 0.6 }
+          : { type: 'spring', stiffness: 85, damping: 22, mass: 1.3 }}
+        onAnimationComplete={() => { if (expanded && !settled) setSettled(true) }}
+        style={{ overflow: 'hidden' }}
+      >
+        <div ref={itemsRef} style={{ display: 'flex', alignItems: 'center', gap: 2, width: 'max-content' }}>
+          {pillItems}
+        </div>
+      </motion.div>
+    </div>
   )
 }
