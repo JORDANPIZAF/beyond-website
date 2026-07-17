@@ -64,10 +64,10 @@ const capabilityHrefs = [
 ]
 
 const featuredProjectData = [
-  { slug: 'apple-isla', img: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png' },
-  { slug: 'samsung-galaxy-studio', img: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png' },
-  { slug: 'amd-mesa', img: '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.png' },
-  { slug: 'lg-arq-comercial', img: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png' },
+  { slug: 'apple-isla', img: '/images/portfolio/arq-efimera/img/04/isla_appleINT-2.png' },
+  { slug: 'samsung-galaxy-studio', img: '/images/portfolio/arq-efimera/img/01/GALAXY-S-INT-2.png' },
+  { slug: 'amd-mesa', img: '/images/portfolio/arq-efimera/img/05/mesa-amd_INT-2.png' },
+  { slug: 'lg-arq-comercial', img: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02INT-2.png' },
 ]
 
 function AboutSection() {

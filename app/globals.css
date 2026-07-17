@@ -96,17 +96,16 @@ body::before {
 .project-gallery-item {
   position: relative;
   display: block;
-  flex: 1 1 260px;
+  flex: 1 1 0%;
   min-width: 70px;
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
+  background: var(--black);
   transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .project-gallery-item:hover { flex: 6 1 0%; }
-.project-gallery-item img { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-.project-gallery-item:hover img { transform: scale(1.04); }
 .project-gallery-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 45%, transparent 65%);
@@ -130,12 +129,14 @@ body::before {
 }
 .project-gallery-item:hover .project-gallery-info { opacity: 1; transform: translateY(0); }
 .project-gallery-category {
-  font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.7); margin-bottom: 4px;
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; padding: 6px 17px; border-radius: 999px;
+  margin-bottom: 10px;
 }
 .project-gallery-title {
-  font-family: var(--font-barlow); font-weight: 700; font-size: 15px;
-  text-transform: uppercase; letter-spacing: 0.02em; color: #fff; line-height: 1.2;
+  font-family: var(--font-barlow); font-weight: 800; font-size: 26px;
+  text-transform: uppercase; letter-spacing: 0.01em; color: #fff; line-height: 1.15;
   overflow: hidden; text-overflow: ellipsis;
 }
 @media (max-width: 768px) {
@@ -151,7 +152,7 @@ body::before {
 .cap-arrow { display: inline-block; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
 .cap-card:hover .cap-arrow { transform: translateX(4px); }
 
-/* Spotlight card system — iluminación roja que sigue el cursor, proyectada como
+/* Spotlight card system — sombra gris que sigue el cursor, proyectada como
    una sombra exterior detrás de la tarjeta (no recortada dentro de ella) */
 .spotlight-card { position: relative; }
 
@@ -164,7 +165,7 @@ body::before {
   pointer-events: none;
   border-radius: 10px;
   filter: blur(38px);
-  background: radial-gradient(320px circle at var(--spot-x) var(--spot-y), rgba(224,41,7,0.55), transparent 70%);
+  background: radial-gradient(320px circle at var(--spot-x) var(--spot-y), rgba(17,17,16,0.45), transparent 70%);
 }
 .spotlight-halo--touch { animation: spotlight-breathe 5s ease-in-out infinite; }
 @keyframes spotlight-breathe {

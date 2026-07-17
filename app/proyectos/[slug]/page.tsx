@@ -485,9 +485,10 @@ export default function ProjectDetailPage() {
               <Reveal key={i} delay={i * 0.04}>
                 <div
                   onClick={() => setLightboxImg(img)}
+                  className="gallery-tile"
                   style={{
                     position: 'relative',
-                    aspectRatio: '4/3',
+                    height: '225px',
                     overflow: 'hidden',
                     cursor: 'zoom-in',
                     background: '#e8e6e2',
@@ -498,7 +499,7 @@ export default function ProjectDetailPage() {
                     src={img}
                     alt={`${project.title} — imagen ${i + 1}`}
                     fill
-                    style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                    style={{ objectFit: 'cover' }}
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="proj-img"
                   />
@@ -599,8 +600,9 @@ export default function ProjectDetailPage() {
         .gallery-overlay:hover .zoom-icon {
           opacity: 1 !important;
         }
-        .proj-img:hover {
-          transform: scale(1.05);
+        .gallery-tile:hover {
+          grid-column: span 2;
+          z-index: 2;
         }
       `}</style>
     </>
