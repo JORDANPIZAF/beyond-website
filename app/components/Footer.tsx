@@ -47,6 +47,15 @@ function LangToggle() {
   )
 }
 
+const capabilityHrefs = [
+  '/capacidades/carpinteria',
+  '/capacidades/metalmecanica',
+  '/capacidades/impresion',
+  '/capacidades/acrilicos',
+  '/capacidades/instalacion',
+  '/capacidades/logistica',
+]
+
 export default function Footer() {
   const { t } = useLanguage()
   const f = t.footer
@@ -88,9 +97,9 @@ export default function Footer() {
 
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.capabilitiesTitle}</p>
-              {f.capabilitiesLinks.map(s => (
+              {f.capabilitiesLinks.map((s, i) => (
                 <div key={s} style={{ marginBottom: '12px' }}>
-                  <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{s}</span>
+                  <Link href={capabilityHrefs[i]} className="footer-link">{s}</Link>
                 </div>
               ))}
             </div>

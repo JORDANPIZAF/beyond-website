@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '../components/Reveal'
 import { useLanguage } from '../context/LanguageContext'
+import TextReveal from '../components/TextReveal'
 
 const postSlugs = [
   'fabricacion-industrial-exhibicion-comercial',
@@ -44,7 +45,7 @@ export default function BlogPage() {
               <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{b.tag}</span>
             </div>
-            <h1 style={{
+            <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(48px, 8vw, 96px)',
@@ -53,14 +54,15 @@ export default function BlogPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '32px',
+              display: 'block',
             }}>
               {b.heroTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{b.heroAccent}</span><br />
               {b.heroTitle2}
-            </h1>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
               {b.heroBody}
-            </p>
+            </TextReveal>
           </Reveal>
         </div>
       </section>
@@ -87,13 +89,13 @@ export default function BlogPage() {
                     <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)', border: '1px solid var(--red)', padding: '3px 10px' }}>{posts[0].category}</span>
                     <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{posts[0].date}</span>
                   </div>
-                  <h2 style={{
+                  <TextReveal as="h2" style={{
                     fontFamily: 'var(--font-barlow)', fontWeight: 800,
                     fontSize: 'clamp(24px, 3vw, 40px)', lineHeight: 1.1,
                     letterSpacing: '-0.02em', textTransform: 'uppercase',
-                    color: 'var(--text)', marginBottom: '20px',
-                  }}>{posts[0].title}</h2>
-                  <p style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '32px' }}>{posts[0].excerpt}</p>
+                    color: 'var(--text)', marginBottom: '20px', display: 'block',
+                  }}>{posts[0].title}</TextReveal>
+                  <TextReveal as="p" delay={0.15} style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '32px', display: 'block' }}>{posts[0].excerpt}</TextReveal>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--red)', letterSpacing: '0.04em' }}>{b.readMore}</span>
                     <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{posts[0].readTime}</span>
@@ -123,13 +125,13 @@ export default function BlogPage() {
                         <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)', border: '1px solid var(--red)', padding: '3px 8px' }}>{post.category}</span>
                         <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{post.date}</span>
                       </div>
-                      <h3 style={{
+                      <TextReveal as="h3" style={{
                         fontFamily: 'var(--font-barlow)', fontWeight: 700,
                         fontSize: 'clamp(18px, 2vw, 24px)', lineHeight: 1.2,
                         textTransform: 'uppercase', letterSpacing: '-0.01em',
-                        color: 'var(--text)', marginBottom: '12px',
-                      }}>{post.title}</h3>
-                      <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', flex: 1, marginBottom: '24px' }}>{post.excerpt}</p>
+                        color: 'var(--text)', marginBottom: '12px', display: 'block',
+                      }}>{post.title}</TextReveal>
+                      <TextReveal as="p" delay={0.1} style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', flex: 1, marginBottom: '24px', display: 'block' }}>{post.excerpt}</TextReveal>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--red)' }}>{b.readMore}</span>
                         <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{post.readTime}</span>
@@ -147,14 +149,14 @@ export default function BlogPage() {
       <section style={{ padding: '100px 0', background: 'var(--white)', borderTop: '1px solid var(--border)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal>
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: 'var(--font-barlow)', fontWeight: 800,
               fontSize: 'clamp(32px, 5vw, 64px)', lineHeight: 0.95,
               letterSpacing: '-0.02em', textTransform: 'uppercase',
-              color: 'var(--text)', marginBottom: '24px',
+              color: 'var(--text)', marginBottom: '24px', display: 'block',
             }}>
               {b.ctaTitle1}<br /><span style={{ color: 'var(--red)' }}>{b.ctaAccent}</span>
-            </h2>
+            </TextReveal>
             <Link href="/contacto" className="btn-primary" style={{ fontSize: '14px' }}>
               {b.ctaBtn}
             </Link>

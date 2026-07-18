@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Reveal from '../components/Reveal'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
+import TextReveal from '../components/TextReveal'
 
 const projectsData = [
   { id: 1,  slug: 'lg-vitrina-bucaramanga',  title: 'LG Vitrina Bucaramanga',    categoryEs: 'Arquitectura Comercial',  client: 'LG',          year: '2024', cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.png' },
@@ -72,7 +73,7 @@ export default function ProyectosPage() {
               <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{p.tag}</span>
             </div>
-            <h1 style={{
+            <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(48px, 8vw, 96px)',
@@ -81,14 +82,15 @@ export default function ProyectosPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '32px',
+              display: 'block',
             }}>
               {p.heroTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{p.heroAccent}</span><br />
               {p.heroTitle2}
-            </h1>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
               {p.heroBody}
-            </p>
+            </TextReveal>
           </Reveal>
         </div>
       </section>

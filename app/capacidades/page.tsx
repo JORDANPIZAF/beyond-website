@@ -1,7 +1,9 @@
 'use client'
 
+import { Fragment } from 'react'
 import Reveal from '../components/Reveal'
 import Link from 'next/link'
+import TextReveal from '../components/TextReveal'
 import { useLanguage } from '../context/LanguageContext'
 
 export default function CapacidadesPage() {
@@ -24,7 +26,7 @@ export default function CapacidadesPage() {
               <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{cap.tag}</span>
             </div>
-            <h1 style={{
+            <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(48px, 8vw, 96px)',
@@ -33,14 +35,15 @@ export default function CapacidadesPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '32px',
+              display: 'block',
             }}>
               {cap.heroTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{cap.heroAccent}</span><br />
               {cap.heroTitle2}
-            </h1>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
               {cap.heroBody}
-            </p>
+            </TextReveal>
           </Reveal>
         </div>
       </section>
@@ -69,7 +72,7 @@ export default function CapacidadesPage() {
               </Reveal>
 
               <Reveal delay={0.15} direction="left">
-                <h2 style={{
+                <TextReveal as="h2" style={{
                   fontFamily: 'var(--font-barlow), sans-serif',
                   fontWeight: 800,
                   fontSize: 'clamp(28px, 4vw, 48px)',
@@ -78,8 +81,9 @@ export default function CapacidadesPage() {
                   textTransform: 'uppercase',
                   color: 'var(--text)',
                   marginBottom: '24px',
-                }}>{item.title}</h2>
-                <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px' }}>{item.desc}</p>
+                  display: 'block',
+                }}>{item.title}</TextReveal>
+                <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>{item.desc}</TextReveal>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px', marginBottom: '32px' }}>
                   {item.capabilities.map(c => (
                     <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -106,7 +110,7 @@ export default function CapacidadesPage() {
         }} />
         <div className="container" style={{ position: 'relative', textAlign: 'center' }}>
           <Reveal>
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(36px, 6vw, 80px)',
@@ -115,13 +119,15 @@ export default function CapacidadesPage() {
               textTransform: 'uppercase',
               color: '#fff',
               marginBottom: '32px',
-              whiteSpace: 'pre-line',
+              display: 'block',
             }}>
-              {cap.ctaTitle}
-            </h2>
-            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.85)', marginBottom: '48px', maxWidth: '480px', margin: '0 auto 48px' }}>
+              {cap.ctaTitle.split('\n').map((line, i, arr) => (
+                <Fragment key={i}>{line}{i < arr.length - 1 && <br />}</Fragment>
+              ))}
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', color: 'rgba(255,255,255,0.85)', marginBottom: '48px', maxWidth: '480px', margin: '0 auto 48px', display: 'block' }}>
               {cap.ctaBody}
-            </p>
+            </TextReveal>
             <Link href="/contacto" style={{
               textDecoration: 'none',
               display: 'inline-flex', alignItems: 'center', gap: '12px',

@@ -1,13 +1,17 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useTransform, MotionValue } from 'framer-motion'
+import { Layers, Briefcase } from 'lucide-react'
 import HeroScroll from './components/HeroScroll'
 import ScrollCard from './components/ScrollCard'
 import SpotlightCard from './components/SpotlightCard'
 import ProjectGallery from './components/ProjectGallery'
+import PillLink from './components/PillLink'
+import TextReveal from './components/TextReveal'
+import VideoPopup from './components/VideoPopup'
 import { useLanguage } from './context/LanguageContext'
 
 const revealContainer = {
@@ -114,25 +118,25 @@ function AboutSection() {
             viewport={vp}
             variants={revealContainer}
           >
-            <motion.h2
-              variants={revealItem}
+            <TextReveal
+              as="h2"
               style={{
                 fontFamily: 'var(--font-barlow)', fontWeight: 800,
                 fontSize: 'clamp(32px, 3.5vw, 56px)', lineHeight: 1,
                 letterSpacing: '-0.02em', textTransform: 'uppercase',
-                color: 'var(--text)', marginBottom: '20px',
+                color: 'var(--text)', marginBottom: '20px', display: 'block',
               }}
             >
               {h.aboutTitle1}<br />{h.aboutTitle2}<br />
               <span style={{ color: 'var(--red)' }}>{h.aboutAccent}</span><br />
               {h.aboutTitle3}
-            </motion.h2>
-            <motion.p variants={revealItem} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '14px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.2} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '14px', display: 'block' }}>
               {h.aboutP1}
-            </motion.p>
-            <motion.p variants={revealItem} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '32px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.3} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '32px', display: 'block' }}>
               {h.aboutP2}
-            </motion.p>
+            </TextReveal>
             <motion.div variants={revealItem}>
               <Link href="/nosotros" className="btn-outline">{h.aboutCta}</Link>
             </motion.div>
@@ -173,8 +177,8 @@ function CapabilitiesSection({ progress }: { progress: MotionValue<number> }) {
           variants={revealContainer}
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}
         >
-          <motion.h2
-            variants={revealItem}
+          <TextReveal
+            as="h2"
             style={{
               fontFamily: 'var(--font-barlow)', fontWeight: 800,
               fontSize: 'clamp(28px, 3.2vw, 48px)', lineHeight: 1,
@@ -182,15 +186,13 @@ function CapabilitiesSection({ progress }: { progress: MotionValue<number> }) {
             }}
           >
             {h.capTitle1} <span style={{ color: 'var(--red)' }}>{h.capAccent}</span>
-          </motion.h2>
+          </TextReveal>
           <motion.div variants={revealItem}>
-            <Link href="/capacidades" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
-              {h.capCta}
-            </Link>
+            <PillLink href="/capacidades" label={h.capCta} Icon={Layers} />
           </motion.div>
         </motion.div>
 
-        <div style={{ overflow: 'hidden' }}>
+        <div style={{ overflow: 'hidden', paddingTop: '70px', marginTop: '-70px' }}>
           <motion.div
             style={{
               display: 'grid',
@@ -214,8 +216,8 @@ function CapabilitiesSection({ progress }: { progress: MotionValue<number> }) {
                       />
                     </div>
                     <div style={{ padding: '14px 18px' }}>
-                      <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text)', marginBottom: '3px' }}>{cap.title}</h3>
-                      <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{cap.subtitle}</p>
+                      <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '16px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text)', marginBottom: '3px' }}>{cap.title}</h3>
+                      <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{cap.subtitle}</p>
                     </div>
                   </SpotlightCard>
                 </Link>
@@ -243,8 +245,8 @@ function ProjectsSection() {
           variants={revealContainer}
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '10px', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}
         >
-          <motion.h2
-            variants={revealItem}
+          <TextReveal
+            as="h2"
             style={{
               fontFamily: 'var(--font-barlow)', fontWeight: 800,
               fontSize: 'clamp(28px, 3.2vw, 48px)', lineHeight: 1,
@@ -252,11 +254,9 @@ function ProjectsSection() {
             }}
           >
             {h.projTitle1} <span style={{ color: 'var(--red)' }}>{h.projAccent}</span>
-          </motion.h2>
+          </TextReveal>
           <motion.div variants={revealItem}>
-            <Link href="/proyectos" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
-              {h.projCta}
-            </Link>
+            <PillLink href="/proyectos" label={h.projCta} Icon={Briefcase} />
           </motion.div>
         </motion.div>
 
@@ -282,20 +282,17 @@ function ClientsSection() {
     <div style={{ height: '100dvh', background: 'var(--white)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <div className="container">
 
-        <motion.h2
-          initial="hidden"
-          whileInView="show"
-          viewport={vp}
-          variants={revealItem}
+        <TextReveal
+          as="h2"
           style={{
             fontFamily: 'var(--font-barlow)', fontWeight: 800,
             fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1,
             letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
-            textAlign: 'center', marginBottom: '52px',
+            textAlign: 'center', marginBottom: '52px', display: 'block',
           }}
         >
           {h.clientsTitle1} <span style={{ color: 'var(--red)' }}>{h.clientsAccent}</span>
-        </motion.h2>
+        </TextReveal>
 
         <motion.div
           initial="hidden"
@@ -315,7 +312,7 @@ function ClientsSection() {
                 alt={c.name}
                 width={100}
                 height={36}
-                style={{ objectFit: 'contain', height: '44px', width: 'auto', filter: 'grayscale(1)', opacity: 0.45 }}
+                style={{ objectFit: 'contain', height: '55px', width: 'auto', filter: 'grayscale(1)', opacity: 0.45 }}
                 className="brand-item"
               />
             </motion.div>
@@ -342,29 +339,26 @@ function CTASection() {
         backgroundSize: '60px 60px',
       }} />
       <div style={{ position: 'relative', textAlign: 'center', padding: '120px 32px' }}>
-        <motion.h2
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={vp}
-          transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 0.9 }}
+        <TextReveal
+          as="h2"
           style={{
             fontFamily: 'var(--font-barlow)', fontWeight: 800,
             fontSize: 'clamp(40px, 6vw, 88px)', lineHeight: 0.95,
             letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#fff',
-            marginBottom: '24px', whiteSpace: 'pre-line',
+            marginBottom: '24px', display: 'block',
           }}
         >
-          {h.ctaTitle}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={vp}
-          transition={{ type: 'spring', stiffness: 85, damping: 13, mass: 0.9, delay: 0.1 }}
-          style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '44px', maxWidth: '420px', margin: '0 auto 44px' }}
+          {h.ctaTitle.split('\n').map((line, i, arr) => (
+            <Fragment key={i}>{line}{i < arr.length - 1 && <br />}</Fragment>
+          ))}
+        </TextReveal>
+        <TextReveal
+          as="p"
+          delay={0.25}
+          style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '44px', maxWidth: '420px', margin: '0 auto 44px', display: 'block' }}
         >
           {h.ctaBody}
-        </motion.p>
+        </TextReveal>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -391,6 +385,8 @@ function CTASection() {
 export default function Home() {
   return (
     <>
+      <VideoPopup />
+
       <HeroScroll />
 
       <ScrollCard index={2} scrollHeight="240vh">

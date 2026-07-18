@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Reveal from '../components/Reveal'
 import { useLanguage } from '../context/LanguageContext'
+import TextReveal from '../components/TextReveal'
 
 export default function ContactoPage() {
   const [form, setForm] = useState({ nombre: '', empresa: '', email: '', telefono: '', proyecto: '', presupuesto: '' })
@@ -31,7 +32,7 @@ export default function ContactoPage() {
               <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{c.tag}</span>
             </div>
-            <h1 style={{
+            <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(48px, 8vw, 96px)',
@@ -40,13 +41,14 @@ export default function ContactoPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '24px',
+              display: 'block',
             }}>
               {c.heroTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{c.heroAccent}</span>
-            </h1>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '480px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '480px', display: 'block' }}>
               {c.heroBody}
-            </p>
+            </TextReveal>
           </Reveal>
         </div>
       </section>
@@ -66,8 +68,8 @@ export default function ContactoPage() {
                   textAlign: 'center',
                 }}>
                   <div style={{ width: '64px', height: '64px', background: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 32px', fontSize: '28px', color: '#fff' }}>✓</div>
-                  <h2 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '36px', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '16px' }}>{c.successTitle}</h2>
-                  <p style={{ fontSize: '16px', color: 'var(--text-muted)' }}>{c.successBody}</p>
+                  <TextReveal as="h2" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '36px', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '16px', display: 'block' }}>{c.successTitle}</TextReveal>
+                  <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', color: 'var(--text-muted)', display: 'block' }}>{c.successBody}</TextReveal>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -198,9 +200,9 @@ export default function ContactoPage() {
                     <div style={{ width: '8px', height: '8px', background: '#22c55e', borderRadius: '50%' }} />
                     <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#22c55e' }}>{c.available}</span>
                   </div>
-                  <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                  <TextReveal as="p" style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.6, display: 'block' }}>
                     {c.responseTime}<strong style={{ color: 'var(--text)' }}>{c.responseTimeStrong}</strong>{c.responseTimeSuffix}
-                  </p>
+                  </TextReveal>
                 </div>
               </div>
             </Reveal>

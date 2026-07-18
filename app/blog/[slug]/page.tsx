@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Reveal from '../../components/Reveal'
+import TextReveal from '../../components/TextReveal'
 
 const posts: Record<string, {
   title: string
@@ -91,8 +92,9 @@ const posts: Record<string, {
   },
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = posts[params.slug]
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = posts[slug]
 
   if (!post) {
     notFound()
@@ -130,7 +132,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>·</span>
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{post.readTime}</span>
           </div>
-          <h1 style={{
+          <TextReveal as="h1" style={{
             fontFamily: 'var(--font-barlow), sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(28px, 4vw, 60px)',
@@ -139,7 +141,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             textTransform: 'uppercase',
             color: '#fff',
             maxWidth: '800px',
-          }}>{post.title}</h1>
+            display: 'block',
+          }}>{post.title}</TextReveal>
         </div>
       </section>
 
@@ -151,21 +154,21 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               if (block.startsWith('## ')) {
                 return (
                   <Reveal key={i} delay={0.05}>
-                    <h2 style={{
+                    <TextReveal as="h2" style={{
                       fontFamily: 'var(--font-barlow)', fontWeight: 800,
                       fontSize: 'clamp(22px, 3vw, 32px)', lineHeight: 1.1,
                       letterSpacing: '-0.01em', textTransform: 'uppercase',
-                      color: 'var(--text)', marginTop: '56px', marginBottom: '20px',
-                    }}>{block.replace('## ', '')}</h2>
+                      color: 'var(--text)', marginTop: '56px', marginBottom: '20px', display: 'block',
+                    }}>{block.replace('## ', '')}</TextReveal>
                   </Reveal>
                 )
               }
               return (
                 <Reveal key={i} delay={0.03}>
-                  <p style={{
+                  <TextReveal as="p" style={{
                     fontSize: '17px', lineHeight: 1.9,
-                    color: 'var(--text-muted)', marginBottom: '24px',
-                  }}>{block}</p>
+                    color: 'var(--text-muted)', marginBottom: '24px', display: 'block',
+                  }}>{block}</TextReveal>
                 </Reveal>
               )
             })}
@@ -190,14 +193,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               marginTop: '60px', padding: '40px',
               background: 'var(--bg)', borderLeft: '3px solid var(--red)',
             }}>
-              <h3 style={{
+              <TextReveal as="h3" style={{
                 fontFamily: 'var(--font-barlow)', fontWeight: 800,
                 fontSize: '24px', textTransform: 'uppercase', letterSpacing: '-0.01em',
-                color: 'var(--text)', marginBottom: '12px',
-              }}>¿Tenés un proyecto en mente?</h3>
-              <p style={{ fontSize: '15px', color: 'var(--text-muted)', marginBottom: '24px', lineHeight: 1.7 }}>
+                color: 'var(--text)', marginBottom: '12px', display: 'block',
+              }}>¿Tenés un proyecto en mente?</TextReveal>
+              <TextReveal as="p" delay={0.15} style={{ fontSize: '15px', color: 'var(--text-muted)', marginBottom: '24px', lineHeight: 1.7, display: 'block' }}>
                 En Beyond fabricamos desde una pieza única hasta producciones industriales. Cuéntanos tu proyecto y te respondemos en menos de 24 horas.
-              </p>
+              </TextReveal>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link href="/contacto" className="btn-primary">Iniciar Proyecto →</Link>
                 <Link href="/proyectos" className="btn-outline">Ver Portafolio</Link>

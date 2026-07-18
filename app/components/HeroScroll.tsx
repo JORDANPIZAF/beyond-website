@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '../context/LanguageContext'
 import Hero3DModel from './Hero3DModel'
+import TextReveal from './TextReveal'
 
 const imgSrcs = [
   '/images/portfolio/arq-efimera/img/01/banner_galaxy_beyond.jpg',
@@ -141,22 +142,27 @@ export default function HeroScroll() {
                   marginBottom: '28px',
                 }}>
                   {slide.lines.map((line, i) => (
-                    <span key={i} style={{
-                      display: 'block',
-                      color: i === slide.accentLine ? 'var(--red)' : '#ffffff',
-                    }}>
+                    <TextReveal
+                      key={i}
+                      as="span"
+                      delay={0.15 + i * 0.12}
+                      style={{
+                        display: 'block',
+                        color: i === slide.accentLine ? 'var(--red)' : '#ffffff',
+                      }}
+                    >
                       {line}
-                    </span>
+                    </TextReveal>
                   ))}
                 </motion.h1>
 
-                <motion.p variants={textItem} style={{
+                <TextReveal as="p" delay={0.5} style={{
                   fontSize: '17px', lineHeight: 1.75,
                   color: 'rgba(255,255,255,0.72)',
-                  maxWidth: '400px', marginBottom: '40px',
+                  maxWidth: '400px', marginBottom: '40px', display: 'block',
                 }}>
                   {slide.body}
-                </motion.p>
+                </TextReveal>
 
                 <motion.div variants={textItem} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   {slide.ctas.map((cta, i) => (

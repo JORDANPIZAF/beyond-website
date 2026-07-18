@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../../components/Reveal'
+import TextReveal from '../../components/TextReveal'
 
 const projectsData: Record<string, {
   title: string
@@ -395,7 +396,7 @@ export default function ProjectDetailPage() {
   if (!project) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '76px' }}>
-        <h1 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '48px', color: 'var(--text)', marginBottom: '16px' }}>Proyecto no encontrado</h1>
+        <TextReveal as="h1" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '48px', color: 'var(--text)', marginBottom: '16px', display: 'block' }}>Proyecto no encontrado</TextReveal>
         <Link href="/proyectos" style={{ color: 'var(--red)', fontWeight: 600 }}>← Volver a proyectos</Link>
       </div>
     )
@@ -431,7 +432,7 @@ export default function ProjectDetailPage() {
             </span>
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{project.year}</span>
           </div>
-          <h1 style={{
+          <TextReveal as="h1" style={{
             fontFamily: 'var(--font-barlow), sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(36px, 6vw, 80px)',
@@ -440,7 +441,8 @@ export default function ProjectDetailPage() {
             textTransform: 'uppercase',
             color: '#fff',
             marginBottom: '16px',
-          }}>{project.title}</h1>
+            display: 'block',
+          }}>{project.title}</TextReveal>
           <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.7)' }}>Cliente: <strong style={{ color: '#fff' }}>{project.client}</strong></p>
         </div>
       </section>
@@ -461,7 +463,7 @@ export default function ProjectDetailPage() {
               </div>
             </Reveal>
             <Reveal delay={0.15} direction="left">
-              <p style={{ fontSize: '18px', lineHeight: 1.9, color: 'var(--text-muted)' }}>{project.description}</p>
+              <TextReveal as="p" style={{ fontSize: '18px', lineHeight: 1.9, color: 'var(--text-muted)', display: 'block' }}>{project.description}</TextReveal>
               <div style={{ marginTop: '40px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                 <Link href="/contacto" className="btn-primary">Iniciar un proyecto similar →</Link>
                 <Link href="/proyectos" className="btn-outline">Ver más proyectos</Link>
@@ -527,17 +529,17 @@ export default function ProjectDetailPage() {
         }} />
         <div className="container" style={{ position: 'relative', textAlign: 'center' }}>
           <Reveal>
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: 'var(--font-barlow)', fontWeight: 800,
               fontSize: 'clamp(32px, 5vw, 72px)', lineHeight: 0.95,
               letterSpacing: '-0.02em', textTransform: 'uppercase',
-              color: '#fff', marginBottom: '24px',
+              color: '#fff', marginBottom: '24px', display: 'block',
             }}>
               ¿Querés algo similar?<br />Hablemos.
-            </h2>
-            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '40px', maxWidth: '440px', margin: '0 auto 40px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '40px', maxWidth: '440px', margin: '0 auto 40px', display: 'block' }}>
               Cuéntanos tu proyecto. Fabricamos cualquier concepto con la más alta calidad industrial.
-            </p>
+            </TextReveal>
             <Link href="/contacto" style={{
               textDecoration: 'none',
               display: 'inline-flex', alignItems: 'center', gap: '10px',

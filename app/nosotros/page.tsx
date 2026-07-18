@@ -1,7 +1,9 @@
 'use client'
 
+import { Fragment } from 'react'
 import Reveal from '../components/Reveal'
 import Link from 'next/link'
+import TextReveal from '../components/TextReveal'
 import { useLanguage } from '../context/LanguageContext'
 
 export default function NosotrosPage() {
@@ -24,7 +26,7 @@ export default function NosotrosPage() {
               <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{n.tag}</span>
             </div>
-            <h1 style={{
+            <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(48px, 8vw, 96px)',
@@ -33,14 +35,15 @@ export default function NosotrosPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '40px',
+              display: 'block',
             }}>
               {n.heroTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{n.heroAccent}</span><br />
               {n.heroTitle2}
-            </h1>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '600px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '600px', display: 'block' }}>
               {n.heroBody}
-            </p>
+            </TextReveal>
           </Reveal>
         </div>
       </section>
@@ -50,7 +53,7 @@ export default function NosotrosPage() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px', alignItems: 'start' }} className="grid-2">
             <Reveal>
-              <h2 style={{
+              <TextReveal as="h2" style={{
                 fontFamily: 'var(--font-barlow), sans-serif',
                 fontWeight: 800,
                 fontSize: 'clamp(32px, 4vw, 52px)',
@@ -59,13 +62,14 @@ export default function NosotrosPage() {
                 textTransform: 'uppercase',
                 color: 'var(--text)',
                 marginBottom: '32px',
+                display: 'block',
               }}>
                 {n.whoTitle1}<br />
                 <span style={{ color: 'var(--red)' }}>{n.whoAccent}</span>
-              </h2>
-              <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px' }}>{n.whoP1}</p>
-              <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px' }}>{n.whoP2}</p>
-              <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)' }}>{n.whoP3}</p>
+              </TextReveal>
+              <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px', display: 'block' }}>{n.whoP1}</TextReveal>
+              <TextReveal as="p" delay={0.25} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px', display: 'block' }}>{n.whoP2}</TextReveal>
+              <TextReveal as="p" delay={0.35} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', display: 'block' }}>{n.whoP3}</TextReveal>
             </Reveal>
             <Reveal delay={0.2} direction="left">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'var(--border)' }}>
@@ -85,7 +89,7 @@ export default function NosotrosPage() {
       <section style={{ padding: '120px 0', background: 'var(--white)' }}>
         <div className="container">
           <Reveal>
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(32px, 5vw, 60px)',
@@ -94,10 +98,11 @@ export default function NosotrosPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '80px',
+              display: 'block',
             }}>
               {n.processTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{n.processAccent}</span>
-            </h2>
+            </TextReveal>
           </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'var(--border)' }}>
@@ -114,7 +119,7 @@ export default function NosotrosPage() {
                   }}>
                     {String(i + 1).padStart(2, '0')}
                   </div>
-                  <h3 style={{
+                  <TextReveal as="h3" style={{
                     fontFamily: 'var(--font-barlow), sans-serif',
                     fontWeight: 700,
                     fontSize: '18px',
@@ -122,8 +127,9 @@ export default function NosotrosPage() {
                     letterSpacing: '0.04em',
                     color: 'var(--text)',
                     marginBottom: '16px',
-                  }}>{p.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)' }}>{p.desc}</p>
+                    display: 'block',
+                  }}>{p.title}</TextReveal>
+                  <TextReveal as="p" delay={0.1} style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', display: 'block' }}>{p.desc}</TextReveal>
                 </div>
               </Reveal>
             ))}
@@ -135,7 +141,7 @@ export default function NosotrosPage() {
       <section style={{ padding: '120px 0', background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <Reveal>
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(32px, 5vw, 60px)',
@@ -144,10 +150,11 @@ export default function NosotrosPage() {
               textTransform: 'uppercase',
               color: 'var(--text)',
               marginBottom: '64px',
+              display: 'block',
             }}>
               {n.brandsTitle1}<br />
               <span style={{ color: 'var(--red)' }}>{n.brandsAccent}</span>
-            </h2>
+            </TextReveal>
           </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '1px', background: 'var(--border)' }}>
@@ -179,7 +186,7 @@ export default function NosotrosPage() {
         }} />
         <div className="container" style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '40px' }}>
           <Reveal>
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(32px, 5vw, 56px)',
@@ -187,10 +194,12 @@ export default function NosotrosPage() {
               letterSpacing: '-0.02em',
               textTransform: 'uppercase',
               color: '#fff',
-              whiteSpace: 'pre-line',
+              display: 'block',
             }}>
-              {n.ctaTitle}
-            </h2>
+              {n.ctaTitle.split('\n').map((line, i, arr) => (
+                <Fragment key={i}>{line}{i < arr.length - 1 && <br />}</Fragment>
+              ))}
+            </TextReveal>
           </Reveal>
           <Reveal delay={0.2}>
             <Link href="/contacto" style={{

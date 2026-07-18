@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '../../components/Reveal'
+import TextReveal from '../../components/TextReveal'
 
 const capabilities = [
   'Corte láser de precisión',
@@ -43,14 +44,14 @@ export default function MetalmecanicaPage() {
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
               <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>Capacidad 02</span>
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>Especialidad 02</span>
             </div>
-            <h1 style={{ fontFamily: 'var(--font-barlow), sans-serif', fontWeight: 800, fontSize: 'clamp(48px, 8vw, 96px)', lineHeight: 0.9, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '32px' }}>
+            <TextReveal as="h1" style={{ fontFamily: 'var(--font-barlow), sans-serif', fontWeight: 800, fontSize: 'clamp(48px, 8vw, 96px)', lineHeight: 0.9, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '32px', display: 'block' }}>
               Metal<br /><span style={{ color: 'var(--red)' }}>mecánica</span>
-            </h1>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px' }}>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
               Acero, aluminio, hierro e inoxidable. Corte láser, soldadura MIG y TIG, doblado y estructuras de gran escala para exhibición comercial industrial.
-            </p>
+            </TextReveal>
             <div style={{ marginTop: '36px' }}>
               <Link href="/contacto" className="btn-primary">Solicitar cotización →</Link>
             </div>
@@ -69,10 +70,10 @@ export default function MetalmecanicaPage() {
             </Reveal>
             <Reveal delay={0.15} direction="left">
               <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '120px', lineHeight: 1, color: 'rgba(224,41,7,0.08)', letterSpacing: '-0.04em', marginBottom: '-40px' }}>02</div>
-              <h2 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '24px' }}>Estructuras metálicas<br />de alta resistencia</h2>
-              <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px' }}>
+              <TextReveal as="h2" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '24px', display: 'block' }}>Estructuras metálicas<br />de alta resistencia</TextReveal>
+              <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>
                 Piezas estructurales, exhibidores metálicos, marcos, soportes y componentes de alta resistencia. Soldadura MIG, TIG y de punto. Corte láser, doblado y rolado de láminas con alta precisión dimensional. Pintura electrostática con acabados duraderos.
-              </p>
+              </TextReveal>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }}>
                 {capabilities.map(c => (
                   <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -91,7 +92,7 @@ export default function MetalmecanicaPage() {
         <div className="container">
           <Reveal>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '16px' }}>
-              <h2 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)' }}>Proyectos<br /><span style={{ color: 'var(--red)' }}>relacionados.</span></h2>
+              <TextReveal as="h2" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', display: 'block' }}>Proyectos<br /><span style={{ color: 'var(--red)' }}>relacionados.</span></TextReveal>
               <Link href="/proyectos" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>Ver todos →</Link>
             </div>
           </Reveal>
@@ -119,10 +120,10 @@ export default function MetalmecanicaPage() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         <div className="container" style={{ position: 'relative', textAlign: 'center' }}>
           <Reveal>
-            <h2 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(32px, 5vw, 72px)', lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#fff', marginBottom: '24px' }}>
+            <TextReveal as="h2" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(32px, 5vw, 72px)', lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#fff', marginBottom: '24px', display: 'block' }}>
               Fabricamos tu<br />próximo proyecto.
-            </h2>
-            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '40px', maxWidth: '440px', margin: '0 auto 40px' }}>Cuéntanos qué necesitas fabricar. Respondemos en menos de 24 horas.</p>
+            </TextReveal>
+            <TextReveal as="p" delay={0.15} style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '40px', maxWidth: '440px', margin: '0 auto 40px', display: 'block' }}>Cuéntanos qué necesitas fabricar. Respondemos en menos de 24 horas.</TextReveal>
             <Link href="/contacto" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#fff', color: 'var(--red)', padding: '18px 48px', fontSize: '14px', fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
               Iniciar Proyecto →
             </Link>

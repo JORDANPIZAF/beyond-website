@@ -62,7 +62,6 @@ export default function SpotlightCard({ children, className = '', style }: Spotl
         style={{ opacity: glowOpacity }}
       />
       <div className={`spotlight-surface ${className}`} style={style}>
-        {hoverCapable && <motion.div className="spotlight-border-glow" style={{ opacity: glowOpacity }} />}
         <div className="spotlight-content">{children}</div>
       </div>
     </motion.div>

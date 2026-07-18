@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Tag } from 'lucide-react'
@@ -16,6 +16,16 @@ const textTransition = {
 export default function ContactButton() {
   const { t } = useLanguage()
   const [isHovered, setIsHovered] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  // Enters as a plain circle, then blooms into a pill on its own shortly after —
+  // matches the entrance timing of the nav pill next to it (fade-in delay 0.25s).
+  useEffect(() => {
+    const timer = setTimeout(() => setIsExpanded(true), 700)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const showText = isExpanded || isHovered
 
   return (
     <motion.div
@@ -56,7 +66,7 @@ export default function ContactButton() {
       >
         <Tag size={20} strokeWidth={1.6} />
         <motion.span
-          animate={{ maxWidth: isHovered ? 160 : 0, opacity: isHovered ? 1 : 0, marginLeft: isHovered ? 8 : 0 }}
+          animate={{ maxWidth: showText ? 160 : 0, opacity: showText ? 1 : 0, marginLeft: showText ? 8 : 0 }}
           transition={textTransition}
           style={{
             maxWidth: 0,

@@ -60,12 +60,23 @@ export default function NavPill({ expanded }: NavPillProps) {
   const handleHover = (href: string) => {
     clearTimeout(leaveTimer.current)
     setHoveredHref(href)
-    const el = itemRefs.current[href]
-    if (el) {
-      setHighlightRect({ left: el.offsetLeft, top: el.offsetTop, width: el.offsetWidth, height: el.offsetHeight })
-    }
   }
   const handleLeave = () => { leaveTimer.current = setTimeout(() => setHoveredHref(null), 120) }
+
+  // El item hover puede seguir creciendo (el label se expande con un spring) después de
+  // que arranca el hover, así que el resplandor se re-mide en tiempo real con un
+  // ResizeObserver en vez de tomar una sola medida al inicio — si no, se queda con el
+  // ancho colapsado (círculo) mientras el texto ya terminó de expandirse.
+  useEffect(() => {
+    if (!hoveredHref) return
+    const el = itemRefs.current[hoveredHref]
+    if (!el) return
+    const measure = () => setHighlightRect({ left: el.offsetLeft, top: el.offsetTop, width: el.offsetWidth, height: el.offsetHeight })
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [hoveredHref])
 
   const pillItems = (
     <>
