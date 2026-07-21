@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../../components/Reveal'
 import TextReveal from '../../components/TextReveal'
 
+export const runtime = 'edge'
+
 const projectsData: Record<string, {
   title: string
   client: string

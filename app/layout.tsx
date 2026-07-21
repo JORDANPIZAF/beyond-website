@@ -23,6 +23,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'Beyond SAS — Fabricación Industrial para Marcas',
   description: 'Diseño, ingeniería, fabricación e implementación de exhibición comercial y arquitectura retail. Bogotá, Colombia.',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

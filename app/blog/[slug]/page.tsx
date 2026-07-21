@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import Reveal from '../../components/Reveal'
 import TextReveal from '../../components/TextReveal'
 
+export const runtime = 'edge'
+
 const posts: Record<string, {
   title: string
   category: string
