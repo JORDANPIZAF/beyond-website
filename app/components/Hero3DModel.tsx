@@ -1,23 +1,32 @@
 'use client'
 
-import { Suspense, useRef, useEffect } from 'react'
+import { useRef, useState, useEffect, useCallback, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Center, Stage, useGLTF } from '@react-three/drei'
 import type { Group } from 'three'
 
-type MouseState = { x: number; y: number; active: boolean }
+// Radians per frame the model spins on its own when the user isn't dragging the bar
+const AUTO_ROTATE_SPEED = 0.0035
 
-function Model({ mouseRef }: { mouseRef: React.MutableRefObject<MouseState> }) {
-  const { scene } = useGLTF('/models/conector-cobre.glb')
+function Model({
+  modelPath,
+  rotationRef,
+  draggingRef,
+}: {
+  modelPath: string
+  rotationRef: React.MutableRefObject<number>
+  draggingRef: React.MutableRefObject<boolean>
+}) {
+  const { scene } = useGLTF(modelPath)
   const group = useRef<Group>(null)
 
   useFrame(() => {
-    if (!group.current) return
-    const m = mouseRef.current
-    const targetY = m.active ? m.x * Math.PI * 0.5 : 0
-    const targetX = m.active ? -m.y * Math.PI * 0.15 : 0
-    group.current.rotation.y += (targetY - group.current.rotation.y) * 0.06
-    group.current.rotation.x += (targetX - group.current.rotation.x) * 0.06
+    if (!draggingRef.current) {
+      rotationRef.current += AUTO_ROTATE_SPEED
+    }
+    if (group.current) {
+      group.current.rotation.y = rotationRef.current
+    }
   })
 
   return (
@@ -29,51 +38,119 @@ function Model({ mouseRef }: { mouseRef: React.MutableRefObject<MouseState> }) {
   )
 }
 
-useGLTF.preload('/models/conector-cobre.glb')
+useGLTF.preload('/models/sao384-optimized.glb')
+useGLTF.preload('/models/isla-licores-optimized.glb')
 
-// How close the cursor must be (in pixels, from the model's center) to influence its rotation
-const PROXIMITY_RADIUS = 260
+// Horizontal drag strip below the model — only ever rotates around Y (no tilt)
+function RotateBar({
+  rotationRef,
+  draggingRef,
+}: {
+  rotationRef: React.MutableRefObject<number>
+  draggingRef: React.MutableRefObject<boolean>
+}) {
+  const TRACK_WIDTH = 150
+  const KNOB_SIZE = 26
+  const MAX_KNOB_OFFSET = (TRACK_WIDTH - KNOB_SIZE) / 2
 
-export default function Hero3DModel() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const mouseRef = useRef<MouseState>({ x: 0, y: 0, active: false })
+  const [dragging, setDragging] = useState(false)
+  const [knobOffset, setKnobOffset] = useState(0)
+  const startX = useRef(0)
+  const startRotation = useRef(0)
+
+  const handleMove = useCallback((clientX: number) => {
+    const deltaX = clientX - startX.current
+    rotationRef.current = startRotation.current + deltaX * 0.012
+    setKnobOffset(Math.max(-MAX_KNOB_OFFSET, Math.min(MAX_KNOB_OFFSET, deltaX)))
+  }, [rotationRef, MAX_KNOB_OFFSET])
+
+  const endDrag = useCallback(() => {
+    draggingRef.current = false
+    setDragging(false)
+    setKnobOffset(0)
+  }, [draggingRef])
 
   useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
-      const el = containerRef.current
-      if (!el) return
-      const rect = el.getBoundingClientRect()
-      const cx = rect.left + rect.width / 2
-      const cy = rect.top + rect.height / 2
-      const dx = e.clientX - cx
-      const dy = e.clientY - cy
-      const dist = Math.hypot(dx, dy)
-
-      if (dist < PROXIMITY_RADIUS) {
-        mouseRef.current.active = true
-        mouseRef.current.x = Math.max(-1, Math.min(1, dx / PROXIMITY_RADIUS))
-        mouseRef.current.y = Math.max(-1, Math.min(1, dy / PROXIMITY_RADIUS))
-      } else {
-        mouseRef.current.active = false
-      }
+    if (!dragging) return
+    const onMouseMove = (e: MouseEvent) => handleMove(e.clientX)
+    const onTouchMove = (e: TouchEvent) => { if (e.touches[0]) handleMove(e.touches[0].clientX) }
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('touchmove', onTouchMove)
+    window.addEventListener('mouseup', endDrag)
+    window.addEventListener('touchend', endDrag)
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('touchmove', onTouchMove)
+      window.removeEventListener('mouseup', endDrag)
+      window.removeEventListener('touchend', endDrag)
     }
-    window.addEventListener('mousemove', handleMove)
-    return () => window.removeEventListener('mousemove', handleMove)
-  }, [])
+  }, [dragging, handleMove, endDrag])
+
+  const startDrag = (clientX: number) => {
+    draggingRef.current = true
+    setDragging(true)
+    startX.current = clientX
+    startRotation.current = rotationRef.current
+  }
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+    <div
+      onMouseDown={(e) => { e.preventDefault(); startDrag(e.clientX) }}
+      onTouchStart={(e) => { if (e.touches[0]) startDrag(e.touches[0].clientX) }}
+      style={{
+        position: 'absolute', bottom: '20px', left: '50%',
+        transform: 'translateX(-50%)',
+        width: `${TRACK_WIDTH}px`, height: '40px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        cursor: dragging ? 'grabbing' : 'grab',
+        touchAction: 'none', userSelect: 'none',
+        pointerEvents: 'auto',
+        zIndex: 20,
+      }}
+    >
+      <div style={{
+        position: 'absolute', left: 0, right: 0, top: '50%',
+        height: '4px', borderRadius: '999px',
+        background: 'rgba(255,255,255,0.25)',
+        transform: 'translateY(-50%)',
+      }} />
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: `translate(calc(-50% + ${knobOffset}px), -50%)`,
+        width: `${KNOB_SIZE}px`, height: `${KNOB_SIZE}px`, borderRadius: '999px',
+        background: '#E02907',
+        border: '2px solid #fff',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.35)',
+        transition: dragging ? 'none' : 'transform 0.25s ease',
+      }} />
+    </div>
+  )
+}
+
+export default function Hero3DModel({
+  modelPath,
+  cameraZ = 13.02,
+}: {
+  modelPath: string
+  cameraZ?: number
+}) {
+  const rotationRef = useRef(0)
+  const draggingRef = useRef(false)
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <Canvas
-        camera={{ position: [0, 0, 4], fov: 40 }}
+        camera={{ position: [0, 0, cameraZ], fov: 40 }}
         style={{ width: '100%', height: '100%' }}
         dpr={[1, 2]}
       >
         <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.5} adjustCamera={1.4}>
-            <Model mouseRef={mouseRef} />
+          <Stage environment="city" intensity={0.5} adjustCamera={false}>
+            <Model modelPath={modelPath} rotationRef={rotationRef} draggingRef={draggingRef} />
           </Stage>
         </Suspense>
       </Canvas>
+      <RotateBar rotationRef={rotationRef} draggingRef={draggingRef} />
     </div>
   )
 }

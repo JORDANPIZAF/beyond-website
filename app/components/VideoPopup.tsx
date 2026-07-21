@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/0AbKtqEudZY'
+const VIDEO_ID = '0AbKtqEudZY'
+const YOUTUBE_EMBED_URL =
+  `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&loop=1&playlist=${VIDEO_ID}`
 
 export default function VideoPopup() {
   const [open, setOpen] = useState(false)
@@ -41,16 +43,16 @@ export default function VideoPopup() {
             exit={{ scale: 0.92, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 280, damping: 26 }}
             onClick={(e) => e.stopPropagation()}
-            style={{ position: 'relative', width: '100%', maxWidth: '860px' }}
+            style={{ position: 'relative', width: '100%', maxWidth: '1187px' }}
           >
             <button
               onClick={() => setOpen(false)}
               aria-label="Cerrar"
               style={{
-                position: 'absolute', top: '-48px', right: 0,
+                position: 'absolute', top: '-6px', right: '-46px',
                 width: '36px', height: '36px', borderRadius: '999px',
-                background: 'rgba(255,255,255,0.12)',
-                border: '1px solid rgba(255,255,255,0.25)',
+                background: '#E02907',
+                border: '2px solid #fff',
                 color: '#fff', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}

@@ -4,9 +4,17 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import Hero3DModel from './Hero3DModel'
 import TextReveal from './TextReveal'
+
+// Slide index (0-based) → 3D model shown over the hero, or null for no model
+const slideModels: Record<number, { path: string; cameraZ: number } | null> = {
+  0: { path: '/models/sao384-optimized.glb', cameraZ: 13.02 },
+  1: null,
+  2: { path: '/models/isla-licores-optimized.glb', cameraZ: 5.37 },
+}
 
 const imgSrcs = [
   '/images/portfolio/arq-efimera/img/01/banner_galaxy_beyond.jpg',
@@ -40,7 +48,7 @@ export default function HeroScroll() {
 
   const slides = t.hero.slides.map((s, i) => ({ ...s, img: imgSrcs[i] }))
   const stats = t.hero.stats
-  const slideDuration = 8
+  const slideDuration = 12
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,6 +56,10 @@ export default function HeroScroll() {
     }, slideDuration * 1000)
     return () => clearTimeout(timer)
   }, [current, slides.length])
+
+  const goToSlide = (index: number) => setCurrent(((index % slides.length) + slides.length) % slides.length)
+  const prevSlide = () => goToSlide(current - 1)
+  const nextSlide = () => goToSlide(current + 1)
 
   const { scrollYProgress: stickProgress } = useScroll({
     target: containerRef,
@@ -210,19 +222,58 @@ export default function HeroScroll() {
           </div>
         </div>
 
-        {/* ── 3D interactive model — persists across all slides, right side ── */}
-        <div
-          className="hide-mobile"
+        {/* ── 3D interactive model — swaps per slide, right side ── */}
+        {slideModels[current] && (
+          <div
+            className="hide-mobile"
+            style={{
+              position: 'absolute',
+              top: 0, right: 0, bottom: 0,
+              width: '42%',
+              transform: 'translateX(-15%)',
+              zIndex: 2,
+              pointerEvents: 'auto',
+            }}
+          >
+            <Hero3DModel
+              key={slideModels[current]!.path}
+              modelPath={slideModels[current]!.path}
+              cameraZ={slideModels[current]!.cameraZ}
+            />
+          </div>
+        )}
+
+        {/* ── Prev / next slide arrows ── */}
+        <button
+          onClick={prevSlide}
+          aria-label="Slide anterior"
           style={{
-            position: 'absolute',
-            top: 0, right: 0, bottom: 0,
-            width: '42%',
-            zIndex: 2,
-            pointerEvents: 'auto',
+            position: 'absolute', top: '50%', left: '24px',
+            transform: 'translateY(-50%)',
+            width: '48px', height: '48px', borderRadius: '999px',
+            background: '#E02907', border: 'none', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+            zIndex: 6,
           }}
         >
-          <Hero3DModel />
-        </div>
+          <ChevronLeft size={24} color="#fff" />
+        </button>
+        <button
+          onClick={nextSlide}
+          aria-label="Slide siguiente"
+          style={{
+            position: 'absolute', top: '50%', right: '24px',
+            transform: 'translateY(-50%)',
+            width: '48px', height: '48px', borderRadius: '999px',
+            background: '#E02907', border: 'none', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+            zIndex: 6,
+          }}
+        >
+          <ChevronRight size={24} color="#fff" />
+        </button>
 
         {/* ── Slide indicators ── */}
         <div style={{
