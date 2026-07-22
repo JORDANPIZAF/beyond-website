@@ -5,6 +5,7 @@ import FloatingNav from './components/nav/FloatingNav'
 import Footer from './components/Footer'
 import ClientProviders from './components/ClientProviders'
 import ScrollToTopButton from './components/ScrollToTopButton'
+import Breadcrumbs from './components/Breadcrumbs'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' })
 const barlow = Barlow_Condensed({
@@ -34,7 +35,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ClientProviders>
           <FloatingNav />
-          <main>{children}</main>
+          <main style={{ position: 'relative' }}>
+            <Breadcrumbs />
+            {children}
+          </main>
           <Footer />
           <ScrollToTopButton />
         </ClientProviders>

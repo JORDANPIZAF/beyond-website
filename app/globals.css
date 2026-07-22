@@ -83,6 +83,8 @@ body::before {
 /* Hover utilities */
 .footer-link { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
 .footer-link:hover { color: var(--text); }
+.breadcrumb-link { transition: opacity 0.2s; }
+.breadcrumb-link:hover { opacity: 1 !important; }
 .brand-item { transition: opacity 0.25s, transform 0.25s; }
 .brand-item:hover { opacity: 1 !important; transform: scale(1.06); }
 

@@ -3,8 +3,13 @@
 import { Fragment } from 'react'
 import Reveal from '../components/Reveal'
 import Link from 'next/link'
+import Image from 'next/image'
 import TextReveal from '../components/TextReveal'
 import { useLanguage } from '../context/LanguageContext'
+import { PenTool, Layers, Factory, ShieldCheck, Wrench, Truck, Check } from 'lucide-react'
+import FooterMap from '../components/FooterMap'
+
+const processIcons = [PenTool, Layers, Factory, ShieldCheck, Wrench, Truck]
 
 export default function NosotrosPage() {
   const { t } = useLanguage()
@@ -85,8 +90,61 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Process */}
+      {/* Made in Colombia */}
       <section style={{ padding: '120px 0', background: 'var(--white)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px' }} className="grid-2">
+            <Reveal>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+                <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{n.colombiaTag}</span>
+              </div>
+              <TextReveal as="h2" style={{
+                fontFamily: 'var(--font-barlow), sans-serif',
+                fontWeight: 800,
+                fontSize: 'clamp(32px, 4vw, 52px)',
+                lineHeight: 1,
+                letterSpacing: '-0.02em',
+                textTransform: 'uppercase',
+                color: 'var(--text)',
+                marginBottom: '32px',
+                display: 'block',
+              }}>
+                {n.colombiaTitle1}<br />
+                <span style={{ color: 'var(--accent)' }}>{n.colombiaAccent}</span>
+              </TextReveal>
+              <TextReveal as="p" delay={0.1} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px', display: 'block' }}>{n.colombiaP1}</TextReveal>
+              <TextReveal as="p" delay={0.2} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '32px', display: 'block' }}>{n.colombiaP2}</TextReveal>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '40px' }}>
+                {n.colombiaFeatures.map((feature) => (
+                  <div key={feature} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <Check size={18} strokeWidth={2.5} color="var(--accent)" style={{ flexShrink: 0 }} />
+                    <span style={{ fontSize: '14px', color: 'var(--text)' }}>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Image
+                src="/images/about/img-nosotros--1.png"
+                alt={n.colombiaTag}
+                width={650}
+                height={600}
+                style={{ width: '100%', height: 'auto', borderRadius: '4px' }}
+              />
+            </Reveal>
+
+            <Reveal delay={0.2} direction="left" style={{ height: '100%' }}>
+              <div style={{ position: 'relative', height: '100%', minHeight: '480px', background: 'var(--bg)', overflow: 'hidden' }}>
+                <FooterMap />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section style={{ padding: '120px 0', background: 'var(--white)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <Reveal>
             <TextReveal as="h2" style={{
@@ -106,18 +164,20 @@ export default function NosotrosPage() {
           </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'var(--border)' }}>
-            {n.processes.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.08}>
-                <div style={{ background: 'var(--bg)', padding: '48px 36px' }}>
+            {n.processes.map((p, i) => {
+              const Icon = processIcons[i]
+              return (
+              <Reveal key={p.title} delay={i * 0.08} style={{ height: '100%' }}>
+                <div style={{ background: 'var(--bg)', padding: '48px 36px', height: '100%', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
                   <div style={{
-                    fontFamily: 'var(--font-barlow), sans-serif',
-                    fontWeight: 800,
-                    fontSize: '56px',
-                    color: 'rgba(178,132,60,0.12)',
-                    lineHeight: 1,
+                    width: '56px',
+                    height: '56px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     marginBottom: '24px',
                   }}>
-                    {String(i + 1).padStart(2, '0')}
+                    <Icon size={32} strokeWidth={1.5} color="var(--accent)" />
                   </div>
                   <TextReveal as="h3" style={{
                     fontFamily: 'var(--font-barlow), sans-serif',
@@ -132,7 +192,8 @@ export default function NosotrosPage() {
                   <TextReveal as="p" delay={0.1} style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', display: 'block' }}>{p.desc}</TextReveal>
                 </div>
               </Reveal>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
