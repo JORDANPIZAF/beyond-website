@@ -43,11 +43,11 @@ export default function MobileNav() {
         <div style={{ display: 'flex', alignItems: 'center', padding: '10px 18px', borderRadius: 999, ...glass }}>
           <Link href="/" onClick={close} style={{ display: 'flex', alignItems: 'center' }}>
             <Image
-              src="/images/logo/logo.webp"
+              src="/images/logo/beyond-logo.svg"
               alt="Beyond"
               width={97}
-              height={27}
-              style={{ height: 26, width: 'auto', objectFit: 'contain' }}
+              height={32}
+              style={{ height: 24, width: 'auto', objectFit: 'contain' }}
               priority
             />
           </Link>
@@ -140,7 +140,7 @@ export default function MobileNav() {
                       letterSpacing: '-0.01em',
                       lineHeight: 1.1,
                       textDecoration: 'none',
-                      color: isActive ? 'var(--red)' : 'var(--text)',
+                      color: isActive ? 'var(--accent)' : 'var(--text)',
                       padding: '10px 28px',
                       transition: 'color 0.2s ease',
                     }}

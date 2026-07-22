@@ -61,7 +61,7 @@ export default function ProyectosPage() {
     <>
       {/* Hero */}
       <section style={{ paddingTop: '180px', paddingBottom: '100px', background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--red)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--accent)' }} />
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
@@ -70,8 +70,8 @@ export default function ProyectosPage() {
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{p.tag}</span>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{p.tag}</span>
             </div>
             <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
@@ -85,7 +85,7 @@ export default function ProyectosPage() {
               display: 'block',
             }}>
               {p.heroTitle1}<br />
-              <span style={{ color: 'var(--red)' }}>{p.heroAccent}</span><br />
+              <span style={{ color: 'var(--accent)' }}>{p.heroAccent}</span><br />
               {p.heroTitle2}
             </TextReveal>
             <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
@@ -104,8 +104,8 @@ export default function ProyectosPage() {
                 key={cat}
                 onClick={() => setActiveIndex(i)}
                 style={{
-                  background: activeIndex === i ? 'var(--red)' : 'transparent',
-                  border: `1px solid ${activeIndex === i ? 'var(--red)' : 'var(--border)'}`,
+                  background: activeIndex === i ? 'var(--accent)' : 'transparent',
+                  border: `1px solid ${activeIndex === i ? 'var(--accent)' : 'var(--border)'}`,
                   color: activeIndex === i ? '#fff' : 'var(--text-muted)',
                   padding: '8px 20px',
                   fontSize: '12px',
@@ -168,7 +168,7 @@ export default function ProyectosPage() {
 
                       <div style={{ position: 'relative', zIndex: 2, padding: '28px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)' }}>{displayCategory(proj.categoryEs)}</span>
+                          <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)' }}>{displayCategory(proj.categoryEs)}</span>
                           <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.55)' }}>{proj.year}</span>
                         </div>
                         <h3 style={{

@@ -51,7 +51,7 @@ const NavItem = forwardRef<HTMLAnchorElement, Props>(function NavItem(
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
-        color: isRed ? 'var(--red)' : 'var(--text-muted)',
+        color: isRed ? 'var(--accent)' : 'var(--text-muted)',
         transition: 'color 0.32s ease',
       }}>
         <Icon size={21} strokeWidth={1.6} />
@@ -70,7 +70,7 @@ const NavItem = forwardRef<HTMLAnchorElement, Props>(function NavItem(
           fontFamily: 'var(--font-montserrat), sans-serif',
           fontWeight: 700,
           letterSpacing: '0.01em',
-          color: isRed ? 'var(--red)' : 'var(--text-muted)',
+          color: isRed ? 'var(--accent)' : 'var(--text-muted)',
           transition: 'color 0.32s ease',
           position: 'relative',
         }}

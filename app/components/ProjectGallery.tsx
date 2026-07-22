@@ -12,8 +12,8 @@ interface GalleryProject {
 }
 
 const categoryColors: Record<string, string> = {
-  'Arquitectura Efímera': '#E02907',
-  'Ephemeral Architecture': '#E02907',
+  'Arquitectura Efímera': '#b2843c',
+  'Ephemeral Architecture': '#b2843c',
   'Arquitectura Comercial': '#A81C09',
   'Commercial Architecture': '#A81C09',
   'Góndolas': '#FF5A36',
@@ -27,7 +27,7 @@ const categoryColors: Record<string, string> = {
 }
 
 function categoryColor(category: string) {
-  return categoryColors[category] ?? '#E02907'
+  return categoryColors[category] ?? '#b2843c'
 }
 
 export default function ProjectGallery({ projects }: { projects: GalleryProject[] }) {

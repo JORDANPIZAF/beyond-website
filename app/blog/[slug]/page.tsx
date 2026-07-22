@@ -127,7 +127,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             ← Blog
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)', background: 'rgba(224,41,7,0.15)', padding: '4px 12px', border: '1px solid var(--red)' }}>
+            <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', background: 'rgba(178,132,60,0.15)', padding: '4px 12px', border: '1px solid var(--accent)' }}>
               {post.category}
             </span>
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{post.date}</span>
@@ -181,7 +181,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               borderTop: '1px solid var(--border)',
               display: 'flex', alignItems: 'center', gap: '16px',
             }}>
-              <div style={{ width: '48px', height: '48px', background: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: '48px', height: '48px', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <span style={{ color: '#fff', fontWeight: 800, fontSize: '18px', fontFamily: 'var(--font-barlow)' }}>B</span>
               </div>
               <div>
@@ -193,7 +193,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* CTA */}
             <div style={{
               marginTop: '60px', padding: '40px',
-              background: 'var(--bg)', borderLeft: '3px solid var(--red)',
+              background: 'var(--bg)', borderLeft: '3px solid var(--accent)',
             }}>
               <TextReveal as="h3" style={{
                 fontFamily: 'var(--font-barlow)', fontWeight: 800,

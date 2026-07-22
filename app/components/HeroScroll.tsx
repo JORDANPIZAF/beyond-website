@@ -17,7 +17,7 @@ const slideModels: Record<number, { path: string; cameraZ: number } | null> = {
 }
 
 const imgSrcs = [
-  '/images/portfolio/arq-efimera/img/01/banner_galaxy_beyond.jpg',
+  '/images/destacados/delicatessen-gondoleria.jpg',
   '/images/destacados/beyond_metalmecanica01.png',
   '/images/portfolio/arq-efimera/img/04/isla_appleBANNER-.png',
 ]
@@ -47,8 +47,7 @@ export default function HeroScroll() {
   const { t } = useLanguage()
 
   const slides = t.hero.slides.map((s, i) => ({ ...s, img: imgSrcs[i] }))
-  const stats = t.hero.stats
-  const slideDuration = 12
+  const slideDuration = 18
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -115,11 +114,13 @@ export default function HeroScroll() {
           zIndex: 1,
         }} />
 
-        {/* ── Text content ── */}
+        {/* ── Text content — vertically centered between navbar and slide indicators ── */}
         <div style={{
-          position: 'absolute', inset: 0, zIndex: 2,
-          display: 'flex', alignItems: 'flex-start',
-          paddingTop: 'clamp(160px, 26vh, 260px)',
+          position: 'absolute',
+          top: 'clamp(96px, 15vh, 140px)',
+          bottom: '96px',
+          left: 0, right: 0, zIndex: 2,
+          display: 'flex', alignItems: 'center',
           paddingLeft: 'max(40px, calc((100vw - 1320px)/2 + 48px))',
           paddingRight: '48px',
         }}>
@@ -139,7 +140,7 @@ export default function HeroScroll() {
                     textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)',
                     marginBottom: '20px',
                   }}>
-                    <span style={{ display: 'inline-block', width: '20px', height: '2px', background: 'var(--red)' }} />
+                    <span style={{ display: 'inline-block', width: '20px', height: '2px', background: 'var(--accent)' }} />
                     {slide.tag}
                   </div>
                 </motion.div>
@@ -160,7 +161,7 @@ export default function HeroScroll() {
                       delay={0.15 + i * 0.12}
                       style={{
                         display: 'block',
-                        color: i === slide.accentLine ? 'var(--red)' : '#ffffff',
+                        color: i === slide.accentLine ? 'var(--accent)' : '#ffffff',
                       }}
                     >
                       {line}
@@ -198,25 +199,6 @@ export default function HeroScroll() {
                     </motion.span>
                   ))}
                 </motion.div>
-
-                {/* Stats row — only on slide 0 */}
-                {current === 0 && (
-                  <motion.div
-                    variants={textItem}
-                    style={{
-                      display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
-                      gap: '24px', marginTop: '40px', paddingTop: '28px',
-                      borderTop: '1px solid rgba(255,255,255,0.12)',
-                    }}
-                  >
-                    {stats.map(s => (
-                      <div key={s.value}>
-                        <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '28px', color: '#fff', lineHeight: 1 }}>{s.value}</div>
-                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginTop: '5px', lineHeight: 1.4 }}>{s.label}</div>
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -304,7 +286,7 @@ export default function HeroScroll() {
                     transition={{ duration: slideDuration, ease: 'linear' }}
                     style={{
                       position: 'absolute', top: 0, left: 0, height: '100%',
-                      background: 'var(--red)',
+                      background: 'var(--accent)',
                     }}
                   />
                 )}

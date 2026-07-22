@@ -51,7 +51,7 @@ export default function VideoPopup() {
               style={{
                 position: 'absolute', top: '-6px', right: '-46px',
                 width: '36px', height: '36px', borderRadius: '999px',
-                background: '#E02907',
+                background: '#b2843c',
                 border: '2px solid #fff',
                 color: '#fff', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',

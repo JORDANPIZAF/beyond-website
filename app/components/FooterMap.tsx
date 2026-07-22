@@ -79,7 +79,7 @@ function Route({ from, to, delay, isNational }: RouteProps) {
       <motion.path
         ref={pathRef}
         d={d}
-        stroke={isNational ? 'rgba(224,41,7,0.5)' : 'rgba(224,41,7,0.22)'}
+        stroke={isNational ? 'rgba(178,132,60,0.5)' : 'rgba(178,132,60,0.22)'}
         strokeWidth={isNational ? 1.2 : 0.8}
         fill="none"
         strokeLinecap="round"
@@ -89,7 +89,7 @@ function Route({ from, to, delay, isNational }: RouteProps) {
       />
       <motion.path
         d={d}
-        stroke={isNational ? '#E02907' : 'rgba(224,41,7,0.85)'}
+        stroke={isNational ? '#b2843c' : 'rgba(178,132,60,0.85)'}
         strokeWidth={isNational ? 2.5 : 2}
         strokeLinecap="round"
         fill="none"
@@ -128,7 +128,7 @@ function CityDot({ xy, delay, isHub }: CityDotProps) {
           cx={x} cy={y}
           r={isHub ? 7 : 4}
           fill="none"
-          stroke={isHub ? 'rgba(224,41,7,0.55)' : 'rgba(224,41,7,0.4)'}
+          stroke={isHub ? 'rgba(178,132,60,0.55)' : 'rgba(178,132,60,0.4)'}
           strokeWidth={isHub ? 1.5 : 1}
           initial={{ scale: 1, opacity: 0.7 }}
           animate={{ scale: isHub ? 3.5 : 2.5, opacity: 0 }}
@@ -140,7 +140,7 @@ function CityDot({ xy, delay, isHub }: CityDotProps) {
           }}
         />
       ))}
-      <circle cx={x} cy={y} r={isHub ? 5.5 : 3} fill="#E02907" />
+      <circle cx={x} cy={y} r={isHub ? 5.5 : 3} fill="#b2843c" />
       {isHub && <circle cx={x} cy={y} r={2.5} fill="#fff" />}
     </motion.g>
   )

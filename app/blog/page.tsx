@@ -33,7 +33,7 @@ export default function BlogPage() {
     <>
       {/* Hero */}
       <section style={{ paddingTop: '180px', paddingBottom: '100px', background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--red)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--accent)' }} />
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
@@ -42,8 +42,8 @@ export default function BlogPage() {
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{b.tag}</span>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{b.tag}</span>
             </div>
             <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
@@ -57,7 +57,7 @@ export default function BlogPage() {
               display: 'block',
             }}>
               {b.heroTitle1}<br />
-              <span style={{ color: 'var(--red)' }}>{b.heroAccent}</span><br />
+              <span style={{ color: 'var(--accent)' }}>{b.heroAccent}</span><br />
               {b.heroTitle2}
             </TextReveal>
             <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
@@ -86,7 +86,7 @@ export default function BlogPage() {
                 </div>
                 <div style={{ padding: '60px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-                    <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)', border: '1px solid var(--red)', padding: '3px 10px' }}>{posts[0].category}</span>
+                    <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '3px 10px' }}>{posts[0].category}</span>
                     <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{posts[0].date}</span>
                   </div>
                   <TextReveal as="h2" style={{
@@ -97,7 +97,7 @@ export default function BlogPage() {
                   }}>{posts[0].title}</TextReveal>
                   <TextReveal as="p" delay={0.15} style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '32px', display: 'block' }}>{posts[0].excerpt}</TextReveal>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--red)', letterSpacing: '0.04em' }}>{b.readMore}</span>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.04em' }}>{b.readMore}</span>
                     <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{posts[0].readTime}</span>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function BlogPage() {
                     </div>
                     <div style={{ padding: '32px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-                        <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)', border: '1px solid var(--red)', padding: '3px 8px' }}>{post.category}</span>
+                        <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '3px 8px' }}>{post.category}</span>
                         <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{post.date}</span>
                       </div>
                       <TextReveal as="h3" style={{
@@ -133,7 +133,7 @@ export default function BlogPage() {
                       }}>{post.title}</TextReveal>
                       <TextReveal as="p" delay={0.1} style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', flex: 1, marginBottom: '24px', display: 'block' }}>{post.excerpt}</TextReveal>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--red)' }}>{b.readMore}</span>
+                        <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--accent)' }}>{b.readMore}</span>
                         <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{post.readTime}</span>
                       </div>
                     </div>
@@ -155,7 +155,7 @@ export default function BlogPage() {
               letterSpacing: '-0.02em', textTransform: 'uppercase',
               color: 'var(--text)', marginBottom: '24px', display: 'block',
             }}>
-              {b.ctaTitle1}<br /><span style={{ color: 'var(--red)' }}>{b.ctaAccent}</span>
+              {b.ctaTitle1}<br /><span style={{ color: 'var(--accent)' }}>{b.ctaAccent}</span>
             </TextReveal>
             <Link href="/contacto" className="btn-primary" style={{ fontSize: '14px' }}>
               {b.ctaBtn}

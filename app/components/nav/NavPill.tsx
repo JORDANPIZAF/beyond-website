@@ -96,7 +96,7 @@ export default function NavPill({ expanded }: NavPillProps) {
         style={{
           position: 'absolute',
           borderRadius: 999,
-          background: 'rgba(224,41,7,0.07)',
+          background: 'rgba(178,132,60,0.07)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -156,7 +156,7 @@ export default function NavPill({ expanded }: NavPillProps) {
 
       {/* Logo */}
       <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 11, flexShrink: 0, position: 'relative', zIndex: 2 }}>
-        <Image src="/images/logo/logo.webp" alt="Beyond" width={97} height={27} style={{ height: 38, width: 'auto', objectFit: 'contain' }} priority />
+        <Image src="/images/logo/beyond-logo.svg" alt="Beyond" width={97} height={32} style={{ height: 35, width: 'auto', objectFit: 'contain' }} priority />
       </Link>
 
       {/* Recorte que sigue el ancho real del contenido en todo momento — nunca se

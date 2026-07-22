@@ -118,7 +118,7 @@ function RotateBar({
         position: 'absolute', left: '50%', top: '50%',
         transform: `translate(calc(-50% + ${knobOffset}px), -50%)`,
         width: `${KNOB_SIZE}px`, height: `${KNOB_SIZE}px`, borderRadius: '999px',
-        background: '#E02907',
+        background: '#b2843c',
         border: '2px solid #fff',
         boxShadow: '0 2px 10px rgba(0,0,0,0.35)',
         transition: dragging ? 'none' : 'transform 0.25s ease',

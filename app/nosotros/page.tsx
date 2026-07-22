@@ -14,7 +14,7 @@ export default function NosotrosPage() {
     <>
       {/* Hero */}
       <section style={{ paddingTop: '180px', paddingBottom: '120px', background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--red)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--accent)' }} />
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
@@ -23,8 +23,8 @@ export default function NosotrosPage() {
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{n.tag}</span>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{n.tag}</span>
             </div>
             <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
@@ -38,7 +38,7 @@ export default function NosotrosPage() {
               display: 'block',
             }}>
               {n.heroTitle1}<br />
-              <span style={{ color: 'var(--red)' }}>{n.heroAccent}</span><br />
+              <span style={{ color: 'var(--accent)' }}>{n.heroAccent}</span><br />
               {n.heroTitle2}
             </TextReveal>
             <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '600px', display: 'block' }}>
@@ -65,7 +65,7 @@ export default function NosotrosPage() {
                 display: 'block',
               }}>
                 {n.whoTitle1}<br />
-                <span style={{ color: 'var(--red)' }}>{n.whoAccent}</span>
+                <span style={{ color: 'var(--accent)' }}>{n.whoAccent}</span>
               </TextReveal>
               <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px', display: 'block' }}>{n.whoP1}</TextReveal>
               <TextReveal as="p" delay={0.25} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '20px', display: 'block' }}>{n.whoP2}</TextReveal>
@@ -101,7 +101,7 @@ export default function NosotrosPage() {
               display: 'block',
             }}>
               {n.processTitle1}<br />
-              <span style={{ color: 'var(--red)' }}>{n.processAccent}</span>
+              <span style={{ color: 'var(--accent)' }}>{n.processAccent}</span>
             </TextReveal>
           </Reveal>
 
@@ -113,7 +113,7 @@ export default function NosotrosPage() {
                     fontFamily: 'var(--font-barlow), sans-serif',
                     fontWeight: 800,
                     fontSize: '56px',
-                    color: 'rgba(224,41,7,0.12)',
+                    color: 'rgba(178,132,60,0.12)',
                     lineHeight: 1,
                     marginBottom: '24px',
                   }}>
@@ -153,7 +153,7 @@ export default function NosotrosPage() {
               display: 'block',
             }}>
               {n.brandsTitle1}<br />
-              <span style={{ color: 'var(--red)' }}>{n.brandsAccent}</span>
+              <span style={{ color: 'var(--accent)' }}>{n.brandsAccent}</span>
             </TextReveal>
           </Reveal>
 
@@ -178,7 +178,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '100px 0', background: 'var(--red)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '100px 0', background: 'var(--accent)', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)',

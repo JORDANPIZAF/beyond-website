@@ -10,8 +10,8 @@ type LanguageContextType = {
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  lang: 'es',
-  t: translations.es,
+  lang: 'en',
+  t: translations.en,
   setLang: () => {},
 })
 
@@ -21,10 +21,10 @@ function subscribeLang(callback: () => void) {
   return () => { langListeners = langListeners.filter((l) => l !== callback) }
 }
 function getLangSnapshot(): Lang {
-  return localStorage.getItem('beyond-lang') === 'en' ? 'en' : 'es'
+  return localStorage.getItem('beyond-lang') === 'es' ? 'es' : 'en'
 }
 function getLangServerSnapshot(): Lang {
-  return 'es'
+  return 'en'
 }
 function setStoredLang(l: Lang) {
   localStorage.setItem('beyond-lang', l)

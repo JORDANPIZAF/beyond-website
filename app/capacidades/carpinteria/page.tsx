@@ -38,7 +38,7 @@ export default function CarpinteriaPage() {
     <>
       {/* Hero */}
       <section style={{ paddingTop: '180px', paddingBottom: '100px', background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--red)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--accent)' }} />
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
@@ -47,8 +47,8 @@ export default function CarpinteriaPage() {
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>Especialidad 01</span>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Especialidad 01</span>
             </div>
             <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
@@ -62,7 +62,7 @@ export default function CarpinteriaPage() {
               display: 'block',
             }}>
               Carpintería<br />
-              <span style={{ color: 'var(--red)' }}>& Ebanistería</span>
+              <span style={{ color: 'var(--accent)' }}>& Ebanistería</span>
             </TextReveal>
             <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
               Madera, MDF, melamina y materiales compuestos. Corte CNC de alta precisión y acabados premium para exhibición comercial y mobiliario de alta gama.
@@ -89,7 +89,7 @@ export default function CarpinteriaPage() {
               </div>
             </Reveal>
             <Reveal delay={0.15} direction="left">
-              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '120px', lineHeight: 1, color: 'rgba(224,41,7,0.08)', letterSpacing: '-0.04em', marginBottom: '-40px' }}>01</div>
+              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '120px', lineHeight: 1, color: 'rgba(178,132,60,0.08)', letterSpacing: '-0.04em', marginBottom: '-40px' }}>01</div>
               <TextReveal as="h2" style={{
                 fontFamily: 'var(--font-barlow)', fontWeight: 800,
                 fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1,
@@ -102,7 +102,7 @@ export default function CarpinteriaPage() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }}>
                 {capabilities.map(c => (
                   <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '6px', height: '6px', background: 'var(--red)', flexShrink: 0 }} />
+                    <div style={{ width: '6px', height: '6px', background: 'var(--accent)', flexShrink: 0 }} />
                     <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c}</span>
                   </div>
                 ))}
@@ -121,7 +121,7 @@ export default function CarpinteriaPage() {
                 fontFamily: 'var(--font-barlow)', fontWeight: 800,
                 fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1,
                 letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', display: 'block',
-              }}>Proyectos<br /><span style={{ color: 'var(--red)' }}>relacionados.</span></TextReveal>
+              }}>Proyectos<br /><span style={{ color: 'var(--accent)' }}>relacionados.</span></TextReveal>
               <Link href="/proyectos" style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', borderBottom: '1px solid var(--border)', paddingBottom: '4px' }}>
                 Ver todos →
               </Link>
@@ -135,7 +135,7 @@ export default function CarpinteriaPage() {
                     <Image src={p.cover} alt={p.title} fill style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} className="proj-img" />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)', zIndex: 1 }} />
                     <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
-                      <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '6px' }}>{p.category}</p>
+                      <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>{p.category}</p>
                       <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '17px', textTransform: 'uppercase', color: '#fff', lineHeight: 1.2 }}>{p.title}</h3>
                     </div>
                   </div>
@@ -147,7 +147,7 @@ export default function CarpinteriaPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '100px 0', background: 'var(--red)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '100px 0', background: 'var(--accent)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         <div className="container" style={{ position: 'relative', textAlign: 'center' }}>
           <Reveal>

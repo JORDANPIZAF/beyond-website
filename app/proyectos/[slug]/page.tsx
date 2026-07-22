@@ -399,7 +399,7 @@ export default function ProjectDetailPage() {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '76px' }}>
         <TextReveal as="h1" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '48px', color: 'var(--text)', marginBottom: '16px', display: 'block' }}>Proyecto no encontrado</TextReveal>
-        <Link href="/proyectos" style={{ color: 'var(--red)', fontWeight: 600 }}>← Volver a proyectos</Link>
+        <Link href="/proyectos" style={{ color: 'var(--accent)', fontWeight: 600 }}>← Volver a proyectos</Link>
       </div>
     )
   }
@@ -429,7 +429,7 @@ export default function ProjectDetailPage() {
             ← Todos los proyectos
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)', background: 'rgba(224,41,7,0.15)', padding: '4px 12px', border: '1px solid var(--red)' }}>
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', background: 'rgba(178,132,60,0.15)', padding: '4px 12px', border: '1px solid var(--accent)' }}>
               {project.category}
             </span>
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{project.year}</span>
@@ -455,7 +455,7 @@ export default function ProjectDetailPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', alignItems: 'start' }} className="grid-2">
             <Reveal>
               <div>
-                <div style={{ width: '32px', height: '2px', background: 'var(--red)', marginBottom: '16px' }} />
+                <div style={{ width: '32px', height: '2px', background: 'var(--accent)', marginBottom: '16px' }} />
                 <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Cliente</p>
                 <p style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text)', marginBottom: '32px' }}>{project.client}</p>
                 <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Categoría</p>
@@ -480,8 +480,8 @@ export default function ProjectDetailPage() {
         <div className="container">
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '48px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>Galería del proyecto</span>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Galería del proyecto</span>
             </div>
           </Reveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '4px', background: 'var(--border)' }}>
@@ -523,7 +523,7 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '100px 0', background: 'var(--red)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '100px 0', background: 'var(--accent)', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)',

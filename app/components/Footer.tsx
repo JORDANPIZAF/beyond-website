@@ -27,7 +27,7 @@ function LangToggle() {
           key={l}
           onClick={() => toggle(l)}
           style={{
-            background: lang === l ? 'var(--red)' : 'transparent',
+            background: lang === l ? 'var(--accent)' : 'transparent',
             color: lang === l ? '#fff' : 'var(--text-muted)',
             border: 'none',
             padding: '7px 14px',
@@ -80,7 +80,7 @@ export default function Footer() {
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '48px', marginBottom: '64px' }}>
             <div>
-              <Image src="/images/logo/logo.webp" alt="Beyond SAS" width={120} height={35} style={{ objectFit: 'contain', height: '32px', width: 'auto', marginBottom: '20px' }} />
+              <Image src="/images/logo/beyond-logo.svg" alt="Beyond SAS" width={120} height={40} style={{ objectFit: 'contain', height: '32px', width: 'auto', marginBottom: '20px' }} />
               <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '220px' }}>
                 {f.tagline}
               </p>

@@ -53,9 +53,9 @@ export default function ScrollToTopButton() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: onRedSection ? '#fff' : 'var(--red)',
-            color: onRedSection ? 'var(--red)' : '#fff',
-            boxShadow: onRedSection ? '0 8px 24px rgba(0,0,0,0.2)' : '0 8px 24px rgba(224,41,7,0.35)',
+            background: onRedSection ? '#fff' : 'var(--accent)',
+            color: onRedSection ? 'var(--accent)' : '#fff',
+            boxShadow: onRedSection ? '0 8px 24px rgba(0,0,0,0.2)' : '0 8px 24px rgba(178,132,60,0.35)',
             transition: 'background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
           }}
         >

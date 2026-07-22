@@ -102,9 +102,9 @@ function AboutSection() {
               variants={revealItem}
               style={{
                 position: 'absolute', bottom: '28px', right: '0',
-                background: 'var(--red)', color: '#fff',
+                background: 'var(--accent)', color: '#fff',
                 padding: '20px 24px',
-                boxShadow: '0 20px 60px rgba(224,41,7,0.3)',
+                boxShadow: '0 20px 60px rgba(178,132,60,0.3)',
               }}
             >
               <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '36px', lineHeight: 1 }}>3.850</div>
@@ -128,7 +128,7 @@ function AboutSection() {
               }}
             >
               {h.aboutTitle1}<br />{h.aboutTitle2}<br />
-              <span style={{ color: 'var(--red)' }}>{h.aboutAccent}</span><br />
+              <span style={{ color: 'var(--accent)' }}>{h.aboutAccent}</span><br />
               {h.aboutTitle3}
             </TextReveal>
             <TextReveal as="p" delay={0.2} style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--text-muted)', marginBottom: '14px', display: 'block' }}>
@@ -185,7 +185,7 @@ function CapabilitiesSection({ progress }: { progress: MotionValue<number> }) {
               letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
             }}
           >
-            {h.capTitle1} <span style={{ color: 'var(--red)' }}>{h.capAccent}</span>
+            {h.capTitle1} <span style={{ color: 'var(--accent)' }}>{h.capAccent}</span>
           </TextReveal>
           <motion.div variants={revealItem}>
             <PillLink href="/capacidades" label={h.capCta} Icon={Layers} />
@@ -253,7 +253,7 @@ function ProjectsSection() {
               letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
             }}
           >
-            {h.projTitle1} <span style={{ color: 'var(--red)' }}>{h.projAccent}</span>
+            {h.projTitle1} <span style={{ color: 'var(--accent)' }}>{h.projAccent}</span>
           </TextReveal>
           <motion.div variants={revealItem}>
             <PillLink href="/proyectos" label={h.projCta} Icon={Briefcase} />
@@ -291,7 +291,7 @@ function ClientsSection() {
             textAlign: 'center', marginBottom: '52px', display: 'block',
           }}
         >
-          {h.clientsTitle1} <span style={{ color: 'var(--red)' }}>{h.clientsAccent}</span>
+          {h.clientsTitle1} <span style={{ color: 'var(--accent)' }}>{h.clientsAccent}</span>
         </TextReveal>
 
         <motion.div
@@ -329,7 +329,7 @@ function CTASection() {
   const h = t.home
   return (
     <section id="cta-red-section" style={{
-      minHeight: '100dvh', background: 'var(--red)',
+      minHeight: '100dvh', background: 'var(--accent)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       position: 'relative', overflow: 'hidden',
     }}>

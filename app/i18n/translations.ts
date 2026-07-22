@@ -17,11 +17,11 @@ export const translations = {
     hero: {
       slides: [
         {
-          tag: 'Bogotá, Colombia · Desde 2008',
-          lines: ['Fabricamos', 'experiencias', 'de marca.'],
+          tag: 'Retail Alimentos · Delicatessen',
+          lines: ['Gondolería y', 'mobiliario para', 'delicatessen.'],
           accentLine: 2,
-          body: 'Diseño, ingeniería, fabricación e implementación de soluciones para exhibición comercial y arquitectura retail.',
-          imgAlt: 'Beyond SAS — Fabricación industrial',
+          body: 'Diseño y fabricación de góndolas, vitrinas refrigeradas y mostradores a medida para secciones de delicatessen y panadería, en madera y metal, listos para punto de venta.',
+          imgAlt: 'Beyond SAS — Gondolería y mobiliario para delicatessen',
           ctas: [
             { label: 'Iniciar Proyecto →', href: '/contacto' },
             { label: 'Ver Proyectos', href: '/proyectos' },
@@ -147,6 +147,7 @@ export const translations = {
         { value: 'tbd', label: 'Por definir' },
       ],
       submitBtn: 'Enviar Proyecto →',
+      clearBtn: 'Limpiar',
       successTitle: 'Mensaje enviado',
       successBody: 'Te contactaremos en menos de 24 horas.',
       infoCommercial: 'Dirección comercial',
@@ -297,11 +298,11 @@ export const translations = {
     hero: {
       slides: [
         {
-          tag: 'Bogotá, Colombia · Since 2008',
-          lines: ['We build', 'brand', 'experiences.'],
-          accentLine: 1,
-          body: 'Design, engineering, manufacturing, and implementation of commercial display and retail architecture solutions.',
-          imgAlt: 'Beyond SAS — Industrial Manufacturing',
+          tag: 'Food Retail · Delicatessen',
+          lines: ['Fixtures and', 'millwork for', 'delicatessen.'],
+          accentLine: 2,
+          body: 'Design and manufacturing of custom gondolas, refrigerated display cases, and counters for delicatessen and bakery sections, in wood and metal, ready for retail.',
+          imgAlt: 'Beyond SAS — Delicatessen fixtures and millwork',
           ctas: [
             { label: 'Start a Project →', href: '/contacto' },
             { label: 'View Projects', href: '/proyectos' },
@@ -427,6 +428,7 @@ export const translations = {
         { value: 'tbd', label: 'To Be Determined' },
       ],
       submitBtn: 'Submit Project →',
+      clearBtn: 'Clear',
       successTitle: 'Message Sent',
       successBody: "We'll reach out within 24 hours.",
       infoCommercial: 'Commercial Address',

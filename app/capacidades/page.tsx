@@ -14,7 +14,7 @@ export default function CapacidadesPage() {
     <>
       {/* Hero */}
       <section style={{ paddingTop: '180px', paddingBottom: '100px', background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--red)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--accent)' }} />
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
@@ -23,8 +23,8 @@ export default function CapacidadesPage() {
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--red)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>{cap.tag}</span>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{cap.tag}</span>
             </div>
             <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
@@ -38,7 +38,7 @@ export default function CapacidadesPage() {
               display: 'block',
             }}>
               {cap.heroTitle1}<br />
-              <span style={{ color: 'var(--red)' }}>{cap.heroAccent}</span><br />
+              <span style={{ color: 'var(--accent)' }}>{cap.heroAccent}</span><br />
               {cap.heroTitle2}
             </TextReveal>
             <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
@@ -63,7 +63,7 @@ export default function CapacidadesPage() {
                   fontWeight: 800,
                   fontSize: '120px',
                   lineHeight: 1,
-                  color: 'rgba(224,41,7,0.1)',
+                  color: 'rgba(178,132,60,0.1)',
                   letterSpacing: '-0.04em',
                 }}>{item.num}</div>
                 <div style={{ marginTop: '-24px' }}>
@@ -87,12 +87,12 @@ export default function CapacidadesPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px', marginBottom: '32px' }}>
                   {item.capabilities.map(c => (
                     <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '6px', height: '6px', background: 'var(--red)', flexShrink: 0 }} />
+                      <div style={{ width: '6px', height: '6px', background: 'var(--accent)', flexShrink: 0 }} />
                       <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c}</span>
                     </div>
                   ))}
                 </div>
-                <Link href={item.href} style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 700, color: 'var(--red)', letterSpacing: '0.06em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Link href={item.href} style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.06em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                   {cap.seeMore} {item.title} →
                 </Link>
               </Reveal>
@@ -102,7 +102,7 @@ export default function CapacidadesPage() {
       ))}
 
       {/* CTA */}
-      <section style={{ padding: '120px 0', background: 'var(--red)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '120px 0', background: 'var(--accent)', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)',
