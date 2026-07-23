@@ -91,19 +91,27 @@ export default function HeroScroll() {
         <AnimatePresence mode="sync">
           <motion.div
             key={`bg-${current}`}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.04 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <Image
-              src={slide.img}
-              alt={slide.imgAlt}
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              priority={current === 0}
-            />
+            {/* Subtle Ken Burns zoom for the duration the slide is on screen */}
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.05 }}
+              transition={{ duration: slideDuration, ease: 'linear' }}
+              style={{ position: 'absolute', inset: 0 }}
+            >
+              <Image
+                src={slide.img}
+                alt={slide.imgAlt}
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+                priority={current === 0}
+              />
+            </motion.div>
           </motion.div>
         </AnimatePresence>
 
