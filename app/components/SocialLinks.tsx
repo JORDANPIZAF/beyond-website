@@ -1,6 +1,7 @@
-const SOCIALS = [
+export const SOCIALS = [
   {
     name: 'Instagram',
+    handle: '@beyond_grp',
     href: 'https://www.instagram.com/beyond_grp',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -12,6 +13,7 @@ const SOCIALS = [
   },
   {
     name: 'Facebook',
+    handle: '@Beyond group',
     href: 'https://www.facebook.com/people/Beyond-group/61575834320955/',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor">
@@ -21,6 +23,7 @@ const SOCIALS = [
   },
   {
     name: 'WhatsApp',
+    handle: '(601) 390 4415',
     href: 'https://wa.me/576013904415',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor">

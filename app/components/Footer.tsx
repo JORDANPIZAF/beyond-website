@@ -5,15 +5,17 @@ import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import FooterMap from './FooterMap'
-import SocialLinks from './SocialLinks'
+import { SOCIALS } from './SocialLinks'
 import { useLanguage } from '../context/LanguageContext'
 import type { Lang } from '../i18n/translations'
 
 function ContactRow({ icon, href, children }: { icon: ReactNode; href?: string; children: ReactNode }) {
   const Tag = href ? 'a' : 'div'
+  const external = href?.startsWith('http')
   return (
     <Tag
       {...(href ? { href } : {})}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px', textDecoration: 'none' }}
     >
       <span style={{
@@ -128,6 +130,9 @@ export default function Footer() {
               ))}
             </div>
 
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', marginBottom: '64px' }}>
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.contactTitle}</p>
               <ContactRow icon={<Mail size={20} color="#fff" />} href="mailto:director.comercial@beyondgroup.co">
@@ -139,9 +144,15 @@ export default function Footer() {
               <ContactRow icon={<MapPin size={20} color="#fff" />}>
                 Bogotá, Colombia
               </ContactRow>
-              <div style={{ display: 'flex', gap: '14px', alignItems: 'center', marginTop: '20px' }}>
-                <SocialLinks size={22} />
-              </div>
+            </div>
+
+            <div>
+              <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.socialTitle}</p>
+              {SOCIALS.map(s => (
+                <ContactRow key={s.name} icon={<span style={{ width: '20px', height: '20px', color: '#fff' }}>{s.icon}</span>} href={s.href}>
+                  {s.handle}
+                </ContactRow>
+              ))}
             </div>
           </div>
 
