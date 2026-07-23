@@ -49,7 +49,7 @@ export default function NavPill({ expanded }: NavPillProps) {
   ]
 
   const { scrollY } = useScroll()
-  const bgOpacity   = useTransform(scrollY, [0, 120], [0.65, 0.90])
+  const bgOpacity   = useTransform(scrollY, [0, 120], [0.88, 0.97])
   const blurPx      = useTransform(scrollY, [0, 120], [32, 48])
   const shadowAlpha = useTransform(scrollY, [0, 120], [0.07, 0.15])
 
@@ -156,7 +156,9 @@ export default function NavPill({ expanded }: NavPillProps) {
 
       {/* Logo */}
       <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 11, flexShrink: 0, position: 'relative', zIndex: 2 }}>
-        <Image src="/images/logo/beyond-logo.svg" alt="Beyond" width={97} height={32} style={{ height: 35, width: 'auto', objectFit: 'contain' }} priority />
+        <motion.div whileHover={{ scale: 1.08 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }} style={{ display: 'flex' }}>
+          <Image src="/images/logo/beyond-logo.svg" alt="Beyond" width={97} height={32} style={{ height: 35, width: 'auto', objectFit: 'contain' }} priority />
+        </motion.div>
       </Link>
 
       {/* Recorte que sigue el ancho real del contenido en todo momento — nunca se
