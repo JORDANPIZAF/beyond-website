@@ -19,7 +19,7 @@ const slideModels: Record<number, { path: string; cameraZ: number } | null> = {
 const imgSrcs = [
   '/images/destacados/delicatessen-gondoleria.jpg',
   '/images/destacados/carpinteria-router.jpg',
-  '/images/portfolio/arq-efimera/img/04/isla_appleBANNER-.png',
+  '/images/destacados/gondolas-licores.jpg',
 ]
 
 const textContainer = {
