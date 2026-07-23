@@ -90,14 +90,16 @@ function AboutSection() {
             variants={revealContainer}
             style={{ position: 'relative' }}
           >
-            <motion.div variants={revealItem}>
-              <Image
-                src="/images/about/about-img.jpg"
-                alt="Beyond SAS planta"
-                width={700}
-                height={460}
-                style={{ width: '100%', height: '460px', objectFit: 'cover' }}
-              />
+            <motion.div variants={revealItem} style={{ overflow: 'hidden' }}>
+              <motion.div whileHover={{ scale: 1.06 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+                <Image
+                  src="/images/about/about-img.jpg"
+                  alt="Beyond SAS planta"
+                  width={700}
+                  height={360}
+                  style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }}
+                />
+              </motion.div>
             </motion.div>
             <motion.div
               variants={revealItem}
