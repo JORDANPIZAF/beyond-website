@@ -69,6 +69,7 @@ export default function HeroScroll() {
   const heroOverlay = useTransform(stickProgress, [0.45, 1], [0, 0.42])
 
   const slide = slides[current]
+  const isReversed = current === 2
 
   return (
     <div ref={containerRef} style={{ height: '200vh', position: 'relative' }}>
@@ -118,7 +119,9 @@ export default function HeroScroll() {
         {/* ── Gradient overlay ── */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(17,17,16,0.90) 0%, rgba(17,17,16,0.55) 45%, rgba(17,17,16,0.10) 70%, transparent 85%)',
+          background: isReversed
+            ? 'linear-gradient(to left, rgba(17,17,16,0.90) 0%, rgba(17,17,16,0.55) 45%, rgba(17,17,16,0.10) 70%, transparent 85%)'
+            : 'linear-gradient(to right, rgba(17,17,16,0.90) 0%, rgba(17,17,16,0.55) 45%, rgba(17,17,16,0.10) 70%, transparent 85%)',
           zIndex: 1,
         }} />
 
@@ -129,10 +132,11 @@ export default function HeroScroll() {
           bottom: '96px',
           left: 0, right: 0, zIndex: 2,
           display: 'flex', alignItems: 'center',
-          paddingLeft: 'max(40px, calc((100vw - 1320px)/2 + 48px))',
-          paddingRight: '48px',
+          justifyContent: isReversed ? 'flex-end' : 'flex-start',
+          paddingLeft: isReversed ? '48px' : 'max(40px, calc((100vw - 1320px)/2 + 48px))',
+          paddingRight: isReversed ? 'max(40px, calc((100vw - 1320px)/2 + 48px))' : '48px',
         }}>
-          <div style={{ maxWidth: '560px', width: '100%' }}>
+          <div style={{ maxWidth: '560px', width: '100%', textAlign: 'left' }}>
             <AnimatePresence mode="sync">
               <motion.div
                 key={`text-${current}`}
@@ -218,9 +222,11 @@ export default function HeroScroll() {
             className="hide-mobile"
             style={{
               position: 'absolute',
-              top: 0, right: 0, bottom: 0,
+              top: 0, bottom: 0,
+              left: isReversed ? 0 : 'auto',
+              right: isReversed ? 'auto' : 0,
               width: '42%',
-              transform: 'translateX(-15%)',
+              transform: isReversed ? 'translateX(15%)' : 'translateX(-15%)',
               zIndex: 2,
               pointerEvents: 'auto',
             }}
