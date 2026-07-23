@@ -85,15 +85,19 @@ export default function ProductSequence({ progress }: Props) {
           drawFrame(0)
           setReady(true)
 
-          let idx = 1
-          const loadNext = () => {
-            if (cancelled || idx >= TOTAL_FRAMES) return
-            loadImage(idx).then(() => {
-              idx++
-              loadNext()
-            })
+          // Load the rest with a small concurrency pool instead of one at a time —
+          // sequential loading of 266 frames was far too slow to be ready by the
+          // time the user actually scrolled into the scrubbing range.
+          const CONCURRENCY = 8
+          let next = 1
+          const worker = async () => {
+            while (!cancelled) {
+              const i = next++
+              if (i >= TOTAL_FRAMES) return
+              await loadImage(i)
+            }
           }
-          loadNext()
+          Array.from({ length: CONCURRENCY }, worker)
         })
       },
       { rootMargin: '150px 0px' }
