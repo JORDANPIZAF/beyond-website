@@ -79,7 +79,7 @@ export const translations = {
       projAccent: 'hablan solos.',
       projCta: 'Ver todos los proyectos',
       featuredProjects: [
-        { title: 'Apple — Isla de Exhibición', category: 'Arquitectura Efímera' },
+        { title: 'Falabella Colina — Calzado', category: 'Arquitectura Comercial' },
         { title: 'Samsung Galaxy Studio', category: 'Arquitectura Efímera' },
         { title: 'AMD — Mesa de Alto Impacto', category: 'Arquitectura Efímera' },
         { title: 'LG — Arquitectura Comercial', category: 'Arquitectura Comercial' },
@@ -374,7 +374,7 @@ export const translations = {
       projAccent: 'speaks for itself.',
       projCta: 'View All Projects',
       featuredProjects: [
-        { title: 'Apple — Display Island', category: 'Ephemeral Architecture' },
+        { title: 'Falabella Colina — Footwear', category: 'Commercial Architecture' },
         { title: 'Samsung Galaxy Studio', category: 'Ephemeral Architecture' },
         { title: 'AMD — High-Impact Table', category: 'Ephemeral Architecture' },
         { title: 'LG — Commercial Architecture', category: 'Commercial Architecture' },

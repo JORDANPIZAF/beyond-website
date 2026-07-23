@@ -69,7 +69,7 @@ const capabilityHrefs = [
 ]
 
 const featuredProjectData = [
-  { slug: 'apple-isla', img: '/images/portfolio/arq-efimera/img/04/isla_appleINT-2.png' },
+  { slug: 'falabella-colina', img: '/images/portfolio/arq-comercial/falabella-colina/falabella-colina-portada.jpg' },
   { slug: 'samsung-galaxy-studio', img: '/images/portfolio/arq-efimera/img/01/GALAXY-S-INT-2.png' },
   { slug: 'amd-mesa', img: '/images/portfolio/arq-efimera/img/05/mesa-amd_INT-2.png' },
   { slug: 'lg-arq-comercial', img: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02INT-2.png' },
