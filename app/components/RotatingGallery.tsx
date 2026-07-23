@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const TILE_COUNT = 6
-const INTERVAL_MS = 3000
+const INTERVAL_MS = 4500
 
 interface TileProps {
   bucket: string[]
