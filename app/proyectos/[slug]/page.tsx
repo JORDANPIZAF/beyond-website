@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../../components/Reveal'
 import TextReveal from '../../components/TextReveal'
+import RotatingGallery from '../../components/RotatingGallery'
 
 export const runtime = 'edge'
 
@@ -593,41 +594,45 @@ export default function ProjectDetailPage() {
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Galería del proyecto</span>
             </div>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '6px', background: 'var(--border)' }}>
-            {project.gallery.map((img, i) => (
-              <Reveal key={i} delay={i * 0.04}>
-                <div
-                  onClick={() => setLightboxImg(img)}
-                  className="gallery-tile"
-                  style={{
-                    position: 'relative',
-                    height: '340px',
-                    overflow: 'hidden',
-                    cursor: 'zoom-in',
-                    background: '#e8e6e2',
-                    borderRadius: '12px',
-                  }}
-                >
-                  <Image
-                    src={img}
-                    alt={`${project.title} — imagen ${i + 1}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="proj-img"
-                  />
-                  <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'rgba(0,0,0,0)',
-                    transition: 'background 0.3s',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }} className="gallery-overlay">
-                    <span style={{ color: '#fff', fontSize: '28px', opacity: 0, transition: 'opacity 0.3s' }} className="zoom-icon">+</span>
+          {slug === 'olimpica-mallorquin' ? (
+            <RotatingGallery images={project.gallery} title={project.title} onImageClick={setLightboxImg} />
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '6px', background: 'var(--border)' }}>
+              {project.gallery.map((img, i) => (
+                <Reveal key={i} delay={i * 0.04}>
+                  <div
+                    onClick={() => setLightboxImg(img)}
+                    className="gallery-tile"
+                    style={{
+                      position: 'relative',
+                      height: '340px',
+                      overflow: 'hidden',
+                      cursor: 'zoom-in',
+                      background: '#e8e6e2',
+                      borderRadius: '12px',
+                    }}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${project.title} — imagen ${i + 1}`}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="proj-img"
+                    />
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      background: 'rgba(0,0,0,0)',
+                      transition: 'background 0.3s',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }} className="gallery-overlay">
+                      <span style={{ color: '#fff', fontSize: '28px', opacity: 0, transition: 'opacity 0.3s' }} className="zoom-icon">+</span>
+                    </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
