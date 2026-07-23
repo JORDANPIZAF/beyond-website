@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import ClientProviders from './components/ClientProviders'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import Breadcrumbs from './components/Breadcrumbs'
+import CursorGlow from './components/CursorGlow'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' })
 const barlow = Barlow_Condensed({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className={`${figtree.variable} ${barlow.variable} ${montserrat.variable}`}>
       <body>
         <ClientProviders>
+          <CursorGlow />
           <FloatingNav />
           <main style={{ position: 'relative' }}>
             <Breadcrumbs />
