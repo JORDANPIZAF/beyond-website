@@ -7,31 +7,31 @@ import Reveal from '../components/Reveal'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
 import TextReveal from '../components/TextReveal'
-import { LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette } from 'lucide-react'
+import { LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette, ChevronDown, Tag } from 'lucide-react'
 
 const categoryIcons = [LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette]
 
 const projectsData = [
-  { id: 1,  slug: 'lg-vitrina-bucaramanga',  title: 'LG Vitrina Bucaramanga',    categoryEs: 'Arquitectura Comercial',  client: 'LG',          year: '2024', cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.png' },
-  { id: 2,  slug: 'samsung-galaxy-studio',   title: 'Samsung Galaxy Studio',      categoryEs: 'Arquitectura Efímera',    client: 'Samsung',     year: '2024', cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png' },
-  { id: 3,  slug: 'olimpica-licores',        title: 'Olímpica Licores',           categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2024', cover: '/images/portfolio/gondolas/imge/01/GONDOLAS_-DES-1.png' },
-  { id: 4,  slug: 'oficinas-bogota',         title: 'Oficinas Bogotá',            categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2023', cover: '/images/portfolio/mobiliario/img/01/OFI-BOGOTÁ-DES-1.png' },
-  { id: 5,  slug: 'nestle-congreso',         title: 'Nestlé Congreso Pediatría',  categoryEs: 'Publicidad',             client: 'Nestlé',      year: '2023', cover: '/images/portfolio/publicidad/img/01/evento-nestle_DEST-1.png' },
-  { id: 6,  slug: 'canasta-panaderia',       title: 'Canasta Panadería',          categoryEs: 'Creativo',               client: 'Canasta',     year: '2023', cover: '/images/portfolio/creativo/img/03/canasta_DEST-6.png' },
-  { id: 7,  slug: 'lg-arq-comercial',        title: 'LG Arquitectura Comercial',  categoryEs: 'Arquitectura Comercial',  client: 'LG',          year: '2023', cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png' },
-  { id: 8,  slug: 'tcl-tv-wall',             title: 'TCL TV Wall',                categoryEs: 'Arquitectura Efímera',    client: 'TCL',         year: '2023', cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.png' },
-  { id: 9,  slug: 'olimpica-gondolas',       title: 'Olímpica Góndolas',          categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2022', cover: '/images/portfolio/gondolas/imge/03/gondolas_2_DEST-2.png' },
-  { id: 10, slug: 'mobiliario-hogar',        title: 'Mobiliario Hogar',           categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2022', cover: '/images/portfolio/mobiliario/img/03/mobiliario_3_DEST-1.png' },
-  { id: 11, slug: 'nestle-nan',              title: 'Nestlé NAN',                 categoryEs: 'Publicidad',             client: 'Nestlé',      year: '2022', cover: '/images/portfolio/publicidad/img/02/nestle_nan_DEST-5.png' },
-  { id: 12, slug: 'mundo-playa',             title: 'Mundo Playa Olímpica',       categoryEs: 'Creativo',               client: 'Olímpica',    year: '2022', cover: '/images/portfolio/creativo/img/01/DEST-5MUNDO-PLAYA.png' },
-  { id: 13, slug: 'aldo-mobiliario',         title: 'Aldo Mobiliario',            categoryEs: 'Arquitectura Comercial',  client: 'Aldo',        year: '2022', cover: '/images/portfolio/arq-comercial/img/p2/DEST-2PANDORA.png' },
-  { id: 14, slug: 'bold-islas',              title: 'Bold Islas',                 categoryEs: 'Arquitectura Efímera',    client: 'Bold',        year: '2021', cover: '/images/portfolio/arq-efimera/img/02/islas_boldDEST-4.png' },
-  { id: 15, slug: 'olimpica-zona-fit',       title: 'Olímpica Zona Fit',          categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2021', cover: '/images/portfolio/gondolas/imge/02/zona-fit_DEST-2.png' },
-  { id: 16, slug: 'oficinas-barranquilla',   title: 'Oficinas Barranquilla',      categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2021', cover: '/images/portfolio/mobiliario/img/02/DEST-4_OFI_-BARRANQUILLA.png' },
-  { id: 17, slug: 'xbox-stands',             title: 'Xbox Stands',                categoryEs: 'Publicidad',             client: 'Microsoft',   year: '2021', cover: '/images/portfolio/publicidad/img/03/publi_xbox_DEST-1.png' },
-  { id: 18, slug: 'apple-isla',              title: 'Apple Isla',                 categoryEs: 'Arquitectura Efímera',    client: 'Apple',       year: '2021', cover: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png' },
-  { id: 19, slug: 'amd-mesa',               title: 'AMD Mesa',                   categoryEs: 'Arquitectura Efímera',    client: 'AMD',         year: '2020', cover: '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.png' },
-  { id: 20, slug: 'mascotas-purina',         title: 'Mascotas Purina',            categoryEs: 'Creativo',               client: 'Purina',      year: '2020', cover: '/images/portfolio/creativo/img/02/mascotas_DEST-1.png' },
+  { id: 1,  slug: 'lg-vitrina-bucaramanga',  title: 'LG Vitrina Bucaramanga',    categoryEs: 'Arquitectura Comercial',  client: 'LG',          year: '2024', cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_INT-1-.png' },
+  { id: 2,  slug: 'samsung-galaxy-studio',   title: 'Samsung Galaxy Studio',      categoryEs: 'Arquitectura Efímera',    client: 'Samsung',     year: '2024', cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-INT-1.png' },
+  { id: 3,  slug: 'olimpica-licores',        title: 'Olímpica Licores',           categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2024', cover: '/images/portfolio/gondolas/imge/01/GONDOLAS_-INT-1.png' },
+  { id: 4,  slug: 'oficinas-bogota',         title: 'Oficinas Bogotá',            categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2023', cover: '/images/portfolio/mobiliario/img/01/OFI-BOGOTÁ-INT-1.png' },
+  { id: 5,  slug: 'nestle-congreso',         title: 'Nestlé Congreso Pediatría',  categoryEs: 'Publicidad',             client: 'Nestlé',      year: '2023', cover: '/images/portfolio/publicidad/img/01/evento-nestle_INT-1-.png' },
+  { id: 6,  slug: 'canasta-panaderia',       title: 'Canasta Panadería',          categoryEs: 'Creativo',               client: 'Canasta',     year: '2023', cover: '/images/portfolio/creativo/img/03/canasta_INT-6.png' },
+  { id: 7,  slug: 'lg-arq-comercial',        title: 'LG Arquitectura Comercial',  categoryEs: 'Arquitectura Comercial',  client: 'LG',          year: '2023', cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02INT-2.png' },
+  { id: 8,  slug: 'tcl-tv-wall',             title: 'TCL TV Wall',                categoryEs: 'Arquitectura Efímera',    client: 'TCL',         year: '2023', cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_INT-1-.png' },
+  { id: 9,  slug: 'olimpica-gondolas',       title: 'Olímpica Góndolas',          categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2022', cover: '/images/portfolio/gondolas/imge/03/gondolas_2_INT-2.png' },
+  { id: 10, slug: 'mobiliario-hogar',        title: 'Mobiliario Hogar',           categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2022', cover: '/images/portfolio/mobiliario/img/03/mobiliario_3_INT-1-.png' },
+  { id: 11, slug: 'nestle-nan',              title: 'Nestlé NAN',                 categoryEs: 'Publicidad',             client: 'Nestlé',      year: '2022', cover: '/images/portfolio/publicidad/img/02/nestle_nan_INT-5.png' },
+  { id: 12, slug: 'mundo-playa',             title: 'Mundo Playa Olímpica',       categoryEs: 'Creativo',               client: 'Olímpica',    year: '2022', cover: '/images/portfolio/creativo/img/01/INT-5MUNDO-PLAYA.png' },
+  { id: 13, slug: 'aldo-mobiliario',         title: 'Aldo Mobiliario',            categoryEs: 'Arquitectura Comercial',  client: 'Aldo',        year: '2022', cover: '/images/portfolio/arq-comercial/img/p2/INT-2PANDORA.png' },
+  { id: 14, slug: 'bold-islas',              title: 'Bold Islas',                 categoryEs: 'Arquitectura Efímera',    client: 'Bold',        year: '2021', cover: '/images/portfolio/arq-efimera/img/02/islas_boldINT-4.png' },
+  { id: 15, slug: 'olimpica-zona-fit',       title: 'Olímpica Zona Fit',          categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2021', cover: '/images/portfolio/gondolas/imge/02/zona-fit_INT-2.png' },
+  { id: 16, slug: 'oficinas-barranquilla',   title: 'Oficinas Barranquilla',      categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2021', cover: '/images/portfolio/mobiliario/img/02/INT-4_OFI_-BARRANQUILLA.png' },
+  { id: 17, slug: 'xbox-stands',             title: 'Xbox Stands',                categoryEs: 'Publicidad',             client: 'Microsoft',   year: '2021', cover: '/images/portfolio/publicidad/img/03/publi_xbox_INT-1-.png' },
+  { id: 18, slug: 'apple-isla',              title: 'Apple Isla',                 categoryEs: 'Arquitectura Efímera',    client: 'Apple',       year: '2021', cover: '/images/portfolio/arq-efimera/img/04/isla_appleINT-3.png' },
+  { id: 19, slug: 'amd-mesa',               title: 'AMD Mesa',                   categoryEs: 'Arquitectura Efímera',    client: 'AMD',         year: '2020', cover: '/images/portfolio/arq-efimera/img/05/mesa-amd_INT-1-.png' },
+  { id: 20, slug: 'mascotas-purina',         title: 'Mascotas Purina',            categoryEs: 'Creativo',               client: 'Purina',      year: '2020', cover: '/images/portfolio/creativo/img/02/mascotas_INT-1-.png' },
 ]
 
 const categoryMap: Record<string, number> = {
@@ -43,8 +43,11 @@ const categoryMap: Record<string, number> = {
   'Creativo': 6,
 }
 
+const brands = Array.from(new Set(projectsData.map(proj => proj.client))).sort()
+
 export default function ProyectosPage() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [activeBrand, setActiveBrand] = useState('all')
   const [showDock, setShowDock] = useState(false)
   const filterBarRef = useRef<HTMLDivElement>(null)
   const { t } = useLanguage()
@@ -63,9 +66,9 @@ export default function ProyectosPage() {
     return () => observer.disconnect()
   }, [])
 
-  const filtered = activeIndex === 0
-    ? projectsData
-    : projectsData.filter(proj => categoryMap[proj.categoryEs] === activeIndex)
+  const filtered = projectsData
+    .filter(proj => activeIndex === 0 || categoryMap[proj.categoryEs] === activeIndex)
+    .filter(proj => activeBrand === 'all' || proj.client === activeBrand)
 
   const displayCategory = (categoryEs: string) => {
     const idx = categoryMap[categoryEs]
@@ -109,35 +112,76 @@ export default function ProyectosPage() {
       {/* Filters */}
       <section ref={filterBarRef} style={{ padding: '32px 0', background: 'var(--white)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <div className="hide-scrollbar" style={{ display: 'flex', gap: '7px', flexWrap: 'nowrap', overflowX: 'auto', paddingBottom: '4px' }}>
             {categories.map((cat, i) => {
               const Icon = categoryIcons[i]
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveIndex(i)}
+                  className="filter-pill"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: '7px',
+                    flexShrink: 0,
                     background: activeIndex === i ? 'var(--accent)' : 'transparent',
                     border: `1px solid ${activeIndex === i ? 'var(--accent)' : 'var(--border)'}`,
                     color: activeIndex === i ? '#fff' : 'var(--text-muted)',
-                    padding: '8px 20px',
+                    padding: '7px 13px',
                     fontSize: '12px',
                     fontWeight: 600,
-                    letterSpacing: '0.08em',
+                    letterSpacing: '0.03em',
                     textTransform: 'uppercase',
+                    whiteSpace: 'nowrap',
                     cursor: 'pointer',
                     transition: 'all 0.2s',
                     borderRadius: '999px',
                   }}
                 >
-                  <Icon size={15} strokeWidth={2} />
+                  <Icon size={14} strokeWidth={2} />
                   {cat}
                 </button>
               )
             })}
+
+            <div style={{ width: '1px', flexShrink: 0, background: 'var(--border)', margin: '4px 2px' }} />
+
+            <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', flexShrink: 0 }}>
+              <select
+                value={activeBrand}
+                onChange={e => setActiveBrand(e.target.value)}
+                aria-label={p.brandFilterLabel}
+                className="brand-select"
+                style={{
+                  appearance: 'none',
+                  WebkitAppearance: 'none',
+                  background: activeBrand === 'all' ? 'transparent' : 'var(--accent)',
+                  border: `1px solid ${activeBrand === 'all' ? 'var(--border)' : 'var(--accent)'}`,
+                  color: activeBrand === 'all' ? 'var(--text-muted)' : '#fff',
+                  padding: '7px 33px 7px 13px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.03em',
+                  textTransform: 'uppercase',
+                  whiteSpace: 'nowrap',
+                  cursor: 'pointer',
+                  borderRadius: '999px',
+                  fontFamily: 'inherit',
+                  outline: 'none',
+                }}
+              >
+                <option value="all">{p.allBrandsLabel}</option>
+                {brands.map(brand => (
+                  <option key={brand} value={brand}>{brand}</option>
+                ))}
+              </select>
+              <ChevronDown
+                size={13}
+                strokeWidth={2}
+                style={{ position: 'absolute', right: '12px', pointerEvents: 'none', color: activeBrand === 'all' ? 'var(--text-muted)' : '#fff' }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -166,6 +210,7 @@ export default function ProyectosPage() {
               <button
                 onClick={() => setActiveIndex(i)}
                 aria-label={cat}
+                className="dock-circle"
                 style={{
                   width: '44px',
                   height: '44px',
@@ -185,6 +230,40 @@ export default function ProyectosPage() {
             </div>
           )
         })}
+
+        <div style={{ width: '28px', height: '1px', background: 'var(--border)', margin: '2px auto' }} />
+
+        <div className="proj-dock-item">
+          <div
+            className="dock-circle"
+            style={{
+              position: 'relative',
+              width: '44px',
+              height: '44px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: activeBrand === 'all' ? 'var(--white)' : 'var(--accent)',
+              border: `1px solid ${activeBrand === 'all' ? 'var(--border)' : 'var(--accent)'}`,
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+            }}
+          >
+            <Tag size={18} strokeWidth={2} color={activeBrand === 'all' ? 'var(--text-muted)' : '#fff'} style={{ pointerEvents: 'none' }} />
+            <select
+              value={activeBrand}
+              onChange={e => setActiveBrand(e.target.value)}
+              aria-label={p.brandFilterLabel}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', borderRadius: '50%' }}
+            >
+              <option value="all">{p.allBrandsLabel}</option>
+              {brands.map(brand => (
+                <option key={brand} value={brand}>{brand}</option>
+              ))}
+            </select>
+          </div>
+          <span className="proj-dock-label">{activeBrand === 'all' ? p.brandFilterLabel : activeBrand}</span>
+        </div>
       </div>
 
       {/* Grid */}
@@ -192,49 +271,48 @@ export default function ProyectosPage() {
         <div className="container">
           <AnimatePresence mode="wait">
             <motion.div
-              key={active}
+              key={`${active}-${activeBrand}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2px', background: 'var(--border)' }}
+              style={filtered.length > 0
+                ? { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: '10px' }
+                : { padding: '80px 0', textAlign: 'center' }
+              }
             >
+              {filtered.length === 0 && (
+                <p style={{ fontSize: '15px', color: 'var(--text-muted)' }}>{p.noResults}</p>
+              )}
               {filtered.map((proj, i) => (
                 <Reveal key={proj.id} delay={i * 0.05}>
-                  <Link href={`/proyectos/${proj.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+                  <Link href={`/proyectos/${proj.slug}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                     <div style={{
-                      aspectRatio: '4/3',
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'flex-end',
-                      position: 'relative',
-                      overflow: 'hidden',
+                      height: '100%',
                       cursor: 'pointer',
-                      background: '#1a1a1a',
+                      background: 'var(--white)',
+                      border: '1px solid var(--border)',
                       borderRadius: '10px',
+                      overflow: 'hidden',
                     }}
                       className="project-card">
 
-                      <Image
-                        src={proj.cover}
-                        alt={proj.title}
-                        fill
-                        style={{ objectFit: 'cover', transition: 'transform 0.6s ease' }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="proj-img"
-                      />
+                      <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: '#1a1a1a' }}>
+                        <Image
+                          src={proj.cover}
+                          alt={proj.title}
+                          fill
+                          style={{ objectFit: 'cover', transition: 'transform 0.6s ease' }}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="proj-img"
+                        />
+                      </div>
 
-                      <div style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)',
-                        zIndex: 1,
-                      }} />
-
-                      <div style={{ position: 'relative', zIndex: 2, padding: '28px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)' }}>{displayCategory(proj.categoryEs)}</span>
-                          <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.55)' }}>{proj.year}</span>
+                      <div style={{ padding: '24px 28px', flex: 1 }}>
+                        <div style={{ marginBottom: '10px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '3px 8px' }}>{displayCategory(proj.categoryEs)}</span>
                         </div>
                         <h3 style={{
                           fontFamily: 'var(--font-barlow), sans-serif',
@@ -242,10 +320,11 @@ export default function ProyectosPage() {
                           fontSize: '17px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.02em',
-                          color: '#fff',
+                          color: 'var(--text)',
                           lineHeight: 1.2,
+                          marginBottom: '4px',
                         }}>{proj.title}</h3>
-                        <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>{p.clientLabel}: {proj.client}</p>
+                        <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{p.clientLabel}: {proj.client}</p>
                       </div>
                     </div>
                   </Link>

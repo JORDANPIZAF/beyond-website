@@ -238,6 +238,9 @@ export const translations = {
       heroBody: 'Desde stands de alto impacto para marcas globales hasta arquitectura comercial de gran escala. Cada proyecto refleja nuestra capacidad industrial.',
       categories: ['Todos', 'Arquitectura Comercial', 'Arquitectura Efímera', 'Góndolas', 'Mobiliario', 'Publicidad', 'Creativo'],
       clientLabel: 'Cliente',
+      allBrandsLabel: 'Todas las marcas',
+      brandFilterLabel: 'Marca',
+      noResults: 'No hay proyectos que coincidan con estos filtros.',
     },
     blog: {
       tag: 'Blog',
@@ -529,6 +532,9 @@ export const translations = {
       heroBody: 'From high-impact trade show exhibits for global brands to large-scale retail architecture. Every project reflects our industrial capacity.',
       categories: ['All', 'Commercial Architecture', 'Ephemeral Architecture', 'Gondolas', 'Furniture', 'Advertising', 'Creative'],
       clientLabel: 'Client',
+      allBrandsLabel: 'All brands',
+      brandFilterLabel: 'Brand',
+      noResults: 'No projects match these filters.',
     },
     blog: {
       tag: 'Blog',

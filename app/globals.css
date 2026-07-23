@@ -41,6 +41,9 @@ p { text-wrap: pretty; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
+.hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
 /* Noise texture overlay */
 body::before {
   content: '';
@@ -207,6 +210,16 @@ body::before {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .proj-dock-item:hover .proj-dock-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+.project-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,0.1); border-color: var(--accent); }
+.project-card:hover .proj-img { transform: scale(1.08); }
+
+.filter-pill, .brand-select { transition: transform 0.2s ease, border-color 0.2s ease; }
+.filter-pill:hover, .brand-select:hover { transform: translateY(-2px); }
+
+.dock-circle { transition: transform 0.2s ease; }
+.dock-circle:hover { transform: scale(1.1); }
 
 .grid-cap-cards { align-items: stretch; }
 .grid-cap-cards .cap-card-reveal,

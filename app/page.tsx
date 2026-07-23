@@ -7,6 +7,7 @@ import { motion, useTransform, MotionValue } from 'framer-motion'
 import { Layers, Briefcase } from 'lucide-react'
 import HeroScroll from './components/HeroScroll'
 import ScrollCard from './components/ScrollCard'
+import ProductSequence from './components/ProductSequence'
 import SpotlightCard from './components/SpotlightCard'
 import ProjectGallery from './components/ProjectGallery'
 import PillLink from './components/PillLink'
@@ -389,19 +390,23 @@ export default function Home() {
 
       <HeroScroll />
 
-      <ScrollCard index={2} scrollHeight="240vh">
+      <ScrollCard index={2} scrollHeight="900vh">
+        {(progress: MotionValue<number>) => <ProductSequence progress={progress} />}
+      </ScrollCard>
+
+      <ScrollCard index={3} scrollHeight="240vh">
         <AboutSection />
       </ScrollCard>
 
-      <ScrollCard index={3} scrollHeight="900vh">
+      <ScrollCard index={4} scrollHeight="900vh">
         {(progress: MotionValue<number>) => <CapabilitiesSection progress={progress} />}
       </ScrollCard>
 
-      <ScrollCard index={4} scrollHeight="240vh">
+      <ScrollCard index={5} scrollHeight="240vh">
         <ProjectsSection />
       </ScrollCard>
 
-      <ScrollCard index={5} scrollHeight="220vh" isLast>
+      <ScrollCard index={6} scrollHeight="220vh" isLast>
         <ClientsSection />
       </ScrollCard>
 
