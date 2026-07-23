@@ -2,14 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '../../components/Reveal'
 import TextReveal from '../../components/TextReveal'
+import { MapPin, HardHat, Workflow, ClipboardCheck, TowerControl, Camera } from 'lucide-react'
 
 const capabilities = [
-  'Instalación en todo Colombia',
-  'Supervisión de obra',
-  'Coordinación logística',
-  'Control de calidad en sitio',
-  'Montaje en altura',
-  'Documentación fotográfica',
+  { label: 'Instalación en todo Colombia', icon: MapPin },
+  { label: 'Supervisión de obra', icon: HardHat },
+  { label: 'Coordinación logística', icon: Workflow },
+  { label: 'Control de calidad en sitio', icon: ClipboardCheck },
+  { label: 'Montaje en altura', icon: TowerControl },
+  { label: 'Documentación fotográfica', icon: Camera },
 ]
 
 const relatedProjects = [
@@ -44,7 +45,7 @@ export default function InstalacionPage() {
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
               <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Especialidad 05</span>
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Especialidad</span>
             </div>
             <TextReveal as="h1" style={{ fontFamily: 'var(--font-barlow), sans-serif', fontWeight: 800, fontSize: 'clamp(48px, 8vw, 96px)', lineHeight: 0.9, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '32px', display: 'block' }}>
               Instalación<br /><span style={{ color: 'var(--accent)' }}>Especializada</span>
@@ -69,16 +70,15 @@ export default function InstalacionPage() {
               </div>
             </Reveal>
             <Reveal delay={0.15} direction="left">
-              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '120px', lineHeight: 1, color: 'rgba(178,132,60,0.08)', letterSpacing: '-0.04em', marginBottom: '-40px' }}>05</div>
               <TextReveal as="h2" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '24px', display: 'block' }}>Del taller<br />al sitio final</TextReveal>
               <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>
                 Equipo especializado de instalación con amplia experiencia en proyectos de alta complejidad en todo Colombia. Coordinación logística, montaje profesional y control de calidad en sitio para garantizar una implementación perfecta. Cubrimos desde Bogotá hasta cualquier ciudad del país.
               </TextReveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }}>
                 {capabilities.map(c => (
-                  <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '6px', height: '6px', background: 'var(--accent)', flexShrink: 0 }} />
-                    <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c}</span>
+                  <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <c.icon size={20} strokeWidth={1.75} color="var(--accent)" style={{ flexShrink: 0 }} />
+                    <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c.label}</span>
                   </div>
                 ))}
               </div>

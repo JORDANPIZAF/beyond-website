@@ -2,14 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '../../components/Reveal'
 import TextReveal from '../../components/TextReveal'
+import { Zap, Flame, RotateCw, SprayCan, Sparkles, Building2 } from 'lucide-react'
 
 const capabilities = [
-  'Corte láser de precisión',
-  'Soldadura MIG y TIG',
-  'Doblado y rolado',
-  'Pintura electrostática',
-  'Tratamientos superficiales',
-  'Estructuras de gran escala',
+  { label: 'Corte láser de precisión', icon: Zap },
+  { label: 'Soldadura MIG y TIG', icon: Flame },
+  { label: 'Doblado y rolado', icon: RotateCw },
+  { label: 'Pintura electrostática', icon: SprayCan },
+  { label: 'Tratamientos superficiales', icon: Sparkles },
+  { label: 'Estructuras de gran escala', icon: Building2 },
 ]
 
 const relatedProjects = [
@@ -44,7 +45,7 @@ export default function MetalmecanicaPage() {
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
               <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Especialidad 02</span>
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Especialidad</span>
             </div>
             <TextReveal as="h1" style={{ fontFamily: 'var(--font-barlow), sans-serif', fontWeight: 800, fontSize: 'clamp(48px, 8vw, 96px)', lineHeight: 0.9, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '32px', display: 'block' }}>
               Metal<br /><span style={{ color: 'var(--accent)' }}>mecánica</span>
@@ -69,16 +70,15 @@ export default function MetalmecanicaPage() {
               </div>
             </Reveal>
             <Reveal delay={0.15} direction="left">
-              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '120px', lineHeight: 1, color: 'rgba(178,132,60,0.08)', letterSpacing: '-0.04em', marginBottom: '-40px' }}>02</div>
               <TextReveal as="h2" style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '24px', display: 'block' }}>Estructuras metálicas<br />de alta resistencia</TextReveal>
               <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>
                 Piezas estructurales, exhibidores metálicos, marcos, soportes y componentes de alta resistencia. Soldadura MIG, TIG y de punto. Corte láser, doblado y rolado de láminas con alta precisión dimensional. Pintura electrostática con acabados duraderos.
               </TextReveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }}>
                 {capabilities.map(c => (
-                  <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '6px', height: '6px', background: 'var(--accent)', flexShrink: 0 }} />
-                    <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c}</span>
+                  <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <c.icon size={20} strokeWidth={1.75} color="var(--accent)" style={{ flexShrink: 0 }} />
+                    <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c.label}</span>
                   </div>
                 ))}
               </div>

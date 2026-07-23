@@ -3,8 +3,19 @@
 import { Fragment } from 'react'
 import Reveal from '../components/Reveal'
 import Link from 'next/link'
+import Image from 'next/image'
 import TextReveal from '../components/TextReveal'
+import SpotlightCard from '../components/SpotlightCard'
 import { useLanguage } from '../context/LanguageContext'
+
+const capabilityImgs = [
+  '/images/service/beyond_carpinteria.webp',
+  '/images/service/beyond_metalmecanica.webp',
+  '/images/service/beyond_impresion.webp',
+  '/images/service/beyond_acrilicos.webp',
+  '/images/service/baners_instalacion_beyond.jpg',
+  '/images/service/beyond_logistica_tegnologia.webp',
+]
 
 export default function CapacidadesPage() {
   const { t } = useLanguage()
@@ -49,57 +60,52 @@ export default function CapacidadesPage() {
       </section>
 
       {/* Capabilities detail */}
-      {cap.items.map((item, i) => (
-        <section key={item.num} style={{
-          padding: '100px 0',
-          background: i % 2 === 0 ? 'var(--white)' : 'var(--bg)',
-          borderTop: '1px solid var(--border)',
-        }}>
-          <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '80px', alignItems: 'start' }} className="grid-2">
-              <Reveal>
-                <div style={{
-                  fontFamily: 'var(--font-barlow), sans-serif',
-                  fontWeight: 800,
-                  fontSize: '120px',
-                  lineHeight: 1,
-                  color: 'rgba(178,132,60,0.1)',
-                  letterSpacing: '-0.04em',
-                }}>{item.num}</div>
-                <div style={{ marginTop: '-24px' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{item.subtitle}</span>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.15} direction="left">
-                <TextReveal as="h2" style={{
-                  fontFamily: 'var(--font-barlow), sans-serif',
-                  fontWeight: 800,
-                  fontSize: 'clamp(28px, 4vw, 48px)',
-                  lineHeight: 1,
-                  letterSpacing: '-0.02em',
-                  textTransform: 'uppercase',
-                  color: 'var(--text)',
-                  marginBottom: '24px',
-                  display: 'block',
-                }}>{item.title}</TextReveal>
-                <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>{item.desc}</TextReveal>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px', marginBottom: '32px' }}>
-                  {item.capabilities.map(c => (
-                    <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '6px', height: '6px', background: 'var(--accent)', flexShrink: 0 }} />
-                      <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{c}</span>
+      <section style={{ padding: '100px 0', background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '32px',
+          }} className="grid-cap-cards">
+            {cap.items.map((item, i) => (
+              <Reveal key={item.num} delay={i * 0.08} className="cap-card-reveal">
+                <Link href={item.href} className="cap-card-link">
+                  <SpotlightCard style={{ background: 'var(--white)' }}>
+                    <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', flexShrink: 0 }}>
+                      <Image
+                        src={capabilityImgs[i]}
+                        alt={item.title}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
                     </div>
-                  ))}
-                </div>
-                <Link href={item.href} style={{ textDecoration: 'none', fontSize: '13px', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.06em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  {cap.seeMore} {item.title} →
+                    <div style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                      <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>{item.subtitle}</span>
+                      <h2 style={{
+                        fontFamily: 'var(--font-barlow), sans-serif',
+                        fontWeight: 800,
+                        fontSize: '22px',
+                        lineHeight: 1.1,
+                        letterSpacing: '-0.01em',
+                        textTransform: 'uppercase',
+                        color: 'var(--text)',
+                        margin: '8px 0 12px',
+                      }}>{item.title}</h2>
+                      <p style={{
+                        fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: '16px',
+                        display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden',
+                      }}>{item.desc}</p>
+                      <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.06em', display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: 'auto' }}>
+                        {cap.seeMore} →
+                      </span>
+                    </div>
+                  </SpotlightCard>
                 </Link>
               </Reveal>
-            </div>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
       {/* CTA */}
       <section style={{ padding: '120px 0', background: 'var(--accent)', position: 'relative', overflow: 'hidden' }}>

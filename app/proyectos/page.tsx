@@ -1,12 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '../components/Reveal'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
 import TextReveal from '../components/TextReveal'
+import { LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette } from 'lucide-react'
+
+const categoryIcons = [LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette]
 
 const projectsData = [
   { id: 1,  slug: 'lg-vitrina-bucaramanga',  title: 'LG Vitrina Bucaramanga',    categoryEs: 'Arquitectura Comercial',  client: 'LG',          year: '2024', cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.png' },
@@ -42,11 +45,23 @@ const categoryMap: Record<string, number> = {
 
 export default function ProyectosPage() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [showDock, setShowDock] = useState(false)
+  const filterBarRef = useRef<HTMLDivElement>(null)
   const { t } = useLanguage()
   const p = t.proyectos
 
   const categories = p.categories
   const active = categories[activeIndex]
+
+  useEffect(() => {
+    const el = filterBarRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowDock(!entry.isIntersecting && entry.boundingClientRect.top < 0)
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const filtered = activeIndex === 0
     ? projectsData
@@ -69,10 +84,6 @@ export default function ProyectosPage() {
         }} />
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{p.tag}</span>
-            </div>
             <TextReveal as="h1" style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
@@ -96,31 +107,85 @@ export default function ProyectosPage() {
       </section>
 
       {/* Filters */}
-      <section style={{ padding: '32px 0', background: 'var(--white)', borderBottom: '1px solid var(--border)', position: 'sticky', top: '76px', zIndex: 10, backdropFilter: 'blur(12px)' }}>
+      <section ref={filterBarRef} style={{ padding: '32px 0', background: 'var(--white)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {categories.map((cat, i) => (
-              <button
-                key={cat}
-                onClick={() => setActiveIndex(i)}
-                style={{
-                  background: activeIndex === i ? 'var(--accent)' : 'transparent',
-                  border: `1px solid ${activeIndex === i ? 'var(--accent)' : 'var(--border)'}`,
-                  color: activeIndex === i ? '#fff' : 'var(--text-muted)',
-                  padding: '8px 20px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  borderRadius: '999px',
-                }}
-              >{cat}</button>
-            ))}
+            {categories.map((cat, i) => {
+              const Icon = categoryIcons[i]
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveIndex(i)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: activeIndex === i ? 'var(--accent)' : 'transparent',
+                    border: `1px solid ${activeIndex === i ? 'var(--accent)' : 'var(--border)'}`,
+                    color: activeIndex === i ? '#fff' : 'var(--text-muted)',
+                    padding: '8px 20px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    borderRadius: '999px',
+                  }}
+                >
+                  <Icon size={15} strokeWidth={2} />
+                  {cat}
+                </button>
+              )
+            })}
           </div>
         </div>
       </section>
+
+      {/* Floating category dock — appears once the filter bar scrolls out of view */}
+      <div
+        className="hide-mobile"
+        style={{
+          position: 'fixed',
+          left: '24px',
+          top: '50%',
+          transform: `translateY(-50%) translateX(${showDock ? '0' : '-72px'})`,
+          opacity: showDock ? 1 : 0,
+          pointerEvents: showDock ? 'auto' : 'none',
+          transition: 'opacity 0.3s ease, transform 0.3s ease',
+          zIndex: 40,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+        }}
+      >
+        {categories.map((cat, i) => {
+          const Icon = categoryIcons[i]
+          return (
+            <div key={cat} className="proj-dock-item">
+              <button
+                onClick={() => setActiveIndex(i)}
+                aria-label={cat}
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: activeIndex === i ? 'var(--accent)' : 'var(--white)',
+                  border: `1px solid ${activeIndex === i ? 'var(--accent)' : 'var(--border)'}`,
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+                  cursor: 'pointer',
+                }}
+              >
+                <Icon size={18} strokeWidth={2} color={activeIndex === i ? '#fff' : 'var(--text-muted)'} />
+              </button>
+              <span className="proj-dock-label">{cat}</span>
+            </div>
+          )
+        })}
+      </div>
 
       {/* Grid */}
       <section style={{ padding: '60px 0 120px', background: 'var(--bg)' }}>

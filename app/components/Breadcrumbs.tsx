@@ -47,13 +47,13 @@ export default function Breadcrumbs() {
       left: 0,
       right: 0,
       zIndex: 10,
-      pointerEvents: 'none',
+      background: 'var(--accent)',
     }}>
       <div style={{
         width: '100%',
         maxWidth: '1320px',
         margin: '0 auto',
-        padding: '0 32px',
+        padding: '10px 32px',
         display: 'flex',
         alignItems: 'center',
         flexWrap: 'wrap',
@@ -62,17 +62,16 @@ export default function Breadcrumbs() {
         fontWeight: 600,
         letterSpacing: '0.04em',
         textTransform: 'uppercase',
-        pointerEvents: 'auto',
       }}>
         {crumbs.map((crumb, i) => {
           const isLast = i === crumbs.length - 1
           return (
             <span key={crumb.href} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              {i > 0 && <span style={{ color: 'var(--accent)', opacity: 0.45 }}>/</span>}
+              {i > 0 && <span style={{ color: '#fff', opacity: 0.5 }}>/</span>}
               {isLast ? (
-                <span style={{ color: 'var(--accent)' }}>{crumb.label}</span>
+                <span style={{ color: '#fff' }}>{crumb.label}</span>
               ) : (
-                <Link href={crumb.href} className="breadcrumb-link" style={{ color: 'var(--accent)', opacity: 0.6, textDecoration: 'none' }}>
+                <Link href={crumb.href} className="breadcrumb-link" style={{ color: '#fff', opacity: 0.75, textDecoration: 'none' }}>
                   {crumb.label}
                 </Link>
               )}

@@ -10,6 +10,21 @@ import TextReveal from '../../components/TextReveal'
 
 export const runtime = 'edge'
 
+const clientLogoMap: Record<string, string> = {
+  'Samsung': 'SAMSUNG - BEYOND.webp',
+  'TCL': 'TCL---BEYOND.webp',
+  'Bold': 'bold.webp',
+  'Apple': 'APPLE - BEYOND.webp',
+  'AMD': 'AMD - BEYOND.webp',
+  'LG': 'LG - BEYOND.webp',
+  'Aldo': 'aldo.webp',
+  'Olímpica': 'OLIMPICA - BEYOND.webp',
+  'Nestlé': 'NESTLE- BEYOND.webp',
+  'Microsoft': 'microsoft.webp',
+  'Canasta': 'LOGO_CANASTA .webp',
+  'Purina': 'NESTLE PURINA - BEYOND.webp',
+}
+
 const projectsData: Record<string, {
   title: string
   client: string
@@ -24,7 +39,7 @@ const projectsData: Record<string, {
     client: 'Samsung',
     category: 'Arquitectura Efímera',
     year: '2024',
-    description: 'Stand interactivo de alto impacto para el lanzamiento de la línea Galaxy. Fabricación integral de estructura metálica, carpintería, acrílicos e impresión de gran formato. Implementación en centros comerciales de Bogotá y Medellín.',
+    description: 'Stand interactivo Galaxy Studio para el lanzamiento de la línea Samsung Galaxy en centros comerciales de Bogotá y Medellín. Estructura metálica de piso a techo con paneles retroiluminados, integración de pantallas para demostraciones de SmartThings y acabados en madera y verde, color característico de la marca. Fabricación integral: metalmecánica de la estructura, carpintería del mobiliario interior, impresión de gran formato para la señalización y montaje en sitio con nuestro propio equipo de instalación.',
     cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
     gallery: [
       '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
@@ -42,7 +57,7 @@ const projectsData: Record<string, {
     client: 'TCL',
     category: 'Arquitectura Efímera',
     year: '2023',
-    description: 'TV Wall móvil de gran impacto visual para TCL. Estructura metalmecánica con capacidad para múltiples pantallas, sistema de iluminación LED y acabados de pintura electrostática de alta durabilidad.',
+    description: 'TV Wall móvil de gran formato para TCL, diseñado para exhibir simultáneamente múltiples televisores en un solo punto de alto tráfico. Estructura metalmecánica robusta capaz de soportar el peso y cableado de varias pantallas, con sistema de iluminación LED perimetral y acabados en pintura electrostática de alta durabilidad para resistir el uso constante en piso de venta. Un desarrollo pensado para moverse entre tiendas sin perder rigidez ni terminación premium.',
     cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.png',
     gallery: [
       '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.png',
@@ -60,7 +75,7 @@ const projectsData: Record<string, {
     client: 'Bold',
     category: 'Arquitectura Efímera',
     year: '2021',
-    description: 'Islas comerciales personalizadas para Bold. Diseño modular con carpintería de precisión, acabados en laminado de alto brillo y sistema de iluminación integrado para puntos de venta en centros comerciales.',
+    description: 'Islas comerciales modulares para Bold, diseñadas para puntos de venta dentro de centros comerciales. Carpintería de precisión con acabados en laminado de alto brillo, iluminación integrada bajo mesón y sistema de anclaje que permite reconfigurar el mobiliario según el espacio disponible en cada ubicación. Un diseño compacto que maximiza la exhibición de producto sin perder circulación alrededor del punto.',
     cover: '/images/portfolio/arq-efimera/img/02/islas_boldDEST-4.png',
     gallery: [
       '/images/portfolio/arq-efimera/img/02/islas_boldDEST-1.png',
@@ -78,7 +93,7 @@ const projectsData: Record<string, {
     client: 'Apple',
     category: 'Arquitectura Efímera',
     year: '2021',
-    description: 'Isla de exhibición de productos insignia Apple. Carpintería y metalmecánica de alta precisión con acabados premium que respetan la identidad visual de la marca. Iluminación LED de bajo consumo y superficies en vidrio templado.',
+    description: 'Isla de exhibición para productos insignia Apple, fabricada respetando al milímetro los estándares de diseño y minimalismo de la marca. Carpintería y metalmecánica de alta precisión, superficies en vidrio templado, iluminación LED de bajo consumo integrada en la estructura y acabados en tonos neutros que ponen el foco completamente en el producto. Cada unión y cada terminación pasó por control de calidad antes de instalar en sitio.',
     cover: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png',
     gallery: [
       '/images/portfolio/arq-efimera/img/04/isla_appleDEST-1.png',
@@ -96,7 +111,7 @@ const projectsData: Record<string, {
     client: 'AMD',
     category: 'Arquitectura Efímera',
     year: '2020',
-    description: 'Mesa de exhibición de alto impacto para AMD. Estructura metalmecánica robusta con superficie en vidrio templado, iluminación perimetral LED y soporte de impresión digital de alta resolución.',
+    description: 'Mesa de exhibición de alto impacto para AMD, pensada como punto focal dentro de eventos y activaciones tecnológicas. Estructura metalmecánica robusta con superficie en vidrio templado, iluminación perimetral LED que resalta el producto y soporte para impresión digital de alta resolución con la gráfica de marca. Diseñada para resistir montaje y desmontaje repetido sin perder estabilidad.',
     cover: '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.png',
     gallery: [
       '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.png',
@@ -114,7 +129,7 @@ const projectsData: Record<string, {
     client: 'LG',
     category: 'Arquitectura Comercial',
     year: '2023',
-    description: 'Arquitectura comercial integral para LG en grandes superficies. Diseño de espacios de exhibición con estructuras metálicas y paneles de carpintería de alta precisión. Implementación en múltiples tiendas a nivel nacional.',
+    description: 'Arquitectura comercial integral para LG en grandes superficies a nivel nacional. Diseño de espacios de exhibición con estructuras metálicas, paneles de carpintería de alta precisión y señalización de marca aplicada en múltiples formatos. El proyecto se replicó en distintas tiendas manteniendo consistencia de marca y calidad de acabado en cada instalación.',
     cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png',
     gallery: [
       '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-1.png',
@@ -132,7 +147,7 @@ const projectsData: Record<string, {
     client: 'Aldo',
     category: 'Arquitectura Comercial',
     year: '2022',
-    description: 'Mobiliario comercial de alta gama para tiendas Aldo. Carpintería de precisión con acabados lacados, herrajes de importación y superficies de vidrio templado. Diseño que refleja el posicionamiento premium de la marca.',
+    description: 'Mobiliario comercial de alta gama para tiendas Aldo. Carpintería de precisión con acabados lacados, herrajes de importación y superficies en vidrio templado que refuerzan el posicionamiento premium de la marca en el punto de venta. Cada exhibidor se fabricó a medida para adaptarse al layout específico de cada tienda.',
     cover: '/images/portfolio/arq-comercial/img/p2/DEST-2PANDORA.png',
     gallery: [
       '/images/portfolio/arq-comercial/img/p2/DEST-1PANDORA.png',
@@ -150,7 +165,7 @@ const projectsData: Record<string, {
     client: 'LG',
     category: 'Arquitectura Comercial',
     year: '2024',
-    description: 'Intervención de vitrina comercial LG en Bucaramanga. Diseño y fabricación de módulos de exhibición con iluminación LED, estructuras metálicas y carpintería de alta calidad para punto de venta de primer nivel.',
+    description: 'Intervención de vitrina comercial LG dentro del punto de venta TownCenter en Bucaramanga. Diseño y fabricación de módulos de exhibición con iluminación LED integrada, estructura metálica y carpintería de acabado fino para presentar el portafolio LG dentro de un espacio comercial ya existente. Instalación coordinada en sitio sin interrumpir la operación diaria del punto de venta.',
     cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.png',
     gallery: [
       '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.png',
@@ -168,7 +183,7 @@ const projectsData: Record<string, {
     client: 'Olímpica',
     category: 'Góndolas',
     year: '2024',
-    description: 'Góndolas de exhibición para sección de licores Olímpica. Diseño estructural robusto en metalmecánica con acabados en pintura electrostática, iluminación integrada y señalización de gran formato.',
+    description: 'Góndolas de exhibición para la sección de licores de Olímpica. Estructura en metalmecánica con acabado en tonos oscuros y detalles en cobre, señalización retroiluminada con el nombre de cada categoría y medallones circulares informativos integrados en el mueble. Un desarrollo pensado para darle a la sección de licores una identidad visual propia dentro del supermercado, sin sacrificar capacidad de almacenaje ni exhibición de producto.',
     cover: '/images/portfolio/gondolas/imge/01/GONDOLAS_-DES-1.png',
     gallery: [
       '/images/portfolio/gondolas/imge/01/GONDOLAS_-DES-1.png',
@@ -186,7 +201,7 @@ const projectsData: Record<string, {
     client: 'Olímpica',
     category: 'Góndolas',
     year: '2021',
-    description: 'Zona Fit Olímpica: exhibición especializada para productos de fitness y nutrición deportiva. Góndolas modulares con sistema de iluminación LED y señalética de alto impacto visual.',
+    description: 'Zona Fit Olímpica: exhibición especializada para productos de fitness y nutrición deportiva. Góndolas modulares fabricadas en metalmecánica, con sistema de iluminación LED y señalética de alto impacto visual que diferencia esta sección del resto del supermercado. El diseño permite reorganizar los módulos según la rotación de producto.',
     cover: '/images/portfolio/gondolas/imge/02/zona-fit_DEST-2.png',
     gallery: [
       '/images/portfolio/gondolas/imge/02/zona-fit_DEST-1.png',
@@ -204,7 +219,7 @@ const projectsData: Record<string, {
     client: 'Olímpica',
     category: 'Góndolas',
     year: '2022',
-    description: 'Sistema completo de góndolas para Olímpica. Fabricación metalmecánica de alta resistencia con capacidad de carga superior, acabados en pintura electrostática y sistema de estanterías ajustables.',
+    description: 'Sistema completo de góndolas para distintas secciones de Olímpica. Fabricación metalmecánica de alta resistencia con capacidad de carga superior a la estándar, acabados en pintura electrostática y sistema de estanterías ajustables que se adapta al tipo y volumen de cada producto. Un desarrollo a escala pensado para múltiples puntos de venta.',
     cover: '/images/portfolio/gondolas/imge/03/gondolas_2_DEST-2.png',
     gallery: [
       '/images/portfolio/gondolas/imge/03/gondolas_2_DEST-1.png',
@@ -222,7 +237,7 @@ const projectsData: Record<string, {
     client: 'Corporativo',
     category: 'Mobiliario',
     year: '2023',
-    description: 'Proyecto de mobiliario corporativo para oficinas en Bogotá. Diseño e instalación de escritorios, muebles de almacenamiento y divisiones en carpintería de alta calidad con acabados lacados y herrajes importados.',
+    description: 'Mobiliario corporativo para oficinas en Bogotá: puestos de trabajo modulares en tablero enchapado en madera, paneles divisorios de color como elemento de identidad visual entre áreas y jardineras integradas que suavizan el ambiente industrial del espacio. Carpintería de alta calidad con acabados lacados y herrajes importados, fabricada e instalada a la medida del layout de la oficina.',
     cover: '/images/portfolio/mobiliario/img/01/OFI-BOGOTÁ-DES-1.png',
     gallery: [
       '/images/portfolio/mobiliario/img/01/OFI-BOGOTÁ-DES-1.png',
@@ -240,7 +255,7 @@ const projectsData: Record<string, {
     client: 'Corporativo',
     category: 'Mobiliario',
     year: '2021',
-    description: 'Diseño de mobiliario corporativo para oficinas en Barranquilla. Fabricación completa de puestos de trabajo ergonómicos, muebles de archivo y áreas colaborativas con materiales de primera calidad.',
+    description: 'Mobiliario corporativo para oficinas en Barranquilla: puestos de trabajo ergonómicos, muebles de archivo y áreas colaborativas fabricadas con materiales de primera calidad. Carpintería de precisión en cada puesto, pensada para maximizar el uso del espacio sin sacrificar comodidad ni estética del ambiente de trabajo.',
     cover: '/images/portfolio/mobiliario/img/02/DEST-4_OFI_-BARRANQUILLA.png',
     gallery: [
       '/images/portfolio/mobiliario/img/02/DEST-1_OFI_-BARRANQUILLA.png',
@@ -258,7 +273,7 @@ const projectsData: Record<string, {
     client: 'Corporativo',
     category: 'Mobiliario',
     year: '2022',
-    description: 'Proyecto integral de mobiliario para hogar. Diseño personalizado y fabricación en maderas nobles con acabados premium. Piezas únicas que combinan funcionalidad y estética de alto nivel.',
+    description: 'Proyecto integral de mobiliario para hogar, con diseño personalizado y fabricación en maderas nobles. Piezas únicas trabajadas por nuestro equipo de ebanistas, con acabados premium que combinan funcionalidad y estética de alto nivel para espacios residenciales exigentes.',
     cover: '/images/portfolio/mobiliario/img/03/mobiliario_3_DEST-1.png',
     gallery: [
       '/images/portfolio/mobiliario/img/03/mobiliario_3_DEST-1.png',
@@ -276,7 +291,7 @@ const projectsData: Record<string, {
     client: 'Nestlé',
     category: 'Publicidad',
     year: '2023',
-    description: 'Stand para el Congreso Colombiano de Pediatría, Nestlé. Fabricación integral del espacio: estructura, carpintería, impresión de gran formato y señalización médica. Espacio funcional que cumple con los estándares de la marca.',
+    description: 'Stand para el Congreso Colombiano de Pediatría de Nestlé. Fabricación integral del espacio: estructura, carpintería, impresión de gran formato y señalización médica especializada. Un stand funcional pensado para la interacción con profesionales de la salud, cumpliendo los estándares visuales y de contenido que exige la marca en un entorno científico.',
     cover: '/images/portfolio/publicidad/img/01/evento-nestle_DEST-1.png',
     gallery: [
       '/images/portfolio/publicidad/img/01/evento-nestle_DEST-1.png',
@@ -294,7 +309,7 @@ const projectsData: Record<string, {
     client: 'Nestlé',
     category: 'Publicidad',
     year: '2022',
-    description: 'Material publicitario y exhibición POP para línea Nestlé NAN. Impresión de gran formato, displays de punto de venta y señalización permanente para canal farmacéutico y supermercados.',
+    description: 'Stand ferial para la línea Nestlé NAN, con una estructura curva retroiluminada como elemento central y una pantalla integrada para contenido de marca. Acabados en superficies lacadas blancas, iluminación LED de acento y mobiliario a la medida para la atención de visitantes durante el evento. Impresión de gran formato y displays de punto de venta complementaron la presencia de marca en canal farmacéutico y supermercados.',
     cover: '/images/portfolio/publicidad/img/02/nestle_nan_DEST-5.png',
     gallery: [
       '/images/portfolio/publicidad/img/02/nestle_nan_DEST-1.png',
@@ -312,7 +327,7 @@ const projectsData: Record<string, {
     client: 'Microsoft',
     category: 'Publicidad',
     year: '2021',
-    description: 'Stands de exhibición Xbox para centros comerciales a nivel nacional. Estructura metalmecánica modular con carpintería de precisión, pantallas integradas e impresión de gran formato con identidad de marca Microsoft.',
+    description: 'Stands de exhibición Xbox para centros comerciales a nivel nacional. Estructura metalmecánica modular con carpintería de precisión, soportes para pantallas integradas e impresión de gran formato con la identidad visual de la marca. Un desarrollo replicable, pensado para instalarse y desmontarse rápidamente entre distintos puntos del país.',
     cover: '/images/portfolio/publicidad/img/03/publi_xbox_DEST-1.png',
     gallery: [
       '/images/portfolio/publicidad/img/03/publi_xbox_DEST-1.png',
@@ -330,7 +345,7 @@ const projectsData: Record<string, {
     client: 'Canasta',
     category: 'Creativo',
     year: '2023',
-    description: 'Conceptualización y diseño creativo para Canasta Panadería. Desarrollo de identidad visual aplicada a elementos de merchandising, señalización interior, display de productos y materiales de punto de venta.',
+    description: 'Carrito móvil de venta para Canasta Panadería: estructura en carpintería con acabado en madera natural, toldo publicitario a la medida, canastillas en fibra natural para exhibir el pan y punto de cobro integrado. Un desarrollo pensado para activaciones itinerantes, donde el mueble mismo comunica el concepto artesanal de la marca.',
     cover: '/images/portfolio/creativo/img/03/canasta_DEST-6.png',
     gallery: [
       '/images/portfolio/creativo/img/03/canasta_DEST-1.png',
@@ -348,7 +363,7 @@ const projectsData: Record<string, {
     client: 'Olímpica',
     category: 'Creativo',
     year: '2022',
-    description: 'Intervención creativa Mundo Playa para Olímpica. Diseño conceptual y fabricación de elementos decorativos estacionales, señalización temática y displays de producto para temporada de playa.',
+    description: 'Intervención creativa Mundo Playa para Olímpica: diseño conceptual y fabricación de elementos decorativos estacionales, señalización temática y displays de producto para la temporada de playa. Un desarrollo que combina carpintería, impresión de gran formato y montaje en sitio para transformar la experiencia de compra durante la campaña.',
     cover: '/images/portfolio/creativo/img/01/DEST-5MUNDO-PLAYA.png',
     gallery: [
       '/images/portfolio/creativo/img/01/DEST-1MUNDO-PLAYA.png',
@@ -366,7 +381,7 @@ const projectsData: Record<string, {
     client: 'Purina',
     category: 'Creativo',
     year: '2020',
-    description: 'Activación creativa para Purina en tiendas de mascotas. Diseño y fabricación de displays especializados, señalización temática y material POP que comunica el amor por las mascotas en el punto de venta.',
+    description: 'Activación creativa para Purina en tiendas especializadas de mascotas. Diseño y fabricación de displays temáticos, señalización a la medida y material POP que comunica el vínculo con las mascotas directamente en el punto de venta. Un desarrollo que combina carpintería, impresión y detalles de acabado pensados para un público muy identificado con la marca.',
     cover: '/images/portfolio/creativo/img/02/mascotas_DEST-1.png',
     gallery: [
       '/images/portfolio/creativo/img/02/mascotas_DEST-1.png',
@@ -404,79 +419,92 @@ export default function ProjectDetailPage() {
     )
   }
 
+  const logoFile = clientLogoMap[project.client]
+
+  const relatedProjects = Object.entries(projectsData)
+    .filter(([s, proj]) => s !== slug && proj.category === project.category)
+    .slice(0, 2)
+    .map(([s, proj]) => ({ slug: s, ...proj }))
+
   return (
     <>
-      {/* Hero */}
-      <section style={{ position: 'relative', height: '80vh', minHeight: '500px', overflow: 'hidden' }}>
-        <Image
-          src={project.cover}
-          alt={project.title}
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
-        />
+      {/* Intro */}
+      <section style={{ paddingTop: '180px', paddingBottom: '80px', background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--accent)' }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
         }} />
-        <div className="container" style={{ position: 'absolute', bottom: '60px', left: '50%', transform: 'translateX(-50%)', width: '100%' }}>
-          <Link href="/proyectos" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            color: 'rgba(255,255,255,0.7)', textDecoration: 'none',
-            fontSize: '13px', fontWeight: 600, letterSpacing: '0.06em',
-            marginBottom: '24px',
-          }}>
-            ← Todos los proyectos
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', background: 'rgba(178,132,60,0.15)', padding: '4px 12px', border: '1px solid var(--accent)' }}>
-              {project.category}
-            </span>
-            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{project.year}</span>
+        <div className="container" style={{ position: 'relative' }}>
+          <Reveal>
+            <Link href="/proyectos" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              color: 'var(--text-muted)', textDecoration: 'none',
+              fontSize: '13px', fontWeight: 600, letterSpacing: '0.06em',
+              marginBottom: '28px',
+            }}>
+              ← Todos los proyectos
+            </Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+              <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>{project.category}</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>· {project.year}</span>
+            </div>
+            <TextReveal as="h1" style={{
+              fontFamily: 'var(--font-barlow), sans-serif',
+              fontWeight: 800,
+              fontSize: 'clamp(40px, 7vw, 88px)',
+              lineHeight: 0.95,
+              letterSpacing: '-0.02em',
+              textTransform: 'uppercase',
+              color: 'var(--text)',
+              display: 'block',
+            }}>{project.title}</TextReveal>
+          </Reveal>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', marginTop: '56px', alignItems: 'start' }} className="grid-2">
+            <Reveal delay={0.1}>
+              <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>Cliente</p>
+              {logoFile ? (
+                <div style={{ position: 'relative', width: '160px', height: '50px' }}>
+                  <Image
+                    src={`/images/logo/${logoFile}`}
+                    alt={project.client}
+                    fill
+                    style={{ objectFit: 'contain', objectPosition: 'left center' }}
+                  />
+                </div>
+              ) : (
+                <p style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text)' }}>{project.client}</p>
+              )}
+            </Reveal>
+            <Reveal delay={0.2} direction="left">
+              <TextReveal as="p" style={{ fontSize: '18px', lineHeight: 1.9, color: 'var(--text-muted)', display: 'block' }}>{project.description}</TextReveal>
+            </Reveal>
           </div>
-          <TextReveal as="h1" style={{
-            fontFamily: 'var(--font-barlow), sans-serif',
-            fontWeight: 800,
-            fontSize: 'clamp(36px, 6vw, 80px)',
-            lineHeight: 0.95,
-            letterSpacing: '-0.02em',
-            textTransform: 'uppercase',
-            color: '#fff',
-            marginBottom: '16px',
-            display: 'block',
-          }}>{project.title}</TextReveal>
-          <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.7)' }}>Cliente: <strong style={{ color: '#fff' }}>{project.client}</strong></p>
         </div>
       </section>
 
-      {/* Descripción */}
-      <section style={{ padding: '80px 0', background: 'var(--white)', borderBottom: '1px solid var(--border)' }}>
+      {/* Imagen principal — sin texto encima, protagonismo total a la fotografía */}
+      <section style={{ padding: '0 0 80px', background: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', alignItems: 'start' }} className="grid-2">
-            <Reveal>
-              <div>
-                <div style={{ width: '32px', height: '2px', background: 'var(--accent)', marginBottom: '16px' }} />
-                <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Cliente</p>
-                <p style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text)', marginBottom: '32px' }}>{project.client}</p>
-                <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Categoría</p>
-                <p style={{ fontSize: '16px', color: 'var(--text)', marginBottom: '32px' }}>{project.category}</p>
-                <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Año</p>
-                <p style={{ fontSize: '16px', color: 'var(--text)' }}>{project.year}</p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.15} direction="left">
-              <TextReveal as="p" style={{ fontSize: '18px', lineHeight: 1.9, color: 'var(--text-muted)', display: 'block' }}>{project.description}</TextReveal>
-              <div style={{ marginTop: '40px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <Link href="/contacto" className="btn-primary">Iniciar un proyecto similar →</Link>
-                <Link href="/proyectos" className="btn-outline">Ver más proyectos</Link>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal>
+            <div style={{ position: 'relative', height: '78vh', minHeight: '440px', overflow: 'hidden', borderRadius: '14px' }}>
+              <Image
+                src={project.cover}
+                alt={project.title}
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Galería */}
-      <section style={{ padding: '80px 0 120px', background: 'var(--bg)' }}>
+      <section style={{ padding: '0 0 120px', background: 'var(--white)' }}>
         <div className="container">
           <Reveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '48px' }}>
@@ -484,7 +512,7 @@ export default function ProjectDetailPage() {
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Galería del proyecto</span>
             </div>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '4px', background: 'var(--border)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '6px', background: 'var(--border)' }}>
             {project.gallery.map((img, i) => (
               <Reveal key={i} delay={i * 0.04}>
                 <div
@@ -492,11 +520,11 @@ export default function ProjectDetailPage() {
                   className="gallery-tile"
                   style={{
                     position: 'relative',
-                    height: '225px',
+                    height: '340px',
                     overflow: 'hidden',
                     cursor: 'zoom-in',
                     background: '#e8e6e2',
-                    borderRadius: '10px',
+                    borderRadius: '12px',
                   }}
                 >
                   <Image
@@ -513,7 +541,7 @@ export default function ProjectDetailPage() {
                     transition: 'background 0.3s',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }} className="gallery-overlay">
-                    <span style={{ color: '#fff', fontSize: '24px', opacity: 0, transition: 'opacity 0.3s' }} className="zoom-icon">+</span>
+                    <span style={{ color: '#fff', fontSize: '28px', opacity: 0, transition: 'opacity 0.3s' }} className="zoom-icon">+</span>
                   </div>
                 </div>
               </Reveal>
@@ -522,7 +550,43 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Proyectos relacionados */}
+      {relatedProjects.length > 0 && (
+        <section style={{ padding: '100px 0', background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
+          <div className="container">
+            <Reveal>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                <div style={{ width: '32px', height: '2px', background: 'var(--accent)' }} />
+                <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>Sigue explorando</span>
+              </div>
+              <TextReveal as="h2" style={{
+                fontFamily: 'var(--font-barlow)', fontWeight: 800,
+                fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1,
+                letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--text)',
+                marginBottom: '48px', display: 'block',
+              }}>Proyectos<br /><span style={{ color: 'var(--accent)' }}>relacionados.</span></TextReveal>
+            </Reveal>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '4px', background: 'var(--border)' }}>
+              {relatedProjects.map((rp, i) => (
+                <Reveal key={rp.slug} delay={i * 0.08}>
+                  <Link href={`/proyectos/${rp.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: '#e8e6e2' }}>
+                      <Image src={rp.cover} alt={rp.title} fill style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} className="proj-img" />
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)', zIndex: 1 }} />
+                      <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
+                        <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>{rp.category}</p>
+                        <h3 style={{ fontFamily: 'var(--font-barlow)', fontWeight: 700, fontSize: '17px', textTransform: 'uppercase', color: '#fff', lineHeight: 1.2 }}>{rp.title}</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA — única invitación a iniciar un proyecto similar */}
       <section style={{ padding: '100px 0', background: 'var(--accent)', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
@@ -542,15 +606,26 @@ export default function ProjectDetailPage() {
             <TextReveal as="p" delay={0.15} style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', marginBottom: '40px', maxWidth: '440px', margin: '0 auto 40px', display: 'block' }}>
               Cuéntanos tu proyecto. Fabricamos cualquier concepto con la más alta calidad industrial.
             </TextReveal>
-            <Link href="/contacto" style={{
-              textDecoration: 'none',
-              display: 'inline-flex', alignItems: 'center', gap: '10px',
-              background: '#fff', color: 'var(--red)',
-              padding: '18px 48px', fontSize: '14px', fontWeight: 800,
-              letterSpacing: '0.06em', textTransform: 'uppercase',
-            }}>
-              Iniciar Proyecto →
-            </Link>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contacto" style={{
+                textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '10px',
+                background: '#fff', color: 'var(--red)',
+                padding: '18px 48px', fontSize: '14px', fontWeight: 800,
+                letterSpacing: '0.06em', textTransform: 'uppercase',
+              }}>
+                Iniciar Proyecto →
+              </Link>
+              <Link href="/proyectos" style={{
+                textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '10px',
+                background: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.4)',
+                padding: '18px 48px', fontSize: '14px', fontWeight: 800,
+                letterSpacing: '0.06em', textTransform: 'uppercase',
+              }}>
+                Ver más proyectos
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

@@ -11,6 +11,21 @@ import FooterMap from '../components/FooterMap'
 
 const processIcons = [PenTool, Layers, Factory, ShieldCheck, Wrench, Truck]
 
+const clientLogos = [
+  { name: 'Samsung', file: 'SAMSUNG - BEYOND.webp' },
+  { name: 'Apple', file: 'APPLE - BEYOND.webp' },
+  { name: 'LG', file: 'LG - BEYOND.webp' },
+  { name: 'AMD', file: 'AMD - BEYOND.webp' },
+  { name: 'Microsoft', file: 'microsoft.webp' },
+  { name: 'TCL', file: 'TCL---BEYOND.webp' },
+  { name: 'Adidas', file: 'ADIDAS - BEYOND.webp' },
+  { name: 'Nestlé', file: 'NESTLE- BEYOND.webp' },
+  { name: 'Aldo', file: 'aldo.webp' },
+  { name: 'Olímpica', file: 'OLIMPICA - BEYOND.webp' },
+  { name: 'Falabella', file: 'FALABELLA - BEYOND.webp' },
+  { name: 'Pepsico', file: 'PEPSICO - BEYOND.webp' },
+]
+
 export default function NosotrosPage() {
   const { t } = useLanguage()
   const n = t.nosotros
@@ -219,19 +234,16 @@ export default function NosotrosPage() {
           </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '1px', background: 'var(--border)' }}>
-            {['Samsung', 'Apple', 'LG', 'AMD', 'Microsoft', 'TCL', 'NVIDIA', 'Nestlé', 'Aldo', 'Olímpica', 'Hisense', 'Bold'].map((brand) => (
-              <div key={brand} style={{ background: 'var(--white)', padding: '40px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{
-                  fontFamily: 'var(--font-barlow), sans-serif',
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: 'var(--text-muted)',
-                  transition: 'color 0.2s',
-                }}
+            {clientLogos.map((brand) => (
+              <div key={brand.name} style={{ background: 'var(--white)', padding: '40px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image
+                  src={`/images/logo/${brand.file}`}
+                  alt={brand.name}
+                  width={100}
+                  height={36}
+                  style={{ objectFit: 'contain', height: '40px', width: 'auto', filter: 'grayscale(1)', opacity: 0.55, transition: 'opacity 0.2s' }}
                   className="brand-item"
-                >{brand}</span>
+                />
               </div>
             ))}
           </div>
