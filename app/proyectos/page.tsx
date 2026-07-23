@@ -38,6 +38,7 @@ const projectsData = [
   { id: 24, slug: 'nespresso-al-agua-patos', title: 'Stand Nespresso × Al Agua Patos', categoryEs: 'Arquitectura Efímera', client: 'Nespresso',   year: '2026', cover: '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.jpg' },
   { id: 25, slug: 'relojeria-falabella-unicentro', title: 'Relojería Falabella Unicentro', categoryEs: 'Arquitectura Comercial', client: 'Falabella', year: '2026', cover: '/images/portfolio/arq-comercial/relojeria-falabella/relojeria-portada.jpg' },
   { id: 26, slug: 'falabella-colina',        title: 'Calzado Falabella Colina',    categoryEs: 'Arquitectura Comercial', client: 'Falabella', year: '2026', cover: '/images/portfolio/arq-comercial/falabella-colina/falabella-colina-portada.jpg' },
+  { id: 27, slug: 'olimpica-mallorquin',      title: 'Olímpica Mallorquín',         categoryEs: 'Góndolas',               client: 'Olímpica',   year: '2026', cover: '/images/portfolio/gondolas/olimpica-mallorquin/mallorquin-portada.jpg' },
 ]
 
 const categoryMap: Record<string, number> = {
