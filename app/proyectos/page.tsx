@@ -70,6 +70,7 @@ export default function ProyectosPage() {
   const filtered = projectsData
     .filter(proj => activeIndex === 0 || categoryMap[proj.categoryEs] === activeIndex)
     .filter(proj => activeBrand === 'all' || proj.client === activeBrand)
+    .sort((a, b) => b.id - a.id)
 
   const displayCategory = (categoryEs: string) => {
     const idx = categoryMap[categoryEs]
