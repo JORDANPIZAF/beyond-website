@@ -4,9 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-const VIDEO_ID = '0AbKtqEudZY'
-const YOUTUBE_EMBED_URL =
-  `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&loop=1&playlist=${VIDEO_ID}`
+const VIDEO_SRC = '/videos/beyond-presentacion.mp4'
 
 export default function VideoPopup() {
   const [open, setOpen] = useState(false)
@@ -65,12 +63,13 @@ export default function VideoPopup() {
               borderRadius: '14px', overflow: 'hidden', background: '#000',
               boxShadow: '0 30px 90px rgba(0,0,0,0.55)',
             }}>
-              <iframe
-                src={YOUTUBE_EMBED_URL}
-                title="Beyond SAS"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
+              <video
+                src={VIDEO_SRC}
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
           </motion.div>
