@@ -32,6 +32,7 @@ const projectsData = [
   { id: 18, slug: 'apple-isla',              title: 'Apple Isla',                 categoryEs: 'Arquitectura Efímera',    client: 'Apple',       year: '2021', cover: '/images/portfolio/arq-efimera/img/04/isla_appleINT-3.png' },
   { id: 19, slug: 'amd-mesa',               title: 'AMD Mesa',                   categoryEs: 'Arquitectura Efímera',    client: 'AMD',         year: '2020', cover: '/images/portfolio/arq-efimera/img/05/mesa-amd_INT-1-.png' },
   { id: 20, slug: 'mascotas-purina',         title: 'Mascotas Purina',            categoryEs: 'Creativo',               client: 'Purina',      year: '2020', cover: '/images/portfolio/creativo/img/02/mascotas_INT-1-.png' },
+  { id: 21, slug: 'isimo-to-go',             title: 'Isimo To Go',                categoryEs: 'Góndolas',               client: 'Isimo',       year: '2026', cover: '/images/portfolio/gondolas/isimo/isimo-portada.jpg' },
 ]
 
 const categoryMap: Record<string, number> = {
