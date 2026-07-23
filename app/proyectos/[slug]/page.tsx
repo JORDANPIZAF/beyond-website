@@ -252,6 +252,22 @@ const projectsData: Record<string, {
       '/images/portfolio/gondolas/isimo/isimo-09.jpg',
     ],
   },
+  'lg-road-show': {
+    title: 'LG Road Show',
+    client: 'LG',
+    category: 'Arquitectura Efímera',
+    year: '2026',
+    description: 'Activación itinerante para LG con múltiples ambientes de producto dentro de un mismo salón de eventos: sala de TV con pedestales retroiluminados para las líneas OLED y QNED AI, torre de lavandería "Encaje perfecto" con iluminación RGB integrada, cocina completa con nevera, estufa e isla en barra para mostrar línea blanca en uso real, y una zona de lounge con divisor de listones de madera. Carpintería, metalmecánica e impresión de gran formato combinadas en un montaje modular pensado para armarse y desarmarse entre sedes sin perder el nivel de terminación de un stand fijo.',
+    cover: '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-portada.jpg',
+    gallery: [
+      '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-portada.jpg',
+      '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-01.jpg',
+      '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-02.jpg',
+      '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-03.jpg',
+      '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-04.jpg',
+      '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-05.jpg',
+    ],
+  },
   'oficinas-bogota': {
     title: 'Oficinas Bogotá',
     client: 'Corporativo',
