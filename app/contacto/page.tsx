@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Reveal from '../components/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import TextReveal from '../components/TextReveal'
+import SocialLinks from '../components/SocialLinks'
 
 const initialForm = { nombre: '', empresa: '', email: '', telefono: '', proyecto: '', presupuesto: '' }
 
@@ -189,9 +190,8 @@ export default function ContactoPage() {
                 </div>
                 <div>
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoSocial}</p>
-                  <div style={{ display: 'flex', gap: '16px' }}>
-                    <a href="https://instagram.com/beyond_sas" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', fontSize: '13px', color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600, borderBottom: '1px solid var(--border)', paddingBottom: '2px' }}>Instagram</a>
-                    <a href="https://wa.me/576013904415" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', fontSize: '13px', color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600, borderBottom: '1px solid var(--border)', paddingBottom: '2px' }}>WhatsApp</a>
+                  <div style={{ display: 'flex', gap: '20px' }}>
+                    <SocialLinks size={22} />
                   </div>
                 </div>
 

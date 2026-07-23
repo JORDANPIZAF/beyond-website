@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import FooterMap from './FooterMap'
+import SocialLinks from './SocialLinks'
 import { useLanguage } from '../context/LanguageContext'
 import type { Lang } from '../i18n/translations'
 
@@ -120,6 +121,9 @@ export default function Footer() {
             <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
               <Link href="/terminos" style={{ fontSize: '13px', color: 'var(--text-muted)', textDecoration: 'none' }}>{f.terms}</Link>
               <Link href="/privacidad" style={{ fontSize: '13px', color: 'var(--text-muted)', textDecoration: 'none' }}>{f.privacy}</Link>
+              <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+                <SocialLinks size={17} />
+              </div>
               <LangToggle />
             </div>
           </div>

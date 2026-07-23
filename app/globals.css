@@ -86,6 +86,8 @@ body::before {
 /* Hover utilities */
 .footer-link { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
 .footer-link:hover { color: var(--text); }
+.social-icon-link { color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
+.social-icon-link:hover { color: var(--accent); transform: translateY(-2px); }
 .breadcrumb-link { transition: opacity 0.2s; }
 .breadcrumb-link:hover { opacity: 1 !important; }
 .brand-item { transition: opacity 0.25s, transform 0.25s; }
