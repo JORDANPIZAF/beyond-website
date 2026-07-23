@@ -81,7 +81,7 @@ export const translations = {
       featuredProjects: [
         { title: 'Falabella Colina — Calzado', category: 'Arquitectura Comercial' },
         { title: 'Samsung Galaxy Studio', category: 'Arquitectura Efímera' },
-        { title: 'AMD — Mesa de Alto Impacto', category: 'Arquitectura Efímera' },
+        { title: 'Olímpica Mallorquín', category: 'Góndolas' },
         { title: 'LG — Arquitectura Comercial', category: 'Arquitectura Comercial' },
       ],
       clientsTitle1: 'Marcas que confían',
@@ -376,7 +376,7 @@ export const translations = {
       featuredProjects: [
         { title: 'Falabella Colina — Footwear', category: 'Commercial Architecture' },
         { title: 'Samsung Galaxy Studio', category: 'Ephemeral Architecture' },
-        { title: 'AMD — High-Impact Table', category: 'Ephemeral Architecture' },
+        { title: 'Olímpica Mallorquín', category: 'Gondolas' },
         { title: 'LG — Commercial Architecture', category: 'Commercial Architecture' },
       ],
       clientsTitle1: 'Brands that trust',
