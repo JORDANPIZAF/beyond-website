@@ -72,7 +72,7 @@ const featuredProjectData = [
   { slug: 'falabella-colina', img: '/images/portfolio/arq-comercial/falabella-colina/falabella-colina-portada.jpg' },
   { slug: 'lg-road-show', img: '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-portada.jpg' },
   { slug: 'olimpica-mallorquin', img: '/images/portfolio/gondolas/olimpica-mallorquin/mallorquin-portada.jpg' },
-  { slug: 'lg-arq-comercial', img: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02INT-2.png' },
+  { slug: 'oficinas-barranquilla', img: '/images/portfolio/mobiliario/img/02/INT-4_OFI_-BARRANQUILLA.png' },
 ]
 
 function AboutSection() {
