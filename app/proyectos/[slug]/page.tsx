@@ -548,43 +548,39 @@ export default function ProjectDetailPage() {
             }}>{project.title}</TextReveal>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', marginTop: '56px', alignItems: 'start' }} className="grid-2">
-            <Reveal delay={0.1}>
-              <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>Cliente</p>
-              {logoFile ? (
-                <div style={{ position: 'relative', width: '160px', height: '50px' }}>
-                  <Image
-                    src={`/images/logo/${logoFile}`}
-                    alt={project.client}
-                    fill
-                    style={{ objectFit: 'contain', objectPosition: 'left center' }}
-                  />
-                </div>
-              ) : (
-                <p style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text)' }}>{project.client}</p>
-              )}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', marginTop: '56px', alignItems: 'center' }} className="grid-2">
+            <Reveal>
+              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: '14px' }}>
+                <Image
+                  src={project.cover}
+                  alt={project.title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+              </div>
             </Reveal>
-            <Reveal delay={0.2} direction="left">
-              <TextReveal as="p" style={{ fontSize: '18px', lineHeight: 1.9, color: 'var(--text-muted)', display: 'block' }}>{project.description}</TextReveal>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Imagen principal — sin texto encima, protagonismo total a la fotografía */}
-      <section style={{ padding: '0 0 80px', background: 'var(--white)' }}>
-        <div className="container">
-          <Reveal>
-            <div style={{ position: 'relative', height: '78vh', minHeight: '440px', overflow: 'hidden', borderRadius: '14px' }}>
-              <Image
-                src={project.cover}
-                alt={project.title}
-                fill
-                style={{ objectFit: 'cover' }}
-                priority
-              />
+            <div>
+              <Reveal delay={0.1}>
+                <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>Cliente</p>
+                {logoFile ? (
+                  <div style={{ position: 'relative', width: '160px', height: '50px', marginBottom: '28px' }}>
+                    <Image
+                      src={`/images/logo/${logoFile}`}
+                      alt={project.client}
+                      fill
+                      style={{ objectFit: 'contain', objectPosition: 'left center' }}
+                    />
+                  </div>
+                ) : (
+                  <p style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text)', marginBottom: '28px' }}>{project.client}</p>
+                )}
+              </Reveal>
+              <Reveal delay={0.2} direction="left">
+                <TextReveal as="p" style={{ fontSize: '18px', lineHeight: 1.9, color: 'var(--text-muted)', display: 'block' }}>{project.description}</TextReveal>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
