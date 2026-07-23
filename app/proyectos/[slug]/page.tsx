@@ -286,6 +286,23 @@ const projectsData: Record<string, {
       '/images/portfolio/mobiliario/aeropuerto-el-dorado/aeropuerto-07.jpg',
     ],
   },
+  'nespresso-al-agua-patos': {
+    title: 'Stand Nespresso × Al Agua Patos',
+    client: 'Nespresso',
+    category: 'Arquitectura Efímera',
+    year: '2026',
+    description: 'Stand efímero para la colaboración entre Nespresso y Al Agua Patos durante la Feria EVA. Módulo de madera con esquinas curvas y cubierta con logotipo retroiluminado en ambas fachadas, más cortinas enrollables perimetrales para cerrar el punto fuera de horario de feria. Interior con barra de servicio en madera y blanco, exhibidor vertical de cápsulas organizado por color y sabor con iluminación integrada, y zona de repostería a cargo de Al Agua Patos. Carpintería e impresión de gran formato para toda la señalética, con montaje pensado para lucir tan bien de día como iluminado de noche.',
+    cover: '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.jpg',
+    gallery: [
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.jpg',
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-01.jpg',
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-02.jpg',
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-03.jpg',
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-04.jpg',
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-05.jpg',
+      '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-06.jpg',
+    ],
+  },
   'oficinas-bogota': {
     title: 'Oficinas Bogotá',
     client: 'Corporativo',

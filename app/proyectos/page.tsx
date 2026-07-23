@@ -35,6 +35,7 @@ const projectsData = [
   { id: 21, slug: 'isimo-to-go',             title: 'Isimo To Go',                categoryEs: 'Góndolas',               client: 'Isimo',       year: '2026', cover: '/images/portfolio/gondolas/isimo/isimo-portada.jpg' },
   { id: 22, slug: 'lg-road-show',            title: 'LG Road Show',               categoryEs: 'Arquitectura Efímera',    client: 'LG',          year: '2026', cover: '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-portada.jpg' },
   { id: 23, slug: 'plataforma-masajeadoras-el-dorado', title: 'Plataforma Sillas Masajeadoras — El Dorado', categoryEs: 'Mobiliario', client: 'El Dorado',   year: '2026', cover: '/images/portfolio/mobiliario/aeropuerto-el-dorado/aeropuerto-portada.jpg' },
+  { id: 24, slug: 'nespresso-al-agua-patos', title: 'Stand Nespresso × Al Agua Patos', categoryEs: 'Arquitectura Efímera', client: 'Nespresso',   year: '2026', cover: '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.jpg' },
 ]
 
 const categoryMap: Record<string, number> = {
