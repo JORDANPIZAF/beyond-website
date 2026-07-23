@@ -288,10 +288,10 @@ export const translations = {
       capabilitiesTitle: 'Especialidades',
       capabilitiesLinks: ['Carpintería', 'Metalmecánica', 'Impresión', 'Acrílicos & Láser', 'Instalación', 'Logística Tech'],
       contactTitle: 'Contacto',
-      startProject: 'Iniciar Proyecto →',
       terms: 'Términos',
       privacy: 'Privacidad',
       copyright: 'Beyond Colombia S.A.S.',
+      designedBy: 'Diseñado por Gessler Studio',
     },
   },
 
@@ -582,10 +582,10 @@ export const translations = {
       capabilitiesTitle: 'Specialties',
       capabilitiesLinks: ['Carpentry', 'Metalworking', 'Printing', 'Acrylics & Laser', 'Installation', 'Tech Logistics'],
       contactTitle: 'Contact',
-      startProject: 'Start a Project →',
       terms: 'Terms',
       privacy: 'Privacy',
       copyright: 'Beyond Colombia S.A.S.',
+      designedBy: 'Designed by Gessler Studio',
     },
   },
 }

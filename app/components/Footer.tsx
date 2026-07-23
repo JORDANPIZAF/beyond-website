@@ -2,10 +2,33 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import type { ReactNode } from 'react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 import FooterMap from './FooterMap'
 import SocialLinks from './SocialLinks'
 import { useLanguage } from '../context/LanguageContext'
 import type { Lang } from '../i18n/translations'
+
+function ContactRow({ icon, href, children }: { icon: ReactNode; href?: string; children: ReactNode }) {
+  const Tag = href ? 'a' : 'div'
+  return (
+    <Tag
+      {...(href ? { href } : {})}
+      style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px', textDecoration: 'none' }}
+    >
+      <span style={{
+        flexShrink: 0,
+        width: '44px', height: '44px',
+        borderRadius: '50%',
+        background: 'var(--accent)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        {icon}
+      </span>
+      <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{children}</span>
+    </Tag>
+  )
+}
 
 function LangToggle() {
   const { lang, setLang } = useLanguage()
@@ -107,23 +130,29 @@ export default function Footer() {
 
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.contactTitle}</p>
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '10px' }}>director.comercial@beyondgroup.co</p>
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '10px' }}>(601) 390 44 15</p>
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '32px' }}>Bogotá, Colombia</p>
-              <Link href="/contacto" className="btn-primary" style={{ fontSize: '12px', padding: '10px 24px' }}>
-                {f.startProject}
-              </Link>
+              <ContactRow icon={<Mail size={20} color="#fff" />} href="mailto:director.comercial@beyondgroup.co">
+                director.comercial@beyondgroup.co
+              </ContactRow>
+              <ContactRow icon={<Phone size={20} color="#fff" />} href="tel:+16013904415">
+                (601) 390 44 15
+              </ContactRow>
+              <ContactRow icon={<MapPin size={20} color="#fff" />}>
+                Bogotá, Colombia
+              </ContactRow>
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'center', marginTop: '20px' }}>
+                <SocialLinks size={22} />
+              </div>
             </div>
           </div>
 
           <div style={{ borderTop: '1px solid var(--border)', paddingTop: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-            <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>© {new Date().getFullYear()} {f.copyright}</p>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
+              © {new Date().getFullYear()} {f.copyright}
+              <span style={{ opacity: 0.6 }}> · {f.designedBy}</span>
+            </p>
             <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
               <Link href="/terminos" style={{ fontSize: '13px', color: 'var(--text-muted)', textDecoration: 'none' }}>{f.terms}</Link>
               <Link href="/privacidad" style={{ fontSize: '13px', color: 'var(--text-muted)', textDecoration: 'none' }}>{f.privacy}</Link>
-              <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                <SocialLinks size={17} />
-              </div>
               <LangToggle />
             </div>
           </div>
