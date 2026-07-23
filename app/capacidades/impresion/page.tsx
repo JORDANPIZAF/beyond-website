@@ -21,16 +21,16 @@ const relatedProjects = [
     cover: '/images/portfolio/publicidad/img/01/evento-nestle_DEST-1.png',
   },
   {
-    slug: 'xbox-stands',
-    title: 'Xbox Stands',
-    category: 'Publicidad',
-    cover: '/images/portfolio/publicidad/img/03/publi_xbox_DEST-1.png',
+    slug: 'nespresso-al-agua-patos',
+    title: 'Stand Nespresso × Al Agua Patos',
+    category: 'Arquitectura Efímera',
+    cover: '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.jpg',
   },
   {
-    slug: 'nestle-nan',
-    title: 'Nestlé NAN',
-    category: 'Publicidad',
-    cover: '/images/portfolio/publicidad/img/02/nestle_nan_DEST-5.png',
+    slug: 'relojeria-falabella-unicentro',
+    title: 'Relojería Falabella Unicentro',
+    category: 'Arquitectura Comercial',
+    cover: '/images/portfolio/arq-comercial/relojeria-falabella/relojeria-portada.jpg',
   },
 ]
 
