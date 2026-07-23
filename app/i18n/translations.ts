@@ -80,7 +80,7 @@ export const translations = {
       projCta: 'Ver todos los proyectos',
       featuredProjects: [
         { title: 'Falabella Colina — Calzado', category: 'Arquitectura Comercial' },
-        { title: 'Samsung Galaxy Studio', category: 'Arquitectura Efímera' },
+        { title: 'LG Road Show', category: 'Arquitectura Efímera' },
         { title: 'Olímpica Mallorquín', category: 'Góndolas' },
         { title: 'LG — Arquitectura Comercial', category: 'Arquitectura Comercial' },
       ],
@@ -375,7 +375,7 @@ export const translations = {
       projCta: 'View All Projects',
       featuredProjects: [
         { title: 'Falabella Colina — Footwear', category: 'Commercial Architecture' },
-        { title: 'Samsung Galaxy Studio', category: 'Ephemeral Architecture' },
+        { title: 'LG Road Show', category: 'Ephemeral Architecture' },
         { title: 'Olímpica Mallorquín', category: 'Gondolas' },
         { title: 'LG — Commercial Architecture', category: 'Commercial Architecture' },
       ],
