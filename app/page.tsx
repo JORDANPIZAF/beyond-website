@@ -56,7 +56,7 @@ const capabilityImgs = [
   '/images/service/beyond_metalmecanica.webp',
   '/images/service/beyond_impresion.webp',
   '/images/service/beyond_acrilicos.webp',
-  '/images/service/baners_instalacion_beyond.jpg',
+  '/images/service/baners_instalacion_beyond.webp',
   '/images/service/beyond_logistica_tegnologia.webp',
 ]
 const capabilityHrefs = [
@@ -69,10 +69,10 @@ const capabilityHrefs = [
 ]
 
 const featuredProjectData = [
-  { slug: 'falabella-colina', img: '/images/portfolio/arq-comercial/falabella-colina/falabella-colina-portada.jpg' },
-  { slug: 'lg-road-show', img: '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-portada.jpg' },
-  { slug: 'olimpica-mallorquin', img: '/images/portfolio/gondolas/olimpica-mallorquin/mallorquin-portada.jpg' },
-  { slug: 'oficinas-barranquilla', img: '/images/portfolio/mobiliario/img/02/INT-4_OFI_-BARRANQUILLA.png' },
+  { slug: 'falabella-colina', img: '/images/portfolio/arq-comercial/falabella-colina/falabella-colina-portada.webp' },
+  { slug: 'lg-road-show', img: '/images/portfolio/arq-efimera/lg-road-show/lg-roadshow-portada.webp' },
+  { slug: 'olimpica-mallorquin', img: '/images/portfolio/gondolas/olimpica-mallorquin/mallorquin-portada.webp' },
+  { slug: 'oficinas-barranquilla', img: '/images/portfolio/mobiliario/img/02/INT-4_OFI_-BARRANQUILLA.webp' },
 ]
 
 function AboutSection() {
@@ -93,7 +93,7 @@ function AboutSection() {
             <motion.div variants={revealItem} style={{ overflow: 'hidden' }}>
               <motion.div whileHover={{ scale: 1.06 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
                 <Image
-                  src="/images/about/about-img.jpg"
+                  src="/images/about/about-img.webp"
                   alt="Beyond SAS planta"
                   width={700}
                   height={360}

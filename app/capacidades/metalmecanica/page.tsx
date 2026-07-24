@@ -18,19 +18,19 @@ const relatedProjects = [
     slug: 'samsung-galaxy-studio',
     title: 'Samsung Galaxy Studio',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
+    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.webp',
   },
   {
     slug: 'tcl-tv-wall',
     title: 'TCL TV Wall',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.png',
+    cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.webp',
   },
   {
     slug: 'olimpica-gondolas',
     title: 'Olímpica Góndolas',
     category: 'Góndolas',
-    cover: '/images/portfolio/gondolas/imge/03/gondolas_2_DEST-2.png',
+    cover: '/images/portfolio/gondolas/imge/03/gondolas_2_DEST-2.webp',
   },
 ]
 

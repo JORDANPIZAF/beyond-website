@@ -17,9 +17,9 @@ const slideModels: Record<number, { path: string; cameraZ: number } | null> = {
 }
 
 const imgSrcs = [
-  '/images/destacados/delicatessen-gondoleria.jpg',
-  '/images/destacados/carpinteria-router.jpg',
-  '/images/destacados/gondolas-licores.jpg',
+  '/images/destacados/delicatessen-gondoleria.webp',
+  '/images/destacados/carpinteria-router.webp',
+  '/images/destacados/gondolas-licores.webp',
 ]
 
 const textContainer = {

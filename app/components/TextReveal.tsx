@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, ReactNode, CSSProperties, ElementType } from 'react'
+import React, { useRef, ReactNode, CSSProperties } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 
 type Token = { kind: 'word'; text: string; style?: CSSProperties } | { kind: 'br' }

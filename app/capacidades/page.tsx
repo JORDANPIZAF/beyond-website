@@ -13,7 +13,7 @@ const capabilityImgs = [
   '/images/service/beyond_metalmecanica.webp',
   '/images/service/beyond_impresion.webp',
   '/images/service/beyond_acrilicos.webp',
-  '/images/service/baners_instalacion_beyond.jpg',
+  '/images/service/baners_instalacion_beyond.webp',
   '/images/service/beyond_logistica_tegnologia.webp',
 ]
 

@@ -18,19 +18,19 @@ const relatedProjects = [
     slug: 'apple-isla',
     title: 'Apple Isla',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png',
+    cover: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.webp',
   },
   {
     slug: 'samsung-galaxy-studio',
     title: 'Samsung Galaxy Studio',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
+    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.webp',
   },
   {
     slug: 'lg-vitrina-bucaramanga',
     title: 'LG Vitrina Bucaramanga',
     category: 'Arquitectura Comercial',
-    cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.png',
+    cover: '/images/portfolio/arq-comercial/img/p3/vitrina_buc_DEST-1.webp',
   },
 ]
 

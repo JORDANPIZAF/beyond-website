@@ -18,19 +18,19 @@ const relatedProjects = [
     slug: 'lg-arq-comercial',
     title: 'LG Arquitectura Comercial',
     category: 'Arquitectura Comercial',
-    cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png',
+    cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.webp',
   },
   {
     slug: 'samsung-galaxy-studio',
     title: 'Samsung Galaxy Studio',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
+    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.webp',
   },
   {
     slug: 'olimpica-licores',
     title: 'Olímpica Licores',
     category: 'Góndolas',
-    cover: '/images/portfolio/gondolas/imge/01/GONDOLAS_-DES-1.png',
+    cover: '/images/portfolio/gondolas/imge/01/GONDOLAS_-DES-1.webp',
   },
 ]
 
@@ -66,7 +66,7 @@ export default function InstalacionPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }} className="grid-2">
             <Reveal>
               <div style={{ position: 'relative', height: '500px', overflow: 'hidden', background: '#e8e6e2' }}>
-                <Image src="/images/service/baners_instalacion_beyond.jpg" alt="Instalación Beyond SAS" fill style={{ objectFit: 'cover' }} />
+                <Image src="/images/service/baners_instalacion_beyond.webp" alt="Instalación Beyond SAS" fill style={{ objectFit: 'cover' }} />
               </div>
             </Reveal>
             <Reveal delay={0.15} direction="left">

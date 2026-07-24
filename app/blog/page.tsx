@@ -13,9 +13,9 @@ const postSlugs = [
 ]
 
 const postCovers = [
-  '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
-  '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png',
-  '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png',
+  '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.webp',
+  '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.webp',
+  '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.webp',
 ]
 
 export default function BlogPage() {

@@ -18,19 +18,19 @@ const relatedProjects = [
     slug: 'nestle-congreso',
     title: 'Nestlé Congreso Pediatría',
     category: 'Publicidad',
-    cover: '/images/portfolio/publicidad/img/01/evento-nestle_DEST-1.png',
+    cover: '/images/portfolio/publicidad/img/01/evento-nestle_DEST-1.webp',
   },
   {
     slug: 'nespresso-al-agua-patos',
     title: 'Stand Nespresso × Al Agua Patos',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.jpg',
+    cover: '/images/portfolio/arq-efimera/nespresso-al-agua-patos/nespresso-portada.webp',
   },
   {
     slug: 'relojeria-falabella-unicentro',
     title: 'Relojería Falabella Unicentro',
     category: 'Arquitectura Comercial',
-    cover: '/images/portfolio/arq-comercial/relojeria-falabella/relojeria-portada.jpg',
+    cover: '/images/portfolio/arq-comercial/relojeria-falabella/relojeria-portada.webp',
   },
 ]
 

@@ -20,7 +20,7 @@ const posts: Record<string, {
     category: 'Retail & Exhibición',
     date: '15 junio, 2026',
     readTime: '7 min de lectura',
-    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
+    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.webp',
     author: 'Beyond SAS',
     content: [
       'En el ecosistema del retail moderno, la diferencia entre una venta y una experiencia memorable a menudo se construye con madera, metal, acrílico y luz. Marcas como Samsung, Apple y LG lo saben bien: el punto de venta es el momento de la verdad, ese instante en que el consumidor pasa de conocer un producto a desearlo.',
@@ -44,7 +44,7 @@ const posts: Record<string, {
     category: 'Tecnología de Fabricación',
     date: '2 mayo, 2026',
     readTime: '6 min de lectura',
-    cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png',
+    cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.webp',
     author: 'Beyond SAS',
     content: [
       'Hay una pregunta que los gerentes de marketing y los directores de retail se hacen con frecuencia: ¿por qué algunos displays se ven del mismo nivel que los que vemos en tiendas de Milán o Nueva York, mientras otros se ven como carpintería de obra? La respuesta está casi siempre en la tecnología de fabricación y en la precisión del proceso.',
@@ -70,7 +70,7 @@ const posts: Record<string, {
     category: 'Arquitectura Efímera',
     date: '18 marzo, 2026',
     readTime: '8 min de lectura',
-    cover: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.png',
+    cover: '/images/portfolio/arq-efimera/img/04/isla_appleDEST-3.webp',
     author: 'Beyond SAS',
     content: [
       'La arquitectura efímera es, por definición, temporal. Se construye para durar días, semanas, máximo meses. Y sin embargo, cuando está bien ejecutada, puede generar recuerdos permanentes. Un stand en el que viviste una experiencia memorable puede cambiar tu percepción de una marca para siempre.',

@@ -18,19 +18,19 @@ const relatedProjects = [
     slug: 'tcl-tv-wall',
     title: 'TCL TV Wall',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.png',
+    cover: '/images/portfolio/arq-efimera/img/03/wall_tcl_DEST-1.webp',
   },
   {
     slug: 'samsung-galaxy-studio',
     title: 'Samsung Galaxy Studio',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.png',
+    cover: '/images/portfolio/arq-efimera/img/01/GALAXY-S-DES-1.webp',
   },
   {
     slug: 'amd-mesa',
     title: 'AMD Mesa',
     category: 'Arquitectura Efímera',
-    cover: '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.png',
+    cover: '/images/portfolio/arq-efimera/img/05/mesa-amd_DEST-1.webp',
   },
 ]
 

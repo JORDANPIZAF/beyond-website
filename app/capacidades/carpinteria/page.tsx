@@ -18,19 +18,19 @@ const relatedProjects = [
     slug: 'aldo-mobiliario',
     title: 'Aldo Mobiliario',
     category: 'Arquitectura Comercial',
-    cover: '/images/portfolio/arq-comercial/img/p2/DEST-2PANDORA.png',
+    cover: '/images/portfolio/arq-comercial/img/p2/DEST-2PANDORA.webp',
   },
   {
     slug: 'oficinas-bogota',
     title: 'Oficinas Bogotá',
     category: 'Mobiliario',
-    cover: '/images/portfolio/mobiliario/img/01/OFI-BOGOTÁ-DES-1.png',
+    cover: '/images/portfolio/mobiliario/img/01/OFI-BOGOTÁ-DES-1.webp',
   },
   {
     slug: 'lg-arq-comercial',
     title: 'LG Arquitectura Comercial',
     category: 'Arquitectura Comercial',
-    cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.png',
+    cover: '/images/portfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST-2.webp',
   },
 ]
 

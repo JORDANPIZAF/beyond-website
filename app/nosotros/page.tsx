@@ -141,7 +141,7 @@ export default function NosotrosPage() {
               </div>
 
               <Image
-                src="/images/about/img-nosotros--1.png"
+                src="/images/about/img-nosotros--1.webp"
                 alt={n.colombiaTag}
                 width={650}
                 height={600}
