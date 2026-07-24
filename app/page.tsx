@@ -392,7 +392,7 @@ export default function Home() {
 
       <HeroScroll />
 
-      <ScrollCard index={2} scrollHeight="900vh">
+      <ScrollCard index={2} scrollHeight="240vh">
         {(progress: MotionValue<number>) => <ProductSequence progress={progress} />}
       </ScrollCard>
 
@@ -400,7 +400,7 @@ export default function Home() {
         <AboutSection />
       </ScrollCard>
 
-      <ScrollCard index={4} scrollHeight="900vh">
+      <ScrollCard index={4} scrollHeight="240vh">
         {(progress: MotionValue<number>) => <CapabilitiesSection progress={progress} />}
       </ScrollCard>
 

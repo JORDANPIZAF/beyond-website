@@ -47,7 +47,7 @@ export default function VideoPopup() {
               onClick={() => setOpen(false)}
               aria-label="Cerrar"
               style={{
-                position: 'absolute', top: '-6px', right: '-46px',
+                position: 'fixed', top: '24px', right: '24px', zIndex: 301,
                 width: '36px', height: '36px', borderRadius: '999px',
                 background: '#b2843c',
                 border: '2px solid #fff',
