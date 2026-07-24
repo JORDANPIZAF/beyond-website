@@ -74,7 +74,7 @@ export default function InstalacionPage() {
               <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>
                 Equipo especializado de instalación con amplia experiencia en proyectos de alta complejidad en todo Colombia. Coordinación logística, montaje profesional y control de calidad en sitio para garantizar una implementación perfecta. Cubrimos desde Bogotá hasta cualquier ciudad del país.
               </TextReveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }} className="grid-2">
                 {capabilities.map(c => (
                   <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <c.icon size={20} strokeWidth={1.75} color="var(--accent)" style={{ flexShrink: 0 }} />

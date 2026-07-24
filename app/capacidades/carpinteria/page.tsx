@@ -99,7 +99,7 @@ export default function CarpinteriaPage() {
               <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>
                 Fabricación en maderas nobles, MDF, melamina y materiales compuestos. Corte CNC de alta precisión y acabados de nivel premium. Nuestro equipo de ebanistas y carpinteros especializados desarrolla desde piezas únicas hasta producción en serie con estándares industriales.
               </TextReveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }} className="grid-2">
                 {capabilities.map(c => (
                   <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <c.icon size={20} strokeWidth={1.75} color="var(--accent)" style={{ flexShrink: 0 }} />

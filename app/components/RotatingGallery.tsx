@@ -89,7 +89,7 @@ export default function RotatingGallery({ images, title, onImageClick }: Props) 
   images.forEach((img, i) => buckets[i % TILE_COUNT].push(img))
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }} className="grid-3">
       {buckets.map((bucket, i) => (
         bucket.length > 0 && (
           <GalleryTile key={i} bucket={bucket} title={title} tileIndex={i} onImageClick={onImageClick} />

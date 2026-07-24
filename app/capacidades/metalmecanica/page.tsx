@@ -74,7 +74,7 @@ export default function MetalmecanicaPage() {
               <TextReveal as="p" delay={0.15} style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text-muted)', marginBottom: '40px', display: 'block' }}>
                 Piezas estructurales, exhibidores metálicos, marcos, soportes y componentes de alta resistencia. Soldadura MIG, TIG y de punto. Corte láser, doblado y rolado de láminas con alta precisión dimensional. Pintura electrostática con acabados duraderos.
               </TextReveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 32px' }} className="grid-2">
                 {capabilities.map(c => (
                   <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <c.icon size={20} strokeWidth={1.75} color="var(--accent)" style={{ flexShrink: 0 }} />
