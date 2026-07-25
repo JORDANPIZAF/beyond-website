@@ -23,8 +23,8 @@ const clientLogoMap: Record<string, string> = {
   'Olímpica': 'olimpica.webp',
   'Nestlé': 'nestle.webp',
   'Microsoft': 'microsoft.webp',
-  'Canasta': 'LOGO_CANASTA .webp',
-  'Purina': 'NESTLE PURINA - BEYOND.webp',
+  'Canasta': 'canasta.webp',
+  'Purina': 'purina.webp',
 }
 
 const categoryMap: Record<string, number> = {
