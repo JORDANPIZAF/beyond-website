@@ -147,7 +147,7 @@ export default function Footer() {
               </ContactRow>
               <ContactRow icon={<MapPin size={20} color="#fff" />}>
                 <span style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>{f.plantLabel}</span>
-                Bogotá, Colombia
+                Cra. 62 17B-69, Bogotá, Colombia
               </ContactRow>
             </div>
 

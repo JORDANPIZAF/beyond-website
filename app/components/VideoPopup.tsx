@@ -18,28 +18,7 @@ export default function VideoPopup() {
   useEffect(() => {
     const video = videoRef.current
     if (!open || !video) return
-
     video.volume = VIDEO_VOLUME
-    video.muted = false
-    video.play().catch(() => {
-      // Autoplay con sonido bloqueado por el navegador: arranca muteado
-      // y se desmutea en la primera interacción del usuario.
-      video.muted = true
-      video.play().catch(() => {})
-
-      const unmute = () => {
-        video.muted = false
-        video.volume = VIDEO_VOLUME
-        window.removeEventListener('click', unmute)
-        window.removeEventListener('keydown', unmute)
-      }
-      window.addEventListener('click', unmute)
-      window.addEventListener('keydown', unmute)
-      return () => {
-        window.removeEventListener('click', unmute)
-        window.removeEventListener('keydown', unmute)
-      }
-    })
   }, [open])
 
   useEffect(() => {
@@ -95,7 +74,7 @@ export default function VideoPopup() {
               <video
                 ref={videoRef}
                 src={VIDEO_SRC}
-                autoPlay
+                controls
                 loop
                 playsInline
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
