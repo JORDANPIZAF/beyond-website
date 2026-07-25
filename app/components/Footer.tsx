@@ -135,13 +135,18 @@ export default function Footer() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', marginBottom: '64px' }}>
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.contactTitle}</p>
-              <ContactRow icon={<Mail size={20} color="#fff" />} href="mailto:director.comercial@beyondgroup.co">
-                director.comercial@beyondgroup.co
+              <ContactRow icon={<Mail size={20} color="#fff" />} href="mailto:juan.velez@beyondgroup.co">
+                juan.velez@beyondgroup.co
               </ContactRow>
-              <ContactRow icon={<Phone size={20} color="#fff" />} href="tel:+16013904415">
-                (601) 390 44 15
+              <ContactRow icon={<Phone size={20} color="#fff" />} href="tel:+15165497162">
+                +1 (516) 549 71 62
               </ContactRow>
               <ContactRow icon={<MapPin size={20} color="#fff" />}>
+                <span style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>{f.usOfficeLabel}</span>
+                405 Lakeview Dr. Unit 103, Weston, FL 33326, U.S.A.
+              </ContactRow>
+              <ContactRow icon={<MapPin size={20} color="#fff" />}>
+                <span style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>{f.plantLabel}</span>
                 Bogotá, Colombia
               </ContactRow>
             </div>

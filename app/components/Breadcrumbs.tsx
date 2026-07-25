@@ -43,7 +43,7 @@ export default function Breadcrumbs() {
   return (
     <nav aria-label="breadcrumb" style={{
       position: 'absolute',
-      top: '118px',
+      top: 'calc(118px + var(--topbar-h))',
       left: 0,
       right: 0,
       zIndex: 10,

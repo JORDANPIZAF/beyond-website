@@ -14,6 +14,7 @@
   --text: #111110;
   --text-muted: #696560;
   --text-light: #B5B0AA;
+  --topbar-h: 0px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -257,9 +258,6 @@ body::before {
 .btn-outline:hover { border-color: var(--text); background: rgba(0,0,0,0.03); transform: translateY(-1px); }
 .btn-outline:active { transform: translateY(0); }
 
-/* Client logos grid */
-.grid-clients { grid-template-columns: repeat(6, 1fr); }
-
 /* Contact form — card + grid layout */
 .contact-card {
   background: var(--white);
@@ -305,11 +303,11 @@ textarea.form-input { resize: vertical; }
 
 /* Mobile */
 @media (max-width: 768px) {
+  :root { --topbar-h: 34px; }
   .hide-mobile { display: none !important; }
   .show-mobile { display: flex !important; }
   .grid-2 { grid-template-columns: 1fr !important; }
   .grid-3 { grid-template-columns: 1fr 1fr !important; }
-  .grid-clients { grid-template-columns: repeat(3, 1fr) !important; }
   .grid-cap-cards { grid-template-columns: 1fr !important; }
 }
 @media (min-width: 769px) and (max-width: 1024px) {

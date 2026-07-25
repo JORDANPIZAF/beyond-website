@@ -13,6 +13,8 @@ import ProjectGallery from './components/ProjectGallery'
 import PillLink from './components/PillLink'
 import TextReveal from './components/TextReveal'
 import VideoPopup from './components/VideoPopup'
+import CountUp from './components/CountUp'
+import LogoRotator from './components/LogoRotator'
 import { useLanguage } from './context/LanguageContext'
 
 const revealContainer = {
@@ -43,12 +45,17 @@ const clientLogos = [
   { name: 'AMD', file: 'AMD - BEYOND.webp' },
   { name: 'Microsoft', file: 'microsoft.webp' },
   { name: 'TCL', file: 'TCL---BEYOND.webp' },
-  { name: 'Adidas', file: 'ADIDAS - BEYOND.webp' },
   { name: 'Nestlé', file: 'NESTLE- BEYOND.webp' },
   { name: 'Aldo', file: 'aldo.webp' },
   { name: 'Olímpica', file: 'OLIMPICA - BEYOND.webp' },
   { name: 'Falabella', file: 'FALABELLA - BEYOND.webp' },
   { name: 'Pepsico', file: 'PEPSICO - BEYOND.webp' },
+  { name: 'Hisense', file: 'hisense.webp' },
+  { name: 'Caixun', file: 'caixun.webp' },
+  { name: 'Hyundai', file: 'hyundai.webp' },
+  { name: 'Challenger', file: 'challenger.webp' },
+  { name: 'Mabe', file: 'mabe.webp' },
+  { name: 'Imusa', file: 'imusa.webp' },
 ]
 
 const capabilityImgs = [
@@ -110,7 +117,7 @@ function AboutSection() {
                 boxShadow: '0 20px 60px rgba(178,132,60,0.3)',
               }}
             >
-              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '36px', lineHeight: 1 }}>3.850</div>
+              <div style={{ fontFamily: 'var(--font-barlow)', fontWeight: 800, fontSize: '36px', lineHeight: 1 }}><CountUp value="5000" /></div>
               <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', marginTop: '4px' }}>{h.plantBadge}</div>
             </motion.div>
           </motion.div>
@@ -297,29 +304,8 @@ function ClientsSection() {
           {h.clientsTitle1} <span style={{ color: 'var(--accent)' }}>{h.clientsAccent}</span>
         </TextReveal>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={vp}
-          variants={revealContainer}
-          className="grid-clients" style={{ display: 'grid', gap: '1px', background: 'var(--border)' }}
-        >
-          {clientLogos.map((c) => (
-            <motion.div
-              key={c.name}
-              variants={revealItem}
-              style={{ background: 'var(--white)', padding: '32px 18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              <Image
-                src={`/images/logo/${c.file}`}
-                alt={c.name}
-                width={100}
-                height={36}
-                style={{ objectFit: 'contain', height: '55px', width: 'auto', filter: 'grayscale(1)', opacity: 0.45 }}
-                className="brand-item"
-              />
-            </motion.div>
-          ))}
+        <motion.div initial="hidden" whileInView="show" viewport={vp} variants={revealContainer}>
+          <LogoRotator logos={clientLogos} />
         </motion.div>
 
       </div>
@@ -392,7 +378,7 @@ export default function Home() {
 
       <HeroScroll />
 
-      <ScrollCard index={2} scrollHeight="240vh">
+      <ScrollCard index={2} scrollHeight="420vh">
         {(progress: MotionValue<number>) => <ProductSequence progress={progress} />}
       </ScrollCard>
 
@@ -400,7 +386,7 @@ export default function Home() {
         <AboutSection />
       </ScrollCard>
 
-      <ScrollCard index={4} scrollHeight="240vh">
+      <ScrollCard index={4} scrollHeight="320vh">
         {(progress: MotionValue<number>) => <CapabilitiesSection progress={progress} />}
       </ScrollCard>
 

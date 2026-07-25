@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Figtree, Barlow_Condensed, Montserrat } from 'next/font/google'
 import './globals.css'
+import TopBar from './components/TopBar'
 import FloatingNav from './components/nav/FloatingNav'
 import Footer from './components/Footer'
 import ClientProviders from './components/ClientProviders'
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ClientProviders>
           <CursorGlow />
+          <TopBar />
           <FloatingNav />
           <main style={{ position: 'relative' }}>
             <Breadcrumbs />

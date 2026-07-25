@@ -5,11 +5,15 @@ import Reveal from '../components/Reveal'
 import Link from 'next/link'
 import Image from 'next/image'
 import TextReveal from '../components/TextReveal'
+import CountUp from '../components/CountUp'
+import ProcessRotator from '../components/ProcessRotator'
+import LogoRotator from '../components/LogoRotator'
 import { useLanguage } from '../context/LanguageContext'
-import { PenTool, Layers, Factory, ShieldCheck, Wrench, Truck, Check } from 'lucide-react'
+import { PenTool, Layers, Factory, ShieldCheck, Wrench, Truck, Check, Calendar, MapPin, Building2, Clock, Package } from 'lucide-react'
 import FooterMap from '../components/FooterMap'
 
 const processIcons = [PenTool, Layers, Factory, ShieldCheck, Wrench, Truck]
+const statsIcons = [Calendar, MapPin, Building2, Factory, Clock, Package, Layers]
 
 const clientLogos = [
   { name: 'Samsung', file: 'SAMSUNG - BEYOND.webp' },
@@ -18,12 +22,17 @@ const clientLogos = [
   { name: 'AMD', file: 'AMD - BEYOND.webp' },
   { name: 'Microsoft', file: 'microsoft.webp' },
   { name: 'TCL', file: 'TCL---BEYOND.webp' },
-  { name: 'Adidas', file: 'ADIDAS - BEYOND.webp' },
   { name: 'Nestlé', file: 'NESTLE- BEYOND.webp' },
   { name: 'Aldo', file: 'aldo.webp' },
   { name: 'Olímpica', file: 'OLIMPICA - BEYOND.webp' },
   { name: 'Falabella', file: 'FALABELLA - BEYOND.webp' },
   { name: 'Pepsico', file: 'PEPSICO - BEYOND.webp' },
+  { name: 'Hisense', file: 'hisense.webp' },
+  { name: 'Caixun', file: 'caixun.webp' },
+  { name: 'Hyundai', file: 'hyundai.webp' },
+  { name: 'Challenger', file: 'challenger.webp' },
+  { name: 'Mabe', file: 'mabe.webp' },
+  { name: 'Imusa', file: 'imusa.webp' },
 ]
 
 export default function NosotrosPage() {
@@ -93,12 +102,18 @@ export default function NosotrosPage() {
             </Reveal>
             <Reveal delay={0.2} direction="left">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'var(--border)' }}>
-                {n.stats.map((item) => (
-                  <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--white)', padding: '20px 28px' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>{item.label}</span>
-                    <span style={{ fontFamily: 'var(--font-barlow), sans-serif', fontWeight: 700, fontSize: '18px', color: 'var(--text)' }}>{item.value}</span>
-                  </div>
-                ))}
+                {n.stats.map((item, i) => {
+                  const Icon = statsIcons[i]
+                  return (
+                    <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '16px', background: 'var(--white)', padding: '20px 28px' }}>
+                      <Icon size={22} strokeWidth={1.6} color="var(--accent)" style={{ flexShrink: 0 }} />
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.04em', flex: 1 }}>{item.label}</span>
+                      <span style={{ fontFamily: 'var(--font-barlow), sans-serif', fontWeight: 700, fontSize: '18px', color: 'var(--text)' }}>
+                        {i < 3 ? item.value : <CountUp value={item.value} />}
+                      </span>
+                    </div>
+                  )
+                })}
               </div>
             </Reveal>
           </div>
@@ -178,38 +193,9 @@ export default function NosotrosPage() {
             </TextReveal>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'var(--border)' }}>
-            {n.processes.map((p, i) => {
-              const Icon = processIcons[i]
-              return (
-              <Reveal key={p.title} delay={i * 0.08} style={{ height: '100%' }}>
-                <div style={{ background: 'var(--bg)', padding: '48px 36px', height: '100%', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{
-                    width: '56px',
-                    height: '56px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '24px',
-                  }}>
-                    <Icon size={32} strokeWidth={1.5} color="var(--accent)" />
-                  </div>
-                  <TextReveal as="h3" style={{
-                    fontFamily: 'var(--font-barlow), sans-serif',
-                    fontWeight: 700,
-                    fontSize: '18px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.04em',
-                    color: 'var(--text)',
-                    marginBottom: '16px',
-                    display: 'block',
-                  }}>{p.title}</TextReveal>
-                  <TextReveal as="p" delay={0.1} style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--text-muted)', display: 'block' }}>{p.desc}</TextReveal>
-                </div>
-              </Reveal>
-              )
-            })}
-          </div>
+          <Reveal>
+            <ProcessRotator items={n.processes} icons={processIcons} />
+          </Reveal>
         </div>
       </section>
 
@@ -233,20 +219,7 @@ export default function NosotrosPage() {
             </TextReveal>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '1px', background: 'var(--border)' }}>
-            {clientLogos.map((brand) => (
-              <div key={brand.name} style={{ background: 'var(--white)', padding: '40px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image
-                  src={`/images/logo/${brand.file}`}
-                  alt={brand.name}
-                  width={100}
-                  height={36}
-                  style={{ objectFit: 'contain', height: '40px', width: 'auto', filter: 'grayscale(1)', opacity: 0.55, transition: 'opacity 0.2s' }}
-                  className="brand-item"
-                />
-              </div>
-            ))}
-          </div>
+          <LogoRotator logos={clientLogos} />
         </div>
       </section>
 

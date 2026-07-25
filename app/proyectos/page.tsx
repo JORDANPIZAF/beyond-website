@@ -7,6 +7,7 @@ import Reveal from '../components/Reveal'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
 import TextReveal from '../components/TextReveal'
+import CountUp from '../components/CountUp'
 import { LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette, ChevronDown, Tag } from 'lucide-react'
 
 const categoryIcons = [LayoutGrid, Building2, Tent, Rows3, Sofa, Megaphone, Palette]
@@ -21,7 +22,7 @@ const projectsData = [
   { id: 9,  slug: 'olimpica-gondolas',       title: 'Olímpica Góndolas',          categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2022', cover: '/images/portfolio/gondolas/imge/03/gondolas_2_INT-2.webp' },
   { id: 10, slug: 'mobiliario-hogar',        title: 'Mobiliario Hogar',           categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2022', cover: '/images/portfolio/mobiliario/img/03/mobiliario_3_INT-1-.webp' },
   { id: 12, slug: 'mundo-playa',             title: 'Mundo Playa Olímpica',       categoryEs: 'Creativo',               client: 'Olímpica',    year: '2022', cover: '/images/portfolio/creativo/img/01/INT-5MUNDO-PLAYA.webp' },
-  { id: 13, slug: 'aldo-mobiliario',         title: 'Aldo Mobiliario',            categoryEs: 'Arquitectura Comercial',  client: 'Aldo',        year: '2022', cover: '/images/portfolio/arq-comercial/img/p2/INT-2PANDORA.webp' },
+  { id: 13, slug: 'aldo-mobiliario',         title: 'Aldo Mobiliario',            categoryEs: 'Arquitectura Comercial',  client: 'Aldo Ecuador', year: '2022', cover: '/images/portfolio/arq-comercial/img/p2/INT-2PANDORA.webp' },
   { id: 14, slug: 'bold-islas',              title: 'Bold Islas',                 categoryEs: 'Arquitectura Efímera',    client: 'Bold',        year: '2021', cover: '/images/portfolio/arq-efimera/img/02/islas_boldINT-4.webp' },
   { id: 15, slug: 'olimpica-zona-fit',       title: 'Olímpica Zona Fit',          categoryEs: 'Góndolas',               client: 'Olímpica',    year: '2021', cover: '/images/portfolio/gondolas/imge/02/zona-fit_INT-2.webp' },
   { id: 16, slug: 'oficinas-barranquilla',   title: 'Oficinas Barranquilla',      categoryEs: 'Mobiliario',             client: 'Corporativo', year: '2021', cover: '/images/portfolio/mobiliario/img/02/INT-4_OFI_-BARRANQUILLA.webp' },
@@ -90,7 +91,7 @@ export default function ProyectosPage() {
         }} />
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
-            <TextReveal as="h1" style={{
+            <h1 style={{
               fontFamily: 'var(--font-barlow), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(48px, 8vw, 96px)',
@@ -101,10 +102,12 @@ export default function ProyectosPage() {
               marginBottom: '32px',
               display: 'block',
             }}>
-              {p.heroTitle1}<br />
-              <span style={{ color: 'var(--accent)' }}>{p.heroAccent}</span><br />
-              {p.heroTitle2}
-            </TextReveal>
+              <CountUp value={p.heroTitle1} style={{ display: 'block' }} />
+              <TextReveal as="span" delay={0.15}>
+                <span style={{ color: 'var(--accent)' }}>{p.heroAccent}</span><br />
+                {p.heroTitle2}
+              </TextReveal>
+            </h1>
             <TextReveal as="p" delay={0.15} style={{ fontSize: '18px', lineHeight: 1.8, color: 'var(--text-muted)', maxWidth: '560px', display: 'block' }}>
               {p.heroBody}
             </TextReveal>

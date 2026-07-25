@@ -178,15 +178,19 @@ export default function ContactoPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
                 <div>
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoCommercial}</p>
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>director.comercial@beyondgroup.co</p>
+                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>juan.velez@beyondgroup.co</p>
                 </div>
                 <div>
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoPhone}</p>
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)' }}>(601) 390 44 15</p>
+                  <p style={{ fontSize: '15px', color: 'var(--text-muted)' }}>+1 (516) 549 71 62</p>
                 </div>
                 <div>
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoPlant}</p>
                   <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>Cra. 62 17B-69<br />Bogotá, Colombia</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoUSOffice}</p>
+                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>405 Lakeview Dr. Unit 103<br />Weston, FL 33326<br />U.S.A.</p>
                 </div>
                 <div>
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoSocial}</p>

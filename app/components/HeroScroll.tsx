@@ -181,13 +181,13 @@ export default function HeroScroll() {
                   ))}
                 </motion.h1>
 
-                <TextReveal as="p" delay={0.5} style={{
+                <motion.p variants={textItem} style={{
                   fontSize: '17px', lineHeight: 1.75,
                   color: 'rgba(255,255,255,0.72)',
-                  maxWidth: '400px', marginBottom: '40px', display: 'block',
+                  maxWidth: '400px', marginBottom: '40px',
                 }}>
                   {slide.body}
-                </TextReveal>
+                </motion.p>
 
                 <motion.div variants={textItem} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   {slide.ctas.map((cta, i) => (

@@ -1,17 +1,46 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
 const VIDEO_SRC = '/videos/beyond-presentacion.mp4'
+const VIDEO_VOLUME = 0.5
 
 export default function VideoPopup() {
   const [open, setOpen] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     setOpen(true)
   }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!open || !video) return
+
+    video.volume = VIDEO_VOLUME
+    video.muted = false
+    video.play().catch(() => {
+      // Autoplay con sonido bloqueado por el navegador: arranca muteado
+      // y se desmutea en la primera interacción del usuario.
+      video.muted = true
+      video.play().catch(() => {})
+
+      const unmute = () => {
+        video.muted = false
+        video.volume = VIDEO_VOLUME
+        window.removeEventListener('click', unmute)
+        window.removeEventListener('keydown', unmute)
+      }
+      window.addEventListener('click', unmute)
+      window.addEventListener('keydown', unmute)
+      return () => {
+        window.removeEventListener('click', unmute)
+        window.removeEventListener('keydown', unmute)
+      }
+    })
+  }, [open])
 
   useEffect(() => {
     if (!open) return
@@ -64,9 +93,9 @@ export default function VideoPopup() {
               boxShadow: '0 30px 90px rgba(0,0,0,0.55)',
             }}>
               <video
+                ref={videoRef}
                 src={VIDEO_SRC}
                 autoPlay
-                muted
                 loop
                 playsInline
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}

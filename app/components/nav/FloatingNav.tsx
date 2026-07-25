@@ -44,7 +44,7 @@ export default function FloatingNav() {
         // Pequeña pausa antes de expandir para que la caída se sienta terminada, no interrumpida
         setTimeout(() => setExpanded(true), 180)
       }}
-      style={{ position: 'fixed', top: 20, left: 0, right: 0, zIndex: 100, pointerEvents: 'none' }}
+      style={{ position: 'fixed', top: 'calc(20px + var(--topbar-h))', left: 0, right: 0, zIndex: 100, pointerEvents: 'none' }}
     >
       {/* Desktop */}
       <div className="hide-mobile" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10, pointerEvents: 'auto' }}>
