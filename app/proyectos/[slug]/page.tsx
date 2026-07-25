@@ -13,15 +13,15 @@ import { useLanguage } from '../../context/LanguageContext'
 export const runtime = 'edge'
 
 const clientLogoMap: Record<string, string> = {
-  'Samsung': 'SAMSUNG - BEYOND.webp',
+  'Samsung': 'samsung.webp',
   'TCL': 'TCL---BEYOND.webp',
   'Bold': 'bold.webp',
-  'Apple': 'APPLE - BEYOND.webp',
-  'AMD': 'AMD - BEYOND.webp',
-  'LG': 'LG - BEYOND.webp',
+  'Apple': 'apple.webp',
+  'AMD': 'amd.webp',
+  'LG': 'lg.webp',
   'Aldo Ecuador': 'aldo.webp',
-  'Olímpica': 'OLIMPICA - BEYOND.webp',
-  'Nestlé': 'NESTLE- BEYOND.webp',
+  'Olímpica': 'olimpica.webp',
+  'Nestlé': 'nestle.webp',
   'Microsoft': 'microsoft.webp',
   'Canasta': 'LOGO_CANASTA .webp',
   'Purina': 'NESTLE PURINA - BEYOND.webp',
