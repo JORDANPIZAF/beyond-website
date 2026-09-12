@@ -8,8 +8,8 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 
-const WHATSAPP_LINK = 'https://wa.link/lirbs6'
-const WHATSAPP_NUMBER = '+1 (516) 549 71 62'
+const WHATSAPP_LINK = 'https://wa.link/2ijodt'
+const WHATSAPP_NUMBER = '+57 318 7757985'
 
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (

@@ -5,6 +5,9 @@ import Reveal from '../components/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import TextReveal from '../components/TextReveal'
 import SocialLinks from '../components/SocialLinks'
+import { Mail, MessageCircle, Globe, MapPin } from 'lucide-react'
+
+const officeRowStyle = { display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '14px', color: 'var(--text-muted)', textDecoration: 'none', lineHeight: 1.6 } as const
 
 const initialForm = { nombre: '', empresa: '', email: '', telefono: '', proyecto: '', presupuesto: '' }
 
@@ -176,21 +179,37 @@ export default function ContactoPage() {
             {/* Info */}
             <Reveal delay={0.2} direction="left">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-                <div>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoCommercial}</p>
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>juan.velez@beyondgroup.co</p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoPhone}</p>
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)' }}>+1 (516) 549 71 62</p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoPlant}</p>
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>Cra. 62 17B-69<br />Bogotá, Colombia</p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoUSOffice}</p>
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7 }}>405 Lakeview Dr. Unit 103<br />Weston, FL 33326<br />U.S.A.</p>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }} className="grid-2">
+                  {c.offices.map((office, i) => (
+                    <div
+                      key={office.title}
+                      style={i === 1 ? { paddingLeft: '32px', borderLeft: '1px solid var(--border)' } : undefined}
+                    >
+                      <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px', lineHeight: 1.5 }}>
+                        {office.title}
+                      </p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        <a href={`mailto:${office.email}`} style={officeRowStyle}>
+                          <Mail size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                          <span>{office.email}</span>
+                        </a>
+                        <a href={office.whatsappHref} target="_blank" rel="noopener noreferrer" style={officeRowStyle}>
+                          <MessageCircle size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                          <span>{office.whatsapp}</span>
+                        </a>
+                        {'website' in office && office.website && (
+                          <a href={`https://${office.website}`} target="_blank" rel="noopener noreferrer" style={officeRowStyle}>
+                            <Globe size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                            <span>{office.website}</span>
+                          </a>
+                        )}
+                        <div style={officeRowStyle}>
+                          <MapPin size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                          <span>{office.addressLine1}<br />{office.addressLine2}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
                 <div>
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>{c.infoSocial}</p>

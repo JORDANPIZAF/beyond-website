@@ -12,6 +12,8 @@ export default function VideoPopup() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    const isEmbedded = window.self !== window.top
+    if (isEmbedded) return
     setOpen(true)
   }, [])
 

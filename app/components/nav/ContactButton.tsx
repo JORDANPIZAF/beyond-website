@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const WHATSAPP_LINK = 'https://wa.link/lirbs6'
-const WHATSAPP_NUMBER = '+1 (516) 549 71 62'
+const WHATSAPP_LINK = 'https://wa.link/2ijodt'
+const WHATSAPP_NUMBER = '+57 318 7757985'
 
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
   return (

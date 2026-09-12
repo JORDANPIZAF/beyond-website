@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { ReactNode } from 'react'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, MessageCircle, Globe, MapPin } from 'lucide-react'
 import FooterMap from './FooterMap'
 import { SOCIALS } from './SocialLinks'
 import { useLanguage } from '../context/LanguageContext'
@@ -85,6 +85,7 @@ const capabilityHrefs = [
 export default function Footer() {
   const { t } = useLanguage()
   const f = t.footer
+  const offices = t.contacto.offices
 
   return (
     <footer style={{
@@ -132,30 +133,32 @@ export default function Footer() {
 
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', marginBottom: '64px' }}>
-            <div>
-              <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.contactTitle}</p>
-              <ContactRow icon={<Mail size={20} color="#fff" />} href="mailto:juan.velez@beyondgroup.co">
-                juan.velez@beyondgroup.co
-              </ContactRow>
-              <ContactRow icon={<Phone size={20} color="#fff" />} href="tel:+15165497162">
-                +1 (516) 549 71 62
-              </ContactRow>
-              <ContactRow icon={<MapPin size={20} color="#fff" />}>
-                <span style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>{f.usOfficeLabel}</span>
-                405 Lakeview Dr. Unit 103, Weston, FL 33326, U.S.A.
-              </ContactRow>
-              <ContactRow icon={<MapPin size={20} color="#fff" />}>
-                <span style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>{f.plantLabel}</span>
-                Cra. 62 17B-69, Bogotá, Colombia
-              </ContactRow>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', marginBottom: '64px' }} className="grid-3">
+            {offices.map(office => (
+              <div key={office.title}>
+                <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{office.title}</p>
+                <ContactRow icon={<Mail size={20} color="#fff" />} href={`mailto:${office.email}`}>
+                  {office.email}
+                </ContactRow>
+                <ContactRow icon={<MessageCircle size={20} color="#fff" />} href={office.whatsappHref}>
+                  {office.whatsapp}
+                </ContactRow>
+                {'website' in office && office.website && (
+                  <ContactRow icon={<Globe size={20} color="#fff" />} href={`https://${office.website}`}>
+                    {office.website}
+                  </ContactRow>
+                )}
+                <ContactRow icon={<MapPin size={20} color="#fff" />}>
+                  {office.addressLine1}, {office.addressLine2}
+                </ContactRow>
+              </div>
+            ))}
 
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>{f.socialTitle}</p>
               {SOCIALS.map(s => (
                 <ContactRow key={s.name} icon={<span style={{ width: '20px', height: '20px', color: '#fff' }}>{s.icon}</span>} href={s.href}>
-                  {s.handle}
+                  <span style={{ whiteSpace: 'nowrap' }}>{s.handle}</span>
                 </ContactRow>
               ))}
             </div>
