@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-const VIDEO_SRC = '/videos/beyond-presentacion.mp4'
+const VIDEO_SRC = '/videos/beyond-presentacion-2026.mp4'
 const VIDEO_VOLUME = 0.5
 
 export default function VideoPopup() {
