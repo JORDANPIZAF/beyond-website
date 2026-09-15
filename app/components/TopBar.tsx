@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import { Mail, MapPin } from 'lucide-react'
 
 const EMAIL = 'juan.velez@beyondgroup.co'
@@ -9,8 +12,24 @@ const US_CITY = 'Weston'
 const US_ADDRESS_POST = ', FL 33326, U.S.A.'
 
 export default function TopBar() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const setHeight = () => {
+      document.documentElement.style.setProperty('--topbar-h', `${el.offsetHeight}px`)
+    }
+
+    setHeight()
+    const observer = new ResizeObserver(setHeight)
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="show-mobile" style={{
+    <div ref={ref} className="show-mobile" style={{
       position: 'fixed',
       top: 0, left: 0, right: 0,
       zIndex: 101,

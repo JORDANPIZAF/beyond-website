@@ -303,7 +303,7 @@ textarea.form-input { resize: vertical; }
 
 /* Mobile */
 @media (max-width: 768px) {
-  :root { --topbar-h: 34px; }
+  :root { --topbar-h: 58px; }
   .hide-mobile { display: none !important; }
   .show-mobile { display: flex !important; }
   .grid-2 { grid-template-columns: 1fr !important; }
